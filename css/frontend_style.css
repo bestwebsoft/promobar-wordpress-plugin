@@ -1,0 +1,56 @@
+/* styles for settings page */
+.prmbr_main {
+	position: absolute;
+	z-index: 9999;
+	min-height: 0;
+	margin-top: 0!important;
+	word-wrap: break-word;
+}
+/* add when position top */
+.prmbr_top {	
+	top: 0;
+	left: 0;		
+	width: 100%;
+	height: auto;
+}
+/* add when position bottom */
+.prmbr_bottom {
+	width: 100%;
+	left: 0;
+}
+/* add when position left*/
+.prmbr_left {
+	top: 0;
+	left: 0;
+	float: left;
+	min-height: 100%;
+	overflow: auto;
+}
+/* add when position right */
+.prmbr_right {
+	top: 0;
+	min-height: 100%;
+}
+/*position when js is absent */
+.prmbr_no_js {
+	position: fixed!important;
+}
+/* position for block when chose shortcode */
+.prmbr_position_for_shortcode {
+	position: relative!important;
+}
+/*for correct work Theme 2015 */
+.prmbr_for_sidebar:before {
+	width: 0%!important;
+	z-index:-1;
+}
+.prmbr_for_sidebar_background {
+	position: relative!important;
+	top: 0!important;	
+}
+.add_background {
+	background-color: #fff;
+	position: absolute;
+	height: 100%;
+	z-index:-1;
+}

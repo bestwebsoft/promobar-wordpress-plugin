@@ -1,0 +1,178 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: promobar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-02 10:14+0300\n"
+"PO-Revision-Date: 2015-03-02 10:14+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: BestwebSoft <plugin@bestwebsoft.com>\n"
+"Language: russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: promobar.php:34
+msgid "PromoBar Settings"
+msgstr ""
+
+#: promobar.php:126
+msgid "Settings saved."
+msgstr ""
+
+#: promobar.php:143
+#: promobar.php:153
+msgid "Please enter the correct value in the Width field."
+msgstr ""
+
+#: promobar.php:163
+msgid "Please select the correct value in the Background field."
+msgstr ""
+
+#: promobar.php:172
+msgid "Please select the correct value in the Text Color field."
+msgstr ""
+
+#: promobar.php:188
+#: promobar.php:190
+#: promobar.php:450
+#: promobar.php:471
+msgid "Settings"
+msgstr ""
+
+#: promobar.php:191
+msgid "Extra Settings"
+msgstr ""
+
+#: promobar.php:192
+#: promobar.php:451
+msgid "FAQ"
+msgstr ""
+
+#: promobar.php:193
+msgid "Go PRO"
+msgstr ""
+
+#: promobar.php:196
+#: promobar.php:199
+#: promobar.php:202
+msgid "Notice"
+msgstr ""
+
+#: promobar.php:196
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr ""
+
+#: promobar.php:205
+msgid "If you would like to use this plugin on certain pages, please paste the following strings into the template source code"
+msgstr ""
+
+#: promobar.php:205
+msgid "And if you want to add the block to the website page or post, please paste the following shortcode"
+msgstr ""
+
+#: promobar.php:209
+msgid "Display PromoBar"
+msgstr ""
+
+#: promobar.php:212
+msgid "on all pages"
+msgstr ""
+
+#: promobar.php:216
+msgid "on the homepage"
+msgstr ""
+
+#: promobar.php:220
+msgid "display via shortcode or function only"
+msgstr ""
+
+#: promobar.php:225
+msgid "Position"
+msgstr ""
+
+#: promobar.php:228
+msgid "Top"
+msgstr ""
+
+#: promobar.php:232
+msgid "Bottom"
+msgstr ""
+
+#: promobar.php:236
+msgid "Left"
+msgstr ""
+
+#: promobar.php:239
+#: promobar.php:249
+msgid "width"
+msgstr ""
+
+#: promobar.php:246
+msgid "Right"
+msgstr ""
+
+#: promobar.php:257
+msgid "Background"
+msgstr ""
+
+#: promobar.php:265
+msgid "Text Color"
+msgstr ""
+
+#: promobar.php:273
+msgid "HTML"
+msgstr ""
+
+#: promobar.php:286
+#: promobar.php:325
+msgid "Save Changes"
+msgstr ""
+
+#: promobar.php:292
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr ""
+
+#: promobar.php:293
+msgid "Rate the plugin"
+msgstr ""
+
+#: promobar.php:296
+msgid "If there is something wrong about it, please contact us"
+msgstr ""
+
+#: promobar.php:307
+msgid "Please choose the necessary post types (or single pages) PromoBar will be displayed with"
+msgstr ""
+
+#: promobar.php:314
+msgid "Show URL for pages"
+msgstr ""
+
+#: promobar.php:320
+msgid "Example of the site's pages tree"
+msgstr ""
+
+#: promobar.php:330
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr ""
+
+#: promobar.php:337
+msgid "Unlock premium options by upgrading to a PRO version."
+msgstr ""
+
+#: promobar.php:338
+msgid "Learn More"
+msgstr ""
+
+#: promobar.php:341
+msgid "Go"
+msgstr ""
+
+#: promobar.php:452
+msgid "Support"
+msgstr ""
