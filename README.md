@@ -3,7 +3,7 @@
 
 This plugin will come in handy if you want to display banners with any kind of data on your WordPress website. With PromoBar, the extent of data shown on the banner is rather wide, from messages about launching a new product and service announcements, to special offer ads, and any sort of information you want to share with your users in general. There is a number of customization options available, which allow selecting the position of the banner (on all pages, on homepage only, or in any post/page/template the function or shortcode was added to), along with the banner design. 
 
-<img src="http://bestwebsoft.com/wp-content/uploads/2015/02/xpromo-bar-banner-website.jpg.pagespeed.ic._GhpNG1DrI.webp"/>
+<img src="http://bestwebsoft.com/wp-content/uploads/2015/02/xpromo-bar-banner-website.jpg"/>
 
 <a href="http://bestwebsoft.com/products/promobar/description" target=_blank>Description</a> | 
 <a href="http://bestwebsoft.com/products/promobar/installation" target=_blank>Installation</a> | 
