@@ -4,7 +4,7 @@ Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&
 Tags: add PromoBar plugin, promobar, pomobar, prombar, pombar, promobr, PromoBar plugin, add unit in site, add unit in posts, add unit in pages, add PromoBar in posts, add PromoBar in pages, PromoBar plugin, add banner, banner, demo-header, service announcement banner, maintenance banner, custom banner, product launching data banner, special offer banner, banner plugin, add a new banner, add custom banner, infobar
 Requires at least: 3.5
 Tested up to: 4.1.1
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -80,10 +80,16 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.1 - 05.03.2015 =
+* Update : BWS plugins section is updated.
+
 = V1.0.0 - 02.03.2015 =
-* NEW : Ability to placing banners with any data on your website.
+* NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.1 =
+BWS plugins section is updated.
 
 = V1.0.0 =
 Ability to placing banners with any data on your website.

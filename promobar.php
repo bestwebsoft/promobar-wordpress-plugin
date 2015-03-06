@@ -4,7 +4,7 @@ Plugin Name: PromoBar
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
 Author: BestWebSoft
-Version: 1.0.0
+Version: 1.0.1
 Author URI: http://bestwebsoft.com/
 License: Proprietary
 */
@@ -180,7 +180,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 		}
 
 		/* GO PRO */
-		if ( isset( $_GET['action'] ) && 'go-pro' == $_GET['action'] ) {			
+		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {			
 			$go_pro_result = bws_go_pro_tab_check( $plugin_basename );
 			if ( ! empty( $go_pro_result['error'] ) )
 				$error = $go_pro_result['error'];
@@ -190,7 +190,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php"> <?php _e( 'Settings', 'promobar' ); ?></a>
 				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) echo 'nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=extra"><?php _e( 'Extra Settings', 'promobar' ); ?></a>
 				<a class="nav-tab" href="http://bestwebsoft.com/products/promobar/faq/" target="_blank"><?php _e( 'FAQ', 'promobar' ); ?></a>
-				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go-pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=go-pro"><?php _e( 'Go PRO', 'promobar' ); ?></a>
+				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=go_pro"><?php _e( 'Go PRO', 'promobar' ); ?></a>
 			</h2>
 			<div id="prmbr_settings_notice" class="updated fade" style="display:none">
 				<p><strong><?php _e( 'Notice', 'promobar' ); ?></strong>: <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'promobar' ); ?></p>
@@ -334,8 +334,8 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 						<div class="clear"></div>
 					</div>
 				</div>
-			<?php } elseif ( isset( $_GET['action'] ) && 'go-pro' == $_GET['action'] ) {
-				bws_go_pro_tab( $prmbr_plugin_info, $plugin_basename, 'promobar.php', 'promobar-pro.php', 'promobar-pro/promobar-pro.php', isset( $go_pro_result['pro_plugin_is_activated'] ) );
+			<?php } elseif ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
+				bws_go_pro_tab( $prmbr_plugin_info, $plugin_basename, 'promobar.php', 'promobar-pro.php', 'promobar-pro/promobar-pro.php', 'promobar', 'd765697418cb3510ea536e47c1e26396', '196', isset( $go_pro_result['pro_plugin_is_activated'] ) );
 			} ?>
 		</div><!-- .wrap -->
 	<?php }
