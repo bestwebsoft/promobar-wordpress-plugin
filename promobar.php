@@ -4,9 +4,9 @@ Plugin Name: PromoBar
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
 Author: BestWebSoft
-Version: 1.0.1
+Version: 1.0.2
 Author URI: http://bestwebsoft.com/
-License: Proprietary
+License: GPLv3 or later
 */
 
 /*  @ Copyright 2015  BestWebSoft  ( http://support.bestwebsoft.com )
