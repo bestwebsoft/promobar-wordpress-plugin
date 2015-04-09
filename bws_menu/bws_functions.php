@@ -1,7 +1,7 @@
 <?php
 /*
 * General functions for BestWebSoft plugins
-* Version: 1.0.1
+* Version: 1.0.7
 */
 if ( ! function_exists ( 'bws_add_general_menu' ) ) {
 	function bws_add_general_menu( $base ) {
@@ -79,11 +79,14 @@ if ( ! function_exists ( 'bws_wp_version_check' ) ) {
 				deactivate_plugins( $plugin_basename );
 				$admin_url = ( function_exists( 'get_admin_url' ) ) ? get_admin_url( null, 'plugins.php' ) : esc_url( '/wp-admin/plugins.php' );
 				wp_die( 
-					printf(
-						"<strong>" . $plugin_info['Name'] . "</strong> %1$s <strong>WordPress " . $require_wp . "</strong> %2$s <br /><br />%3$s <a href='" . $admin_url . "'>%4$s</a>.",
+					sprintf(
+						"<strong>%s</strong> %s <strong>WordPress %s</strong> %s <br /><br />%s <a href='%s'>%s</a>.",
+						$plugin_info['Name'],
 						__( 'requires', 'bestwebsoft' ),
-						__( 'or higher, that is why it has been deactivated! Please upgrade WordPress and try again.', 'bestwebsoft' ),
+						$require_wp,
+						__( 'or higher, that is why it has been deactivated! Please upgrade WordPress and try again.', 'bestwebsoft' ),	
 						__( 'Back to the WordPress', 'bestwebsoft' ),
+						$admin_url,
 						__( 'Plugins page', 'bestwebsoft' )
 					)
 				);
@@ -182,7 +185,7 @@ if ( ! function_exists( 'bws_go_pro_tab_check' ) ) {
 					$result['error'] = __( "Wrong license key", 'bestwebsoft' );
 				} else {
 					$bws_license_plugin = stripslashes( esc_html( $_POST['bws_license_plugin'] ) );	
-					if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] ) && $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] < ( time() + (24 * 60 * 60) ) ) {
+					if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] ) && $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] > ( time() - (24 * 60 * 60) ) ) {
 						$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] = $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] + 1;
 					} else {
 						$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] = 1;
@@ -343,7 +346,7 @@ if ( ! function_exists( 'bws_go_pro_tab' ) ) {
 				</p>
 				<?php if ( isset( $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] ) &&
 					'5' < $bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['count'] &&
-					$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] < ( time() + ( 24 * 60 * 60 ) ) ) { ?>
+					$bstwbsftwppdtplgns_options['go_pro'][ $bws_license_plugin ]['time'] > ( time() - ( 24 * 60 * 60 ) ) ) { ?>
 					<p>
 						<input disabled="disabled" type="text" name="bws_license_key" value="<?php echo $bws_license_key; ?>" />
 						<input disabled="disabled" type="submit" class="button-primary" value="<?php _e( 'Activate', 'bestwebsoft' ); ?>" />
@@ -417,7 +420,7 @@ if ( ! function_exists( 'bws_check_pro_license' ) ) {
 											update_site_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
 										else
 											update_option( 'bstwbsftwppdtplgns_options', $bstwbsftwppdtplgns_options );
-										$file = @fopen( dirname( __FILE__ ) . "/license_key.txt" , "w+" );
+										$file = @fopen( dirname( dirname( __FILE__ ) ) . "/license_key.txt" , "w+" );
 										if ( $file ) {
 											@fwrite( $file, $license_key );
 											@fclose( $file );
@@ -468,7 +471,7 @@ if ( ! function_exists ( 'bws_plugin_update_row' ) ) {
 		} elseif ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") ) ) {
 			echo '<tr class="plugin-update-tr">
 					<td colspan="' . $wp_list_table->get_column_count() . '" class="plugin-update colspanchange">
-						<div class="update-message" style="color: #8C0000;">' . __( 'Your license has expired. To continue getting top-priority support and plugin updates you should extend it.', 'bestwebsoft' ) . ' <a target="_new" href="http://support.bestwebsoft.com/entries/53487136-I-purchased-a-Pro-plugin-with-a-recurring-billing-I-cancelled-the-subscription-The-license-has-expir">' . __( "Learn more", 'bestwebsoft' ) . '</div>
+						<div class="update-message" style="color: #8C0000;">' . __( 'Your license has expired. To continue getting top-priority support and plugin updates you should extend it.', 'bestwebsoft' ) . ' <a target="_new" href="http://support.bestwebsoft.com/entries/53487136">' . __( "Learn more", 'bestwebsoft' ) . '</div>
 					</td>
 				</tr>';
 		}
@@ -476,11 +479,11 @@ if ( ! function_exists ( 'bws_plugin_update_row' ) ) {
 }
 
 if ( ! function_exists ( 'bws_plugin_banner_timeout' ) ) {
-	function bws_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name ) {
+	function bws_plugin_banner_timeout( $plugin_key, $plugin_prefix, $plugin_name, $banner_url = false ) {
 		global $bstwbsftwppdtplgns_options, $bstwbsftwppdtplgns_cookie_add;
-		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") . '+1 month' ) && strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( date("m/d/Y") ) ) {
+		if ( isset( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) < strtotime( date("m/d/Y") . '+1 month' ) ) && ( strtotime( $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] ) > strtotime( date("m/d/Y") ) ) ) {
 			if ( ! isset( $bstwbsftwppdtplgns_cookie_add ) ) {
-				echo '<script type="text/javascript" src="' . plugins_url( 'bws_menu/js/c_o_o_k_i_e.js', __FILE__ ) . '"></script>';
+				echo '<script type="text/javascript" src="' . plugins_url( 'js/c_o_o_k_i_e.js', __FILE__ ) . '"></script>';
 				$bstwbsftwppdtplgns_cookie_add = true;
 			} ?>
 			<script type="text/javascript">
@@ -501,10 +504,10 @@ if ( ! function_exists ( 'bws_plugin_banner_timeout' ) ) {
 			</script>
 			<div class="updated" style="padding: 0; margin: 0; border: none; background: none;">
 				<div class="<?php echo $plugin_prefix; ?>_message bws_banner_on_plugin_page" style="display:none;">
-					<img class="<?php echo $plugin_prefix; ?>_close_icon close_icon" title="" src="<?php echo  plugins_url( 'images/close_banner.png', __FILE__ ); ?>" alt=""/>
-					<div class="text"><?php _e( "You license for", 'bestwebsoft' ); ?> <strong><?php echo $plugin_name; ?> PRO</strong> <?php echo __( "expires on", 'bestwebsoft' ) . ' ' . $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] . ' ' . __( "and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ); ?> <a target="_new" href="http://support.bestwebsoft.com/entries/53487136"><?php _e( "Learn more", 'bestwebsoft' ); ?></a></div>
+					<img class="<?php echo $plugin_prefix; ?>_close_icon close_icon" title="" src="<?php echo plugins_url( 'images/close_banner.png', __FILE__ ); ?>" alt=""/>
+					<div class="text"><?php _e( "You license for", 'bestwebsoft' ); ?> <strong><?php echo $plugin_name; ?></strong> <?php echo __( "expires on", 'bestwebsoft' ) . ' ' . $bstwbsftwppdtplgns_options['time_out'][ $plugin_key ] . ' ' . __( "and you won't be granted TOP-PRIORITY SUPPORT or UPDATES.", 'bestwebsoft' ); ?> <a target="_new" href="http://support.bestwebsoft.com/entries/53487136"><?php _e( "Learn more", 'bestwebsoft' ); ?></a></div>
 					<div class="icon">
-						<img title="" src="<?php echo plugins_url( 'images/banner.png', __FILE__ ); ?>" alt=""/>
+						<img title="" src="<?php echo $banner_url; ?>" alt="" />
 					</div>
 				</div>  
 			</div>
@@ -591,7 +594,17 @@ if ( ! class_exists( 'BWS_add_admin_tooltip' ) ) {
 					'zindex' 	=> 10000 
 				), 
 			);
-			$tooltip_args = array_replace_recursive( $tooltip_args_default, $tooltip_args );
+			$tooltip_args = array_merge( $tooltip_args_default, $tooltip_args );
+			/* Check that our merged array has default values */
+			foreach ( $tooltip_args_default as $arg_key => $arg_value ) {
+				if ( is_array( $arg_value ) ) {
+					foreach ( $arg_value as $key => $value) {
+						if ( ! isset( $tooltip_args[ $arg_key ][ $key ] ) ) {
+							$tooltip_args[ $arg_key ][ $key ] = $tooltip_args_default[ $arg_key ][ $key ];
+						}
+					}
+				}
+			}
 			/* Check if tooltip is dismissed */
 			if ( true === $tooltip_args['actions']['onload'] ) {
 				if ( in_array( $tooltip_args['tooltip_id'], array_filter( explode( ',', (string) get_user_meta( get_current_user_id(), 'dismissed_wp_pointers', true ) ) ) ) ) {
@@ -649,12 +662,11 @@ if ( ! class_exists( 'BWS_add_admin_tooltip' ) ) {
 					/* extend pointer options - add close button */
 					pointer_options = $.extend(pointer_options, {
 						buttons: function(event, t) {
-							var button, i = '';
+							var button;
 							/* check and add dismiss-type buttons */
 							for( var but in pointer_buttons ) {
 								if ( typeof pointer_buttons[ but ]['type'] != 'undefined' && pointer_buttons[ but ]['type'] == 'dismiss' && typeof pointer_buttons[ but ]['text'] != 'undefined' && pointer_buttons[ but ]['text'] != '' ) {
-									button += '<a id="pointer-close' + i + '" style="margin:0px 5px 2px;" class="button-secondary">' + pointer_buttons[ but ]['text'] + '</a>';
-									i++;
+									button += '<a style="margin:0px 5px 2px;" class="button-secondary">' + pointer_buttons[ but ]['text'] + '</a>';
 								}
 							}
 							button = jQuery( button );
@@ -687,7 +699,7 @@ if ( ! class_exists( 'BWS_add_admin_tooltip' ) ) {
 						/* display buttons that are not type of dismiss */
 						for ( var but in pointer_buttons ) {
 							if ( typeof pointer_buttons[ but ]['type'] != 'undefined' && pointer_buttons[ but ]['type'] != 'dismiss' && typeof pointer_buttons[ but ]['text'] != 'undefined' && pointer_buttons[ but ]['text'] != '' ) {
-								$('#pointer-close').after( '<a class="button-primary" style="margin-right: 5px;" ' +
+								$( '.' + pointer_options['tooltip_id'] + ' .button-secondary').first().before( '<a class="button-primary" style="margin-right: 5px;" ' +
 								( ( pointer_buttons[ but ]['type'] == 'link' && typeof pointer_buttons[ but ]['link'] != 'undefined' && pointer_buttons[ but ]['link'] != '') ? 'target="_blank" href="' + pointer_buttons[ but ]['link'] + '"' : '' )
 								+ '>' + pointer_buttons[ but ]['text'] + '</a>' );
 							};

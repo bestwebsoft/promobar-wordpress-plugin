@@ -120,6 +120,8 @@ table.bws_pro_version td {
 .bws_pro_version_tooltip .bws_info {
     float: left;
     padding-top: 10px;
+    font-size: 14px;
+    color: #444;
 }
 .bws_pro_version_tooltip .bws_pro_links {
     float: right;

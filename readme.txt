@@ -1,10 +1,10 @@
-=== PromoBar ===
+=== PromoBar by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
 Tags: add PromoBar plugin, promobar, pomobar, prombar, pombar, promobr, PromoBar plugin, add unit in site, add unit in posts, add unit in pages, add PromoBar in posts, add PromoBar in pages, PromoBar plugin, add banner, banner, demo-header, service announcement banner, maintenance banner, custom banner, product launching data banner, special offer banner, banner plugin, add a new banner, add custom banner, infobar
 Requires at least: 3.5
-Tested up to: 4.1.1
-Stable tag: 1.0.2
+Tested up to: 4.2-beta4
+Stable tag: 1.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -13,6 +13,8 @@ This plugin allows placing banners with any data on your website.
 == Description ==
 
 This plugin will come in handy if you want to display banners with any kind of data on your WordPress website. With PromoBar, the extent of data shown on the banner is rather wide, from messages about launching a new product and service announcements, to special offer ads, and any sort of information you want to share with your users in general. There is a number of customization options available, which allow selecting the position of the banner (on all pages, on homepage only, or in any post/page/template the function or shortcode was added to), along with the banner design. 
+
+http://www.youtube.com/watch?v=VUuXHQgPNm4
 
 <a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">FAQ</a>
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
@@ -80,6 +82,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.3 - 08.04.2015 =
+* Bugfix : Bugs with displaying via shortcode and function are fixed.
+
 = V1.0.2 - 06.03.2015 =
 * Bugfix : Bugs with syntax error and undefined function were fixed.
 
@@ -90,6 +95,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.3 =
+Bugs with displaying via shortcode and function are fixed.
 
 = V1.0.2 =
 Bugs with syntax error and undefined function were fixed.

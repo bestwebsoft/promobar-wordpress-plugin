@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: PromoBar
+Plugin Name: PromoBar by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
 Author: BestWebSoft
-Version: 1.0.2
+Version: 1.0.3
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -196,10 +196,10 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 				<p><strong><?php _e( 'Notice', 'promobar' ); ?></strong>: <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'promobar' ); ?></p>
 			</div>
 			<div class="updated fade" <?php if ( ! isset( $_POST['prmbr_save'] ) || "" != $error ) echo "style=\"display:none\""; ?>>
-				<p><strong><?php _e( 'Notice', 'promobar' ); ?>: </strong><?php echo $message; ?></p>
+				<p><strong><?php echo $message; ?></strong></p>
 			</div>
 			<div class="error" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>>
-				<p><strong><?php _e( 'Notice', 'promobar' ); ?>: </strong><?php echo $error; ?></p>
+				<p><strong><?php echo $error; ?></strong></p>
 			</div>
 			<?php if ( ! isset( $_GET['action'] ) ) { ?>
 				<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span><br /><?php _e( 'And if you want to add the block to the website page or post, please paste the following shortcode', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;[prmbr_shortcode]&nbsp;</span></p>
@@ -342,35 +342,20 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 }
 
 /**
-* Show PromoBar block when "Display PromoBar" in settings is "on all pages", "on the homepage" or "on selected pages"
+* Show PromoBar block when "Display PromoBar" in settings is "on all pages", "on the homepage"
 * @return $main_position
 */
 if ( ! function_exists ( 'add_prmbr_function' ) ) {
 	function add_prmbr_function() {
 		global $wpdb, $prmbr_options, $post, $prmbr_width;
-		
-		/* Add styles in some settings where there is no JS */
-		if ( ( $prmbr_options['position'] == 'prmbr_left') || ( $prmbr_options['position'] == 'prmbr_right' ) ) {
-			$prmbr_options['position'] .= ' prmbr_no_js';
-		}
-		/* Define a variable in a block to display*/
-		$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_main ' . $prmbr_options['position'] . '">' . $prmbr_options['html'] . '</div>'; 		
 		/* Check the appropriate conditions for the show PromoBar block */
-		if ( ! isset( $prmbr_options['exception']['post_type'][ $post->post_type ] ) ) {
-			/* exclude categories */
-			$exclude_post = false;
-			if ( 'post' == $post->post_type && ! empty( $prmbr_options['exception']['categories'] ) ) {
-				$post_categories = wp_get_post_categories( $post->ID );
-				foreach ( $post_categories as $key => $value ) {
-					if ( isset( $prmbr_options['exception']['categories'][ $value ] ) ) {
-						$exclude_post = true;
-						break;
-					}
-				}
+		if ( $prmbr_options['view'] == 'all_pages' || ( $prmbr_options['view'] == 'homepage' && ( is_home() || is_front_page() ) ) ) {	
+			/* Add styles in some settings where there is no JS */
+			if ( ( $prmbr_options['position'] == 'prmbr_left') || ( $prmbr_options['position'] == 'prmbr_right' ) ) {
+				$prmbr_options['position'] .= ' prmbr_no_js';
 			}
-		}
-		/* Check the appropriate conditions for the show PromoBar block */
-		if ( ( $prmbr_options['view'] == 'all_pages' ) || ( ( $prmbr_options['view'] == 'homepage' ) && ( is_home() || is_front_page() ) ) || ( ! isset( $prmbr_options['exception']['post_type'][ $post->post_type ] ) ) && ( ! isset( $prmbr_options['exception']['post_id'][ $post->ID ] ) && $exclude_post == false ) )  {		
+			/* Define a variable in a block to display*/
+			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main ' . $prmbr_options['position'] . '">' . $prmbr_options['html'] . '</div>'; 		
 			echo $main_position;
 		}
 	}
@@ -382,8 +367,8 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 */
 if ( ! function_exists ( 'add_prmbr_shortcode' ) ) {
 	function add_prmbr_shortcode() {
-		global $prmbr_options, $prmbr_width;
-		$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_main ' . $prmbr_options['position'] . '">' . $prmbr_options['html'] . '</div>';
+		global $prmbr_options;
+		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . $prmbr_options['html'] . '<div class="clear"></div></div>';
 		return $main_position;
 	}
 }
@@ -394,8 +379,8 @@ if ( ! function_exists ( 'add_prmbr_shortcode' ) ) {
 */
 if ( ! function_exists ( 'prmbr_by_using_function' ) ) {
 	function prmbr_by_using_function() {
-		global $prmbr_options, $prmbr_width;
-		$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_main ' . $prmbr_options['position'] . '">' . $prmbr_options['html'] . '</div>';
+		global $prmbr_options;
+		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . $prmbr_options['html'] . '<div class="clear"></div></div>';
 		echo $main_position;
 	}
 }

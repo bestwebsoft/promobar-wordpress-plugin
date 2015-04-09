@@ -1,11 +1,8 @@
 ( function( $ ) {
 	$( 'document' ).ready( function() {
-		/* checks whether there is an adminpanel */
-		var admin_element = $( '#wpadminbar' ).length;
-		/* check whether there is a class for shortcode */
-		var is_shortcode = $( '.prmbr_position_for_shortcode' ).length;
-		/* if there is no class shortcode then execute the following items: */
-		if ( is_shortcode == 0 ) {
+		if ( $( '.prmbr_main' ).length > 0 ) {
+			/* checks whether there is an adminpanel */
+			var admin_element = $( '#wpadminbar' ).length;
 			/* remove the class for case of lack of js */
 			$( '.prmbr_main' ).removeClass( 'prmbr_no_js' );
 			if ( $( '.prmbr_main' ).hasClass( 'prmbr_top' ) ) {
