@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: promobar\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-03 11:32+0300\n"
+"PO-Revision-Date: 2015-03-03 11:32+0300\n"
+"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: promobar.php:34
+msgid "PromoBar Settings"
+msgstr "Налаштування PromoBar"
+
+#: promobar.php:126
+msgid "Settings saved."
+msgstr "Налаштування збережено."
+
+#: promobar.php:143
+#: promobar.php:153
+msgid "Please enter the correct value in the Width field."
+msgstr "Будь ласка, введіть правильне значення в полі Ширина."
+
+#: promobar.php:163
+msgid "Please select the correct value in the Background field."
+msgstr "Будь ласка, введіть правильне значення в полі Фон."
+
+#: promobar.php:172
+msgid "Please select the correct value in the Text Color field."
+msgstr "Будь ласка, введіть правильне значення в полі Колір Тексту."
+
+#: promobar.php:188
+#: promobar.php:190
+#: promobar.php:450
+#: promobar.php:471
+msgid "Settings"
+msgstr "Налаштування"
+
+#: promobar.php:191
+msgid "Extra Settings"
+msgstr "Додаткові Налаштування"
+
+#: promobar.php:192
+#: promobar.php:451
+msgid "FAQ"
+msgstr "FAQ"
+
+#: promobar.php:193
+msgid "Go PRO"
+msgstr "Перейти на Pro-версію"
+
+#: promobar.php:196
+#: promobar.php:199
+#: promobar.php:202
+msgid "Notice"
+msgstr "Увага"
+
+#: promobar.php:196
+msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
+msgstr "Налаштування плагіну змінено. Щоб зберегти їх, будь ласка, не забудьте клікнути 'Зберегти зміни'."
+
+#: promobar.php:205
+msgid "If you would like to use this plugin on certain pages, please paste the following strings into the template source code"
+msgstr "Якщо ви хочете використовувати цей плагін на окремих сторінках, будь ласка, вставте наступні строки у вихідний код шаблону"
+
+#: promobar.php:205
+msgid "And if you want to add the block to the website page or post, please paste the following shortcode"
+msgstr "Також якщо ви хочете додати блок на сторінку чи пост вашого сайту, будь ласка, вставте цей шорткод"
+
+#: promobar.php:209
+msgid "Display PromoBar"
+msgstr "Відображати PromoBar"
+
+#: promobar.php:212
+msgid "on all pages"
+msgstr "на всіх сторінках"
+
+#: promobar.php:216
+msgid "on the homepage"
+msgstr "на головній сторінці"
+
+#: promobar.php:220
+msgid "display via shortcode or function only"
+msgstr "відображати тільки за допомогою шорткоду чи функції"
+
+#: promobar.php:225
+msgid "Position"
+msgstr "Позиція"
+
+#: promobar.php:228
+msgid "Top"
+msgstr "Зверху"
+
+#: promobar.php:232
+msgid "Bottom"
+msgstr "Внизу"
+
+#: promobar.php:236
+msgid "Left"
+msgstr "Зліва"
+
+#: promobar.php:239
+#: promobar.php:249
+msgid "width"
+msgstr "Ширина"
+
+#: promobar.php:246
+msgid "Right"
+msgstr "Справа"
+
+#: promobar.php:257
+msgid "Background"
+msgstr "Фон"
+
+#: promobar.php:265
+msgid "Text Color"
+msgstr "Колір Тексту"
+
+#: promobar.php:273
+msgid "HTML"
+msgstr "HTML"
+
+#: promobar.php:286
+#: promobar.php:325
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: promobar.php:292
+msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+msgstr "Якщо вам сподобався плагін, будь ласка, поставте нам 5 зірочок на WordPress :-)"
+
+#: promobar.php:293
+msgid "Rate the plugin"
+msgstr "Оцінити плагін"
+
+#: promobar.php:296
+msgid "If there is something wrong about it, please contact us"
+msgstr "Якщо виникли проблеми, будь ласка, повідомте нам "
+
+#: promobar.php:307
+msgid "Please choose the necessary post types (or single pages) PromoBar will be displayed with"
+msgstr "Будь ласка, виберіть типи постів (чи окремі сторінки), на яких буде відображатись блок PromoBar"
+
+#: promobar.php:314
+msgid "Show URL for pages"
+msgstr "Показати URL для сторінок"
+
+#: promobar.php:320
+msgid "Example of the site's pages tree"
+msgstr "Приклад дерева сторінок сайту"
+
+#: promobar.php:330
+msgid "If you upgrade to Pro version all your settings will be saved."
+msgstr "При переході на Pro-версію плагіну всі поточні налаштування буде збережено."
+
+#: promobar.php:337
+msgid "Unlock premium options by upgrading to a PRO version."
+msgstr "Відкрийте преміум можливості, перейшовши на PRO версію."
+
+#: promobar.php:338
+msgid "Learn More"
+msgstr "Дізнатись більше"
+
+#: promobar.php:341
+msgid "Go"
+msgstr "Вперед"
+
+#: promobar.php:452
+msgid "Support"
+msgstr "Техпідтримка"
+
+#~ msgid "PromoBar"
+#~ msgstr "PromoBar"
+
+#~ msgid "requires"
+#~ msgstr "требует"
+
+#~ msgid ""
+#~ "or higher, that is why it has been deactivated! Please upgrade WordPress "
+#~ "and try again."
+#~ msgstr ""
+#~ "или выше, поэтому плагин был деактивирован! Обновите WordPress и "
+#~ "повторите попытку."
+
+#~ msgid "Back to the WordPress"
+#~ msgstr "Назад к WordPress"
+
+#~ msgid "Plugins page"
+#~ msgstr "странице плагинов"
+
+#~ msgid ""
+#~ "It is prohibited to change PromoBar settings on this site in the PromoBar "
+#~ "network settings."
+#~ msgstr ""
+#~ "Запрещается изменять настройки PromoBar на этом сайте в сетевых "
+#~ "настройках PromoBar."
+
+#~ msgid ""
+#~ "It is prohibited to view PromoBar settings on this site in the PromoBar "
+#~ "network settings."
+#~ msgstr ""
+#~ "Запрещается просматривать настройки  PromoBar на этом сайте в сетевых "
+#~ "настройках  PromoBar."
+
+#~ msgid ""
+#~ "You can customize the display by going on the plugin settings page each "
+#~ "subdomain. These settings are not available for the Network."
+#~ msgstr ""
+#~ "Вы можете настроить отображение, перейдя в раздел настроек плагина на "
+#~ "каждом подсайте. Эти параметры не доступны для Сети."
+
+#~ msgid "Network"
+#~ msgstr "Сетевые"
+
+#~ msgid "This setting will replace all current settings in individual sites."
+#~ msgstr "Эта настройка заменит все текущие настройки отдельных сайтов."
+
+#~ msgid "Apply network settings"
+#~ msgstr "Применить сетевые настройки"
+
+#~ msgid "Apply for all sites and use as default"
+#~ msgstr "Применить для всех сайтов и использовать по умолчанию"
+
+#~ msgid "All current settings in individual sites will be replaced"
+#~ msgstr "Все текущие настройки на отдельных сайтах будут заменены"
+
+#~ msgid "Allow to change settings on individual sites"
+#~ msgstr "Разрешить изменять настройки на отдельных сайтах"
+
+#~ msgid "Allow to view settings on individual sites"
+#~ msgstr "Разрешить просмотр настроек на отдельных сайтах"
+
+#~ msgid "As default (Settings will be used as default for newly added sites)"
+#~ msgstr ""
+#~ "По умолчанию (настройки будут использоваться по умолчанию для вновь "
+#~ "добавленных сайтов)"
+
+#~ msgid ""
+#~ "Not apply (Change settings only on individual sites of the multisite)"
+#~ msgstr "Не применять (изменять настройки только на отдельных сайтах)"
+
+#~ msgid "on selected pages"
+#~ msgstr "на выбранных страницах"
+
+#~ msgid "click \"Save Changes\" and follow the link"
+#~ msgstr "нажмите \"Сохранить изменения \" и перейдите по ссылке"
+
+#~ msgid "These settings are not available for the Network."
+#~ msgstr "Эти параметры не доступны для Сети."
+
+#~ msgid "Please, enable JavaScript in Your browser."
+#~ msgstr "Пожалуйста, включите поддержку JavaScript в вашем браузере."
+
+#~ msgid " Mb"
+#~ msgstr "Mb"
+
+#~ msgid "Yes"
+#~ msgstr "Да"
+
+#~ msgid "No"
+#~ msgstr "Нет"
+
+#~ msgid "Sorry, email message could not be delivered."
+#~ msgstr "К сожалению, сообщение электронной почты не может быть доставлено."
+
+#~ msgid "Installed plugins"
+#~ msgstr "Установленные плагины"
+
+#~ msgid "DONATE"
+#~ msgstr "Поддержать"
+
+#~ msgid "Activate this plugin"
+#~ msgstr "Активировать этот плагин"
+
+#~ msgid "Activate"
+#~ msgstr "Активировать "
+
+#~ msgid "Recommended plugins"
+#~ msgstr "Рекомендуемые плагины"
+
+#~ msgid "Install now"
+#~ msgstr "Установить сейчас"
+
+#~ msgid "Update"
+#~ msgstr "Обновите"
+
+#~ msgid "Already Installed"
+#~ msgstr "Уже Установлен"
+
+#~ msgid "Environment"
+#~ msgstr "Среда"
+
+#~ msgid "Active Plugins"
+#~ msgstr "Активные плагины"
+
+#~ msgid "Inactive Plugins"
+#~ msgstr "Неактивные плагины"
+
+#~ msgid "Send to support"
+#~ msgstr "Отправить в поддержку"
+
+#~ msgid "Send to custom email &#187;"
+#~ msgstr "Отправить заказ по электронной почте &#187;"
