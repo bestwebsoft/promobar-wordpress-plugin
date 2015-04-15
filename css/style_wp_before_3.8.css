@@ -1,11 +1,12 @@
-#adminmenu #toplevel_page_cntctfrmtdb_manager:hover div.wp-menu-image:before,
-#adminmenu #toplevel_page_cntctfrmtdb_manager.wp-has-current-submenu div.wp-menu-image:before,
-#adminmenu #toplevel_page_cntctfrmtdb_manager div.wp-menu-image:before {
-    background: url("../images/menu_single.png") no-repeat scroll center 8px transparent;
-    content: '';
+.wrap #icon-options-general.icon32-contact-form-to-db {
+	background: url("../images/icon_32.png") no-repeat scroll left top transparent;
 }
-#adminmenu #toplevel_page_cntctfrmtdb_manager.wp-not-current-submenu div.wp-menu-image {
-    opacity: 0.7;
+#adminmenu #toplevel_page_cntctfrmtdb_manager div.wp-menu-image {
+	background: url("../images/menu.png") no-repeat scroll left -33px transparent;
+}
+#adminmenu #toplevel_page_cntctfrmtdb_manager:hover div.wp-menu-image,
+#adminmenu #toplevel_page_cntctfrmtdb_manager.current div.wp-menu-image {
+	background: url("../images/menu.png") no-repeat scroll left -3px transparent;
 }
 /*
 * styles for options page
@@ -317,12 +318,15 @@
 /*
 * styles for pro_version settings and tooltip 
 */
-a.bws_plugin_menu_pro_version,
-.bws_plugin_menu_pro_version:hover {
-    background: #B1B1B1;    
+a.bws_plugin_menu_pro_version {
+    background: #E0E0E0;
+    color: #464646;
+}
+a.bws_plugin_menu_pro_version:hover {
+    background: #D2D2D2;
+    color: #464646;
 }
 table a.bws_plugin_menu_pro_version,
 table a.bws_plugin_menu_pro_version:hover {
-    background: transparent;
-    color: #666666;
+	background: transparent;
 }
