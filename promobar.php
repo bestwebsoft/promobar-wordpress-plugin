@@ -4,7 +4,7 @@ Plugin Name: PromoBar by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
 Author: BestWebSoft
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -355,7 +355,7 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 				$prmbr_options['position'] .= ' prmbr_no_js';
 			}
 			/* Define a variable in a block to display*/
-			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main ' . $prmbr_options['position'] . '">' . $prmbr_options['html'] . '</div>'; 		
+			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main ' . $prmbr_options['position'] . '">' . apply_filters( 'the_content', $prmbr_options['html'] ) . '</div>'; 		
 			echo $main_position;
 		}
 	}
@@ -368,7 +368,7 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 if ( ! function_exists ( 'add_prmbr_shortcode' ) ) {
 	function add_prmbr_shortcode() {
 		global $prmbr_options;
-		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . $prmbr_options['html'] . '<div class="clear"></div></div>';
+		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . apply_filters( 'the_content', $prmbr_options['html'] ) . '<div class="clear"></div></div>';
 		return $main_position;
 	}
 }
@@ -380,7 +380,7 @@ if ( ! function_exists ( 'add_prmbr_shortcode' ) ) {
 if ( ! function_exists ( 'prmbr_by_using_function' ) ) {
 	function prmbr_by_using_function() {
 		global $prmbr_options;
-		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . $prmbr_options['html'] . '<div class="clear"></div></div>';
+		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . apply_filters( 'the_content', $prmbr_options['html'] ) . '<div class="clear"></div></div>';
 		echo $main_position;
 	}
 }
@@ -440,7 +440,7 @@ if ( ! function_exists( 'prmbr_plugin_action_links' ) ) {
 			/* Static so we don't call plugin_basename on every plugin row. */
 			static $this_plugin;
 			if ( ! $this_plugin ) $this_plugin = plugin_basename( __FILE__ );
-			if ( $file == $this_plugin ){
+			if ( $file == $this_plugin ) {
 				$settings_link = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
 				array_unshift( $links, $settings_link );
 			}
@@ -454,7 +454,7 @@ if ( ! function_exists ( 'prmbr_plugin_banner' ) ) {
 		global $hook_suffix;
 		if ( 'plugins.php' == $hook_suffix ) {
 			global $prmbr_plugin_info;
-			bws_plugin_banner( $prmbr_plugin_info, 'prmbr', 'promobar', 'e5cf3af473cbbd5e21b53f512bac8570', '196', plugins_url( 'images/banner.png', __FILE__ ) );   
+			bws_plugin_banner( $prmbr_plugin_info, 'prmbr', 'promobar', 'e5cf3af473cbbd5e21b53f512bac8570', '196', '//ps.w.org/promobar/assets/icon-128x128.png' );   
 		}
 	}
 }

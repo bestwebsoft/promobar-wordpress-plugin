@@ -1,10 +1,10 @@
 === PromoBar by BestWebSoft ===
 Contributors: bestwebsoft
-Donate link: https://www.2checkout.com/checkout/purchase?sid=1430388&quantity=1&product_id=94
+Donate link: http://bestwebsoft.com/donate/
 Tags: add PromoBar plugin, promobar, pomobar, prombar, pombar, promobr, PromoBar plugin, add unit in site, add unit in posts, add unit in pages, add PromoBar in posts, add PromoBar in pages, PromoBar plugin, add banner, banner, demo-header, service announcement banner, maintenance banner, custom banner, product launching data banner, special offer banner, banner plugin, add a new banner, add custom banner, infobar
 Requires at least: 3.5
-Tested up to: 4.2-beta4
-Stable tag: 1.0.3
+Tested up to: 4.2.2
+Stable tag: 1.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -15,6 +15,8 @@ This plugin allows placing banners with any data on your website.
 This plugin will come in handy if you want to display banners with any kind of data on your WordPress website. With PromoBar, the extent of data shown on the banner is rather wide, from messages about launching a new product and service announcements, to special offer ads, and any sort of information you want to share with your users in general. There is a number of customization options available, which allow selecting the position of the banner (on all pages, on homepage only, or in any post/page/template the function or shortcode was added to), along with the banner design. 
 
 http://www.youtube.com/watch?v=VUuXHQgPNm4
+
+<a href="https://www.youtube.com/watch?v=v8aAOGssPSY" target="_blank">Video instruction on Installation</a>
 
 <a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">FAQ</a>
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
@@ -57,6 +59,10 @@ We can fix some things for free for the users who provide a translation of our p
 3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "PromoBar".
 4. In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
 
+View a PDF version of <a href="https://docs.google.com/document/d/1XlKW3pNeE7NXlwRe2BQaXweTiWlrsenGqNSkDXQ0JNI/edit" target="_blank">Step-by-step Instruction on PromoBar Installation</a>
+
+http://www.youtube.com/watch?v=v8aAOGssPSY
+
 == Frequently Asked Questions ==
 
 = How can I add PromoBar to my website? =
@@ -70,6 +76,7 @@ In WordPress admin panel, please go to "BWS Plugins", find the PromoBar settings
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
 Please make sure that the problem hasn't been discussed on our forum yet (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If not, please provide the following data along with the description of your problem:
+
 1. the link to the page, on which the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
@@ -81,6 +88,10 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 2. PromoBar on the homepage in top position.
 
 == Changelog ==
+
+= V1.0.4 - 11.05.2015 =
+* Update : The 'the_content' filter is added for PromoBar block.
+* Update : We updated all functionality for wordpress 4.2.2.
 
 = V1.0.3 - 08.04.2015 =
 * Bugfix : Bugs with displaying via shortcode and function are fixed.
@@ -95,6 +106,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.4 =
+The 'the_content' filter is added for PromoBar block. We updated all functionality for wordpress 4.2.2.
 
 = V1.0.3 =
 Bugs with displaying via shortcode and function are fixed.
