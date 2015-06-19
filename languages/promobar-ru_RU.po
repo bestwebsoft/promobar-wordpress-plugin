@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: promobar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-03 11:32+0300\n"
-"PO-Revision-Date: 2015-03-03 11:32+0300\n"
-"Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
+"POT-Creation-Date: 2015-06-18 10:57+0300\n"
+"PO-Revision-Date: 2015-06-18 11:00+0300\n"
+"Last-Translator: plugin@bestwebsoft.com <plugin@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
@@ -20,162 +20,170 @@ msgstr ""
 msgid "PromoBar Settings"
 msgstr "Настройки PromoBar"
 
-#: promobar.php:126
-msgid "Settings saved."
-msgstr "Настройки сохранены."
-
-#: promobar.php:143
-#: promobar.php:153
+#: promobar.php:142 promobar.php:152
 msgid "Please enter the correct value in the Width field."
 msgstr "Пожалуйста, введите правильное значение в поле Ширина."
 
-#: promobar.php:163
+#: promobar.php:162
 msgid "Please select the correct value in the Background field."
 msgstr "Пожалуйста, введите правильное значение в поле Фон."
 
-#: promobar.php:172
+#: promobar.php:171
 msgid "Please select the correct value in the Text Color field."
 msgstr "Пожалуйста, выберите правильное значение в  поле Цвет Текста."
 
-#: promobar.php:188
-#: promobar.php:190
-#: promobar.php:450
-#: promobar.php:471
+#: promobar.php:179
+msgid "Settings saved."
+msgstr "Настройки сохранены."
+
+#: promobar.php:186
+msgid "All plugin settings were restored."
+msgstr "Все настройки плагина восстановлены."
+
+#: promobar.php:196 promobar.php:198 promobar.php:436 promobar.php:457
 msgid "Settings"
 msgstr "Настройки"
 
-#: promobar.php:191
+#: promobar.php:199
 msgid "Extra Settings"
 msgstr "Дополнительные Настройки"
 
-#: promobar.php:192
-#: promobar.php:451
+#: promobar.php:200 promobar.php:437
 msgid "FAQ"
 msgstr "FAQ"
 
-#: promobar.php:193
+#: promobar.php:201
 msgid "Go PRO"
 msgstr "Перейти на Pro версию"
 
-#: promobar.php:196
-#: promobar.php:199
-#: promobar.php:202
+#: promobar.php:204
 msgid "Notice"
 msgstr "Внимание"
 
-#: promobar.php:196
-msgid "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button."
-msgstr "Настройки плагина были изменены. Для того, чтобы сохранить их, пожалуйста, не забудьте нажать кнопку 'Сохранить изменения'."
+#: promobar.php:204
+msgid ""
+"The plugin's settings have been changed. In order to save them please don't "
+"forget to click the 'Save Changes' button."
+msgstr ""
+"Настройки плагина были изменены. Для того, чтобы сохранить их, пожалуйста, "
+"не забудьте нажать кнопку 'Сохранить изменения'."
 
-#: promobar.php:205
-msgid "If you would like to use this plugin on certain pages, please paste the following strings into the template source code"
-msgstr "Если вы хотите использовать этот плагин на отдельных страницах, пожалуйста, вставьте следующие строки в исходный код шаблона"
+#: promobar.php:216
+msgid ""
+"If you would like to use this plugin on certain pages, please paste the "
+"following strings into the template source code"
+msgstr ""
+"Если вы хотите использовать этот плагин на отдельных страницах, пожалуйста, "
+"вставьте следующие строки в исходный код шаблона"
 
-#: promobar.php:205
-msgid "And if you want to add the block to the website page or post, please paste the following shortcode"
-msgstr "И если вы хотите добавить блок на страницу или пост на вашем сайта, пожалуйста, вставьте этот шорткод"
+#: promobar.php:216
+msgid ""
+"And if you want to add the block to the website page or post, please paste "
+"the following shortcode"
+msgstr ""
+"И если вы хотите добавить блок на страницу или пост на вашем сайта, "
+"пожалуйста, вставьте этот шорткод"
 
-#: promobar.php:209
+#: promobar.php:220
 msgid "Display PromoBar"
 msgstr "Показать PromoBar"
 
-#: promobar.php:212
+#: promobar.php:223
 msgid "on all pages"
 msgstr "на всех страницах"
 
-#: promobar.php:216
+#: promobar.php:227
 msgid "on the homepage"
 msgstr "на главной странице"
 
-#: promobar.php:220
+#: promobar.php:231
 msgid "display via shortcode or function only"
 msgstr "отображать только с помощью шорткода или функции"
 
-#: promobar.php:225
+#: promobar.php:236
 msgid "Position"
 msgstr "Позиция"
 
-#: promobar.php:228
+#: promobar.php:239
 msgid "Top"
 msgstr "Вверху"
 
-#: promobar.php:232
+#: promobar.php:243
 msgid "Bottom"
 msgstr "Внизу"
 
-#: promobar.php:236
+#: promobar.php:247
 msgid "Left"
 msgstr "Слева"
 
-#: promobar.php:239
-#: promobar.php:249
+#: promobar.php:250 promobar.php:260
 msgid "width"
 msgstr "ширина"
 
-#: promobar.php:246
+#: promobar.php:257
 msgid "Right"
 msgstr "Справа"
 
-#: promobar.php:257
+#: promobar.php:268
 msgid "Background"
 msgstr "Фон"
 
-#: promobar.php:265
+#: promobar.php:276
 msgid "Text Color"
 msgstr "Цвет Текста"
 
-#: promobar.php:273
+#: promobar.php:284
 msgid "HTML"
 msgstr "HTML"
 
-#: promobar.php:286
-#: promobar.php:325
+#: promobar.php:297 promobar.php:329
 msgid "Save Changes"
 msgstr "Сохранить изменения"
 
-#: promobar.php:292
-msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
-msgstr "Если вам понравился плагин, то поставте нам 5 звезд на WordPress"
+#: promobar.php:311
+msgid ""
+"Please choose the necessary post types (or single pages) PromoBar will be "
+"displayed with"
+msgstr ""
+"Пожалуйста, выберите те типы постов (или отдельные страницы), на которых "
+"будет отображаться блок PromoBar"
 
-#: promobar.php:293
-msgid "Rate the plugin"
-msgstr "Оценить плагин"
-
-#: promobar.php:296
-msgid "If there is something wrong about it, please contact us"
-msgstr "Если у вас есть какие-то вопросы, обращайтесь"
-
-#: promobar.php:307
-msgid "Please choose the necessary post types (or single pages) PromoBar will be displayed with"
-msgstr "Пожалуйста, выберите те типы постов (или отдельные страницы), на которых будет отображатся блок PromoBar"
-
-#: promobar.php:314
+#: promobar.php:318
 msgid "Show URL for pages"
 msgstr "Показать URL для страниц"
 
-#: promobar.php:320
+#: promobar.php:324
 msgid "Example of the site's pages tree"
 msgstr "Пример дерева страниц сайта"
 
-#: promobar.php:330
+#: promobar.php:334
 msgid "If you upgrade to Pro version all your settings will be saved."
 msgstr "При установке Pro версии плагина, все ваши настройки сохраняются."
 
-#: promobar.php:337
+#: promobar.php:341
 msgid "Unlock premium options by upgrading to a PRO version."
 msgstr "Активируйте премиум опции обновившись до PRO версии."
 
-#: promobar.php:338
+#: promobar.php:342
 msgid "Learn More"
 msgstr "Узнать больше"
 
-#: promobar.php:341
+#: promobar.php:345
 msgid "Go"
 msgstr "вперед"
 
-#: promobar.php:452
+#: promobar.php:438
 msgid "Support"
 msgstr "Тех. поддержка"
+
+#~ msgid "If you enjoy our plugin, please give it 5 stars on WordPress"
+#~ msgstr "Если вам понравился плагин, то поставте нам 5 звезд на WordPress"
+
+#~ msgid "Rate the plugin"
+#~ msgstr "Оценить плагин"
+
+#~ msgid "If there is something wrong about it, please contact us"
+#~ msgstr "Если у вас есть какие-то вопросы, обращайтесь"
 
 #~ msgid "PromoBar"
 #~ msgstr "PromoBar"

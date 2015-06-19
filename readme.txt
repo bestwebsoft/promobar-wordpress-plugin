@@ -4,7 +4,7 @@ Donate link: http://bestwebsoft.com/donate/
 Tags: add PromoBar plugin, promobar, pomobar, prombar, pombar, promobr, PromoBar plugin, add unit in site, add unit in posts, add unit in pages, add PromoBar in posts, add PromoBar in pages, PromoBar plugin, add banner, banner, demo-header, service announcement banner, maintenance banner, custom banner, product launching data banner, special offer banner, banner plugin, add a new banner, add custom banner, infobar
 Requires at least: 3.5
 Tested up to: 4.2.2
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -19,6 +19,7 @@ http://www.youtube.com/watch?v=VUuXHQgPNm4
 <a href="https://www.youtube.com/watch?v=v8aAOGssPSY" target="_blank">Video instruction on Installation</a>
 
 <a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">FAQ</a>
+
 <a href="http://support.bestwebsoft.com" target="_blank">Support</a>
 
 <a href="http://bestwebsoft.com/products/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3" target="_blank" title="PromoBar Pro">Upgrade to Pro Version</a>
@@ -89,6 +90,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.5 - 19.06.2015 =
+* New : Ability to restore settings to defaults.
+
 = V1.0.4 - 11.05.2015 =
 * Update : The 'the_content' filter is added for PromoBar block.
 * Update : We updated all functionality for wordpress 4.2.2.
@@ -106,6 +110,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.5 =
+Ability to restore settings to defaults.
 
 = V1.0.4 =
 The 'the_content' filter is added for PromoBar block. We updated all functionality for wordpress 4.2.2.

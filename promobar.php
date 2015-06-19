@@ -4,7 +4,7 @@ Plugin Name: PromoBar by BestWebSoft
 Plugin URI: http://bestwebsoft.com/products/
 Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
 Author: BestWebSoft
-Version: 1.0.4
+Version: 1.0.5
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -54,7 +54,7 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, "3.5" );
+		bws_wp_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.5' );
 
 		/* Get/Register and check settings for plugin */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) )
@@ -88,7 +88,7 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 			'background_color_field'	=> '#c4e9ff',
 			'text_color_field'			=> '#4c4c4c',
 			'html'						=> '',
-			'plugin_option_version'		=> $prmbr_plugin_info["Version"],
+			'plugin_option_version'		=> $prmbr_plugin_info["Version"]
 		);
 		/* install the option defaults */
 		if ( ! get_option( 'prmbr_options' ) )
@@ -122,8 +122,7 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 	function prmbr_settings_page() {
 		global $wpdb, $prmbr_options, $prmbr_default_options, $prmbr_plugin_info, $wp_version;
-		$error = "";
-		$message = __( 'Settings saved.', 'promobar' );
+		$message = $error = "";		
 		$plugin_basename = plugin_basename( __FILE__ );
 
 		/* Checking data before writing to the database */
@@ -177,7 +176,16 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 				$prmbr_options['html'] = stripslashes( $_POST['prmbr_html'] );
 			}
 			update_option( 'prmbr_options', $prmbr_options );
+			$message = __( 'Settings saved.', 'promobar' );
 		}
+
+		/* Add restore function */
+		if ( isset( $_REQUEST['bws_restore_confirm'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
+			$prmbr_options = $prmbr_default_options;
+			update_option( 'prmbr_options', $prmbr_options );
+			$message = __( 'All plugin settings were restored.', 'promobar' );
+		}		
+		/* end */
 
 		/* GO PRO */
 		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {			
@@ -195,99 +203,104 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 			<div id="prmbr_settings_notice" class="updated fade" style="display:none">
 				<p><strong><?php _e( 'Notice', 'promobar' ); ?></strong>: <?php _e( "The plugin's settings have been changed. In order to save them please don't forget to click the 'Save Changes' button.", 'promobar' ); ?></p>
 			</div>
-			<div class="updated fade" <?php if ( ! isset( $_POST['prmbr_save'] ) || "" != $error ) echo "style=\"display:none\""; ?>>
+			<div class="updated fade" <?php if ( $message == "" || "" != $error ) echo "style=\"display:none\""; ?>>
 				<p><strong><?php echo $message; ?></strong></p>
 			</div>
 			<div class="error" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>>
 				<p><strong><?php echo $error; ?></strong></p>
 			</div>
-			<?php if ( ! isset( $_GET['action'] ) ) { ?>
-				<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span><br /><?php _e( 'And if you want to add the block to the website page or post, please paste the following shortcode', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;[prmbr_shortcode]&nbsp;</span></p>
-				<form method="post" action="admin.php?page=promobar.php" name="prmbr_exceptions" id="prmbr_settings_form">
-					<table class="form-table">
-						<tr>
-							<th scope="row"><?php _e( 'Display PromoBar', 'promobar' ); ?></th>
-							<td>
-								<label for="prmbr_all_pages">
-									<input type="radio" id="prmbr_all_pages" name="prmbr_view" value="all_pages" <?php if ( $prmbr_options['view'] == 'all_pages' ) echo 'checked' ?> /> <?php _e( 'on all pages', 'promobar' ); ?>
-								</label>
-								<br />
-								<label for="prmbr_homepage">
-									<input type="radio" id="prmbr_homepage" name="prmbr_view" value="homepage" <?php if ( $prmbr_options['view'] == 'homepage' ) echo 'checked' ?> /> <?php _e( 'on the homepage', 'promobar' ); ?>
-								</label>
-								<br />
-								<label for="shortcode_or_function_for_view">
-									<input type="radio" id="shortcode_or_function_for_view" name="prmbr_view" value="shortcode_or_function_for_view" <?php if ( $prmbr_options['view'] == 'shortcode_or_function_for_view' ) echo 'checked' ?> /> <?php _e( 'display via shortcode or function only', 'promobar' ); ?>
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><?php _e( 'Position', 'promobar' ); ?></th>
-							<td>
-								<label for="prmbr_position1">
-									<input type="radio" id="prmbr_position1" name="prmbr_position" value="prmbr_top" <?php if ( $prmbr_options['position'] == 'prmbr_top' ) echo 'checked' ?> /> <?php _e( 'Top', 'promobar' ); ?>
-								</label>
-								<br />
-								<label for="prmbr_position2">
-									<input type="radio" id="prmbr_position2" name="prmbr_position" value="prmbr_bottom" <?php if ( $prmbr_options['position'] == 'prmbr_bottom' ) echo 'checked' ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
-								</label>
-								<br />
-								<label for="prmbr_position3">
-									<input type="radio" id="prmbr_position3" name="prmbr_position" value="prmbr_left" <?php if ( $prmbr_options['position'] == 'prmbr_left' ) echo 'checked' ?> /> <?php _e( 'Left', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;
-								</label>
-								<span class="prmbr_info">
-									&nbsp;&nbsp;&nbsp;<?php _e( 'width', 'promobar' ); ?>
-								</span>
-								<label for="prmbr_width_position3" >
-									<input type="text" id="prmbr_width_position3" class="prmbr_width <?php if ( $prmbr_options['position'] != 'prmbr_left') echo 'prmbr_width_disabled';?>" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
-								</label>
-								<br />
-								<label for="prmbr_position4">
-									<input type="radio" id="prmbr_position4" name="prmbr_position" value="prmbr_right" <?php if ( $prmbr_options['position'] == 'prmbr_right' ) echo 'checked' ?> /> <?php _e( 'Right', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;&nbsp;
-								</label>
-								<span class="prmbr_info">
-									<?php _e( 'width', 'promobar' ); ?>
-								</span>
-								<label for="prmbr_width_position4">
-									<input type="text" id="prmbr_width_position4" class="prmbr_width <?php if ( $prmbr_options['position'] != 'prmbr_right') echo 'prmbr_width_disabled'; ?>" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><?php _e( 'Background', 'promobar' ); ?></th>
-							<td>
-								<label for="prmbr_background_color_field">
-									<input type="text" id="prmbr_background_color_field" value="<?php echo $prmbr_options['background_color_field']; ?>" name="prmbr_background_color_field" class="prmbr_color_field" data-default-color="<?php echo $prmbr_default_options['background_color_field']; ?>" />
-								</label>
-							</td>
-						</tr>
-						<tr>
-							<th scope="row"><?php _e( 'Text Color', 'promobar' ); ?></th>
-							<td>
-								<label for="prmbr_text_color_field">
-									<input type="text" id="prmbr_text_color_field" value="<?php echo $prmbr_options['text_color_field']; ?>" name="prmbr_text_color_field" class="prmbr_color_field" data-default-color="<?php echo $prmbr_default_options['text_color_field']; ?>" />
-								</label>
+			<?php if ( ! isset( $_GET['action'] ) ) { 
+				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
+					bws_form_restore_default_confirm( $plugin_basename );
+				} else { ?>
+					<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span><br /><?php _e( 'And if you want to add the block to the website page or post, please paste the following shortcode', 'promobar' ); ?>: <span class="prmbr_code">&nbsp;[prmbr_shortcode]&nbsp;</span></p>
+					<form method="post" action="admin.php?page=promobar.php" name="prmbr_exceptions" id="prmbr_settings_form">
+						<table class="form-table">
+							<tr>
+								<th scope="row"><?php _e( 'Display PromoBar', 'promobar' ); ?></th>
+								<td>
+									<label for="prmbr_all_pages">
+										<input type="radio" id="prmbr_all_pages" name="prmbr_view" value="all_pages" <?php if ( $prmbr_options['view'] == 'all_pages' ) echo 'checked' ?> /> <?php _e( 'on all pages', 'promobar' ); ?>
+									</label>
+									<br />
+									<label for="prmbr_homepage">
+										<input type="radio" id="prmbr_homepage" name="prmbr_view" value="homepage" <?php if ( $prmbr_options['view'] == 'homepage' ) echo 'checked' ?> /> <?php _e( 'on the homepage', 'promobar' ); ?>
+									</label>
+									<br />
+									<label for="shortcode_or_function_for_view">
+										<input type="radio" id="shortcode_or_function_for_view" name="prmbr_view" value="shortcode_or_function_for_view" <?php if ( $prmbr_options['view'] == 'shortcode_or_function_for_view' ) echo 'checked' ?> /> <?php _e( 'display via shortcode or function only', 'promobar' ); ?>
+									</label>
 								</td>
 							</tr>
 							<tr>
-							<th scope="row"><?php _e( 'HTML', 'promobar' ); ?></th>
-							<td class="prmbr_give_notice"> 
-								<?php wp_editor( $prmbr_options['html'], "prmbr_html", array(
-									'teeny'			=> true,
-									'media_buttons' => true,
-									'textarea_rows' => 5,
-									'textarea_name' => 'prmbr_html',
-									'quicktags' 	=> true,
-								)); ?>
-							</td>
-						</tr>
-					</table>
-					<p class="submit">
-						<input type="submit" class="button-primary" name="prmbr_save" value="<?php _e( 'Save Changes', 'promobar' ); ?>" />
-						<?php wp_nonce_field( $plugin_basename, 'prmbr_nonce_name' ); ?>
-					</p>					
-				</form>
-				<?php bws_plugin_reviews_block( $prmbr_plugin_info['Name'], 'promobar' );
+								<th scope="row"><?php _e( 'Position', 'promobar' ); ?></th>
+								<td>
+									<label for="prmbr_position1">
+										<input type="radio" id="prmbr_position1" name="prmbr_position" value="prmbr_top" <?php if ( $prmbr_options['position'] == 'prmbr_top' ) echo 'checked' ?> /> <?php _e( 'Top', 'promobar' ); ?>
+									</label>
+									<br />
+									<label for="prmbr_position2">
+										<input type="radio" id="prmbr_position2" name="prmbr_position" value="prmbr_bottom" <?php if ( $prmbr_options['position'] == 'prmbr_bottom' ) echo 'checked' ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
+									</label>
+									<br />
+									<label for="prmbr_position3">
+										<input type="radio" id="prmbr_position3" name="prmbr_position" value="prmbr_left" <?php if ( $prmbr_options['position'] == 'prmbr_left' ) echo 'checked' ?> /> <?php _e( 'Left', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;
+									</label>
+									<span class="prmbr_info">
+										&nbsp;&nbsp;&nbsp;<?php _e( 'width', 'promobar' ); ?>
+									</span>
+									<label for="prmbr_width_position3" >
+										<input type="text" id="prmbr_width_position3" class="prmbr_width <?php if ( $prmbr_options['position'] != 'prmbr_left') echo 'prmbr_width_disabled';?>" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
+									</label>
+									<br />
+									<label for="prmbr_position4">
+										<input type="radio" id="prmbr_position4" name="prmbr_position" value="prmbr_right" <?php if ( $prmbr_options['position'] == 'prmbr_right' ) echo 'checked' ?> /> <?php _e( 'Right', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+									</label>
+									<span class="prmbr_info">
+										<?php _e( 'width', 'promobar' ); ?>
+									</span>
+									<label for="prmbr_width_position4">
+										<input type="text" id="prmbr_width_position4" class="prmbr_width <?php if ( $prmbr_options['position'] != 'prmbr_right') echo 'prmbr_width_disabled'; ?>" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><?php _e( 'Background', 'promobar' ); ?></th>
+								<td>
+									<label for="prmbr_background_color_field">
+										<input type="text" id="prmbr_background_color_field" value="<?php echo $prmbr_options['background_color_field']; ?>" name="prmbr_background_color_field" class="prmbr_color_field" data-default-color="<?php echo $prmbr_default_options['background_color_field']; ?>" />
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th scope="row"><?php _e( 'Text Color', 'promobar' ); ?></th>
+								<td>
+									<label for="prmbr_text_color_field">
+										<input type="text" id="prmbr_text_color_field" value="<?php echo $prmbr_options['text_color_field']; ?>" name="prmbr_text_color_field" class="prmbr_color_field" data-default-color="<?php echo $prmbr_default_options['text_color_field']; ?>" />
+									</label>
+									</td>
+								</tr>
+								<tr>
+								<th scope="row"><?php _e( 'HTML', 'promobar' ); ?></th>
+								<td class="prmbr_give_notice"> 
+									<?php wp_editor( $prmbr_options['html'], "prmbr_html", array(
+										'teeny'			=> true,
+										'media_buttons' => true,
+										'textarea_rows' => 5,
+										'textarea_name' => 'prmbr_html',
+										'quicktags' 	=> true
+									)); ?>
+								</td>
+							</tr>
+						</table>
+						<p class="submit">
+							<input type="submit" class="button-primary" name="prmbr_save" value="<?php _e( 'Save Changes', 'promobar' ); ?>" />
+							<?php wp_nonce_field( $plugin_basename, 'prmbr_nonce_name' ); ?>
+						</p>					
+					</form>
+					<?php bws_form_restore_default_settings( $plugin_basename );
+					bws_plugin_reviews_block( $prmbr_plugin_info['Name'], 'promobar' );
+				}
 			} else if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
