@@ -1,10 +1,10 @@
 === PromoBar by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
-Tags: add PromoBar plugin, promobar, pomobar, prombar, pombar, promobr, PromoBar plugin, add unit in site, add unit in posts, add unit in pages, add PromoBar in posts, add PromoBar in pages, PromoBar plugin, add banner, banner, demo-header, service announcement banner, maintenance banner, custom banner, product launching data banner, special offer banner, banner plugin, add a new banner, add custom banner, infobar
-Requires at least: 3.5
-Tested up to: 4.2.2
-Stable tag: 1.0.5
+Tags: add a new banner, add banner, add banner plugin, add custom banner plugin, add custom banner, add PromoBar in pages, add PromoBar in posts, add PromoBar plugin, add unit in pages, add unit in posts, add unit in site, banner, banner plugin, best, best plugin, best promobar plugin, custom banner, demo-header, free, free plugin, free promobar plugin, free banner plugin, infobar, maintenance banner, pombar, pomobar, product launching data banner, prombar, promobar, PromoBar plugin, promobr, service announcement banner, special offer banner, wordpress, wp, wp plugin, wp free plugin, wp promobar, wp promobar plugin, wp simple promobar plugin, wp free promobar, wp free promobar plugin, wordpress plugin, wordpress free plugin, wordpress promobar, wordpress promobar plugin, wordpress simple promobar plugin, wordpress free promobar, wordpress free promobar plugin
+Requires at least: 3.8
+Tested up to: 4.3.1
+Stable tag: 1.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -16,20 +16,20 @@ This plugin will come in handy if you want to display banners with any kind of d
 
 http://www.youtube.com/watch?v=VUuXHQgPNm4
 
-<a href="https://www.youtube.com/watch?v=v8aAOGssPSY" target="_blank">Video instruction on Installation</a>
+<a href="https://www.youtube.com/watch?v=v8aAOGssPSY" target="_blank">PromoBar by BestWebSoft Video instruction on Installation</a>
 
-<a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">FAQ</a>
+<a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">PromoBar by BestWebSoft FAQ</a>
 
-<a href="http://support.bestwebsoft.com" target="_blank">Support</a>
+<a href="http://support.bestwebsoft.com" target="_blank">PromoBar by BestWebSoft Support</a>
 
-<a href="http://bestwebsoft.com/products/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3" target="_blank" title="PromoBar Pro">Upgrade to Pro Version</a>
+<a href="http://bestwebsoft.com/products/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3" target="_blank" title="PromoBar Pro">Upgrade to PromoBar Pro by BestWebSoft</a>
 
 = Features =
 
-* Actions: Add PromoBar easily.
-* Display: Select PromoBar Display: choose the pages, on which the banner will be displayed, or use a shortcode/function to display banners
-* Display: An option to customize banner design
-* Display: An option to select block position (at the top/bottom, to the right/left)
+* Add PromoBar easily.
+* Select PromoBar Display: choose the pages, on which the banner will be displayed, or use a shortcode/function to display banners
+* Customize banner design
+* Select block position (at the top/bottom, to the right/left)
 
 = Recommended Plugins =
 
@@ -81,7 +81,7 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 1. the link to the page, on which the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instuction on System Status</a> 
+4. your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a> 
 
 == Screenshots ==
 
@@ -89,6 +89,10 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 2. PromoBar on the homepage in top position.
 
 == Changelog ==
+
+= V1.0.6 - 01.10.2015 =
+* NEW : A button for PromoBar shortcode inserting to the content was added.
+* Update : We updated all functionality for wordpress 4.3.1.
 
 = V1.0.5 - 19.06.2015 =
 * New : Ability to restore settings to defaults.
@@ -110,6 +114,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.6 =
+A button for PromoBar shortcode inserting to the content was added. We updated all functionality for wordpress 4.3.1.
 
 = V1.0.5 =
 Ability to restore settings to defaults.

@@ -17,13 +17,6 @@
 		};
 		$( '.prmbr_color_field' ).wpColorPicker(myOptions);
 
-		/* show notice if was change */
-		$( '#prmbr_settings_form input' ).bind( 'change click select', function() {
-			if ( $( this ).attr( 'type' ) != 'submit' ) {
-				$( '.updated.fade' ).css( 'display', 'none' );
-				$( '#prmbr_settings_notice' ).css( 'display', 'block' );
-			};
-		});
 		$( '.wp-picker-container' ).bind( 'change click select', function() {
 			$( '#prmbr_settings_notice' ).css( 'display', 'block' );
 		});

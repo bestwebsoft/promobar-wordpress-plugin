@@ -5,16 +5,7 @@
     display: none;  
 }
 /* comments for settings */
-.prmbr_info {
-    clear: both;
-    color: #888888;
-    font-size: 10px;
-}
 .prmbr_width {
     width: 38px;
     height: 20px;
-}
-/* for shortcode & function */
-.prmbr_code {
-    background-color: #dbdbdb;
 }
