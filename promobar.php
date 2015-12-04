@@ -6,7 +6,7 @@ Description: This plugin allows you to display an alert to warn its users about 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.0.6
+Version: 1.0.7
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -32,8 +32,10 @@ License: GPLv3 or later
 */
 if ( ! function_exists( 'add_prmbr_admin_menu' ) ) {
 	function add_prmbr_admin_menu() {		
-		bws_add_general_menu( plugin_basename( __FILE__ ) );		
-		add_submenu_page( 'bws_plugins', __( 'PromoBar Settings', 'promobar' ), 'PromoBar', 'manage_options', 'promobar.php', 'prmbr_settings_page' );
+		bws_general_menu();
+		$settings = add_submenu_page( 'bws_plugins', __( 'PromoBar Settings', 'promobar' ), 'PromoBar', 'manage_options', 'promobar.php', 'prmbr_settings_page' );
+
+		add_action( 'load-' . $settings, 'prmbr_add_tabs' );
 	}
 }
 
@@ -202,19 +204,20 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 			update_option( 'prmbr_options', $prmbr_options );
 			$message = __( 'All plugin settings were restored.', 'promobar' );
 		}		
-		/* end */
 
 		/* GO PRO */
 		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {			
-			$go_pro_result = bws_go_pro_tab_check( $plugin_basename );
+			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'prmbr_options' );
 			if ( ! empty( $go_pro_result['error'] ) )
 				$error = $go_pro_result['error'];
-		} ?><div class="wrap">
-			<h2>PromoBar <?php _e( 'Settings', 'promobar' ); ?></h2>
+			elseif ( ! empty( $go_pro_result['message'] ) )
+				$message = $go_pro_result['message'];
+		} ?>
+		<div class="wrap">
+			<h1>PromoBar <?php _e( 'Settings', 'promobar' ); ?></h1>
 			<h2 class="nav-tab-wrapper">
 				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php"> <?php _e( 'Settings', 'promobar' ); ?></a>
 				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) echo 'nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=extra"><?php _e( 'Extra Settings', 'promobar' ); ?></a>
-				<a class="nav-tab" href="http://bestwebsoft.com/products/promobar/faq/" target="_blank"><?php _e( 'FAQ', 'promobar' ); ?></a>
 				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=go_pro"><?php _e( 'Go PRO', 'promobar' ); ?></a>
 			</h2>
 			<?php bws_show_settings_notice(); ?>
@@ -228,7 +231,21 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
 					bws_form_restore_default_confirm( $plugin_basename );
 				} else { ?>
-					<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="bws_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span><br /><?php _e( 'And if you want to add the block to the website page or post, please paste the following shortcode', 'promobar' ); ?>: <span class="bws_code">&nbsp;[prmbr_shortcode]&nbsp;</span></p>
+					<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="bws_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span></p>
+					<div>
+						<?php printf( __( "If you would like to add PromoBar to your page or post, please use %s button", 'promobar' ), 
+							'<code><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt=""/></code>'
+						); ?>
+						<div class="bws_help_box bws_help_box_right dashicons dashicons-editor-help">
+							<div class="bws_hidden_help_text" style="min-width: 260px;">
+								<?php printf( 
+									__( "You can add PromoBar to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s.", 'promobar' ),
+									'<code><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt="" /></code>',
+									'<code>[prmbr_shortcode]</code>'
+								); ?>
+							</div>
+						</div>						
+					</div>
 					<form method="post" action="admin.php?page=promobar.php" name="prmbr_exceptions" class="bws_form">
 						<table class="form-table">
 							<tr>
@@ -359,7 +376,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 					</div>
 				</div>
 			<?php } elseif ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
-				bws_go_pro_tab( $prmbr_plugin_info, $plugin_basename, 'promobar.php', 'promobar-pro.php', 'promobar-pro/promobar-pro.php', 'promobar', 'd765697418cb3510ea536e47c1e26396', '196', isset( $go_pro_result['pro_plugin_is_activated'] ) );
+				bws_go_pro_tab_show( false, $prmbr_plugin_info, $plugin_basename, 'promobar.php', 'promobar-pro.php', 'promobar-pro/promobar-pro.php', 'promobar', 'd765697418cb3510ea536e47c1e26396', '196', isset( $go_pro_result['pro_plugin_is_activated'] ) );
 			}
 			bws_plugin_reviews_block( $prmbr_plugin_info['Name'], 'promobar' ); ?>
 		</div><!-- .wrap -->
@@ -466,6 +483,18 @@ if ( ! function_exists( 'prmbr_register_plugin_links' ) ) {
 	}
 }
 
+/* add help tab  */
+if ( ! function_exists( 'prmbr_add_tabs' ) ) {
+	function prmbr_add_tabs() {
+		$screen = get_current_screen();
+		$args = array(
+			'id' 			=> 'prmbr',
+			'section' 		=> '200935775'
+		);
+		bws_help_tab( $screen, $args );
+	}
+}
+
 /**
 * Action plugin links function.
 * @param $links string
@@ -492,6 +521,8 @@ if ( ! function_exists ( 'prmbr_plugin_banner' ) ) {
 		global $hook_suffix;
 		if ( 'plugins.php' == $hook_suffix ) {
 			global $prmbr_plugin_info, $prmbr_options;
+			if ( empty( $prmbr_options ) )
+				$prmbr_options = get_option( 'prmbr_options' );
 			if ( isset( $prmbr_options['first_install'] ) && strtotime( '-1 week' ) > $prmbr_options['first_install'] )
 				bws_plugin_banner( $prmbr_plugin_info, 'prmbr', 'promobar', 'e5cf3af473cbbd5e21b53f512bac8570', '196', '//ps.w.org/promobar/assets/icon-128x128.png' );   
 			

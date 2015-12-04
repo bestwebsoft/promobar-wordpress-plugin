@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add a new banner, add banner, add banner plugin, add custom banner plugin, add custom banner, add PromoBar in pages, add PromoBar in posts, add PromoBar plugin, add unit in pages, add unit in posts, add unit in site, banner, banner plugin, best, best plugin, best promobar plugin, custom banner, demo-header, free, free plugin, free promobar plugin, free banner plugin, infobar, maintenance banner, pombar, pomobar, product launching data banner, prombar, promobar, PromoBar plugin, promobr, service announcement banner, special offer banner, wordpress, wp, wp plugin, wp free plugin, wp promobar, wp promobar plugin, wp simple promobar plugin, wp free promobar, wp free promobar plugin, wordpress plugin, wordpress free plugin, wordpress promobar, wordpress promobar plugin, wordpress simple promobar plugin, wordpress free promobar, wordpress free promobar plugin
 Requires at least: 3.8
-Tested up to: 4.3.1
-Stable tag: 1.0.6
+Tested up to: 4.4-RC1
+Stable tag: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -90,6 +90,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Changelog ==
 
+= V1.0.7 - 04.12.2015 =
+* Bugfix : The bug with plugin menu duplicating was fixed.
+
 = V1.0.6 - 01.10.2015 =
 * NEW : A button for PromoBar shortcode inserting to the content was added.
 * Update : We updated all functionality for wordpress 4.3.1.
@@ -114,6 +117,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.7 =
+The bug with plugin menu duplicating was fixed.
 
 = V1.0.6 =
 A button for PromoBar shortcode inserting to the content was added. We updated all functionality for wordpress 4.3.1.
