@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add a new banner, add banner, add banner plugin, add custom banner plugin, add custom banner, add PromoBar in pages, add PromoBar in posts, add PromoBar plugin, add unit in pages, add unit in posts, add unit in site, banner, banner plugin, best, best plugin, best promobar plugin, custom banner, demo-header, free, free plugin, free promobar plugin, free banner plugin, infobar, maintenance banner, pombar, pomobar, product launching data banner, prombar, promobar, PromoBar plugin, promobr, service announcement banner, special offer banner, wordpress, wp, wp plugin, wp free plugin, wp promobar, wp promobar plugin, wp simple promobar plugin, wp free promobar, wp free promobar plugin, wordpress plugin, wordpress free plugin, wordpress promobar, wordpress promobar plugin, wordpress simple promobar plugin, wordpress free promobar, wordpress free promobar plugin
 Requires at least: 3.8
-Tested up to: 4.4-RC1
-Stable tag: 1.0.7
+Tested up to: 4.5.1
+Stable tag: 1.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,6 +31,8 @@ http://www.youtube.com/watch?v=VUuXHQgPNm4
 * Customize banner design
 * Select block position (at the top/bottom, to the right/left)
 
+If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+
 = Recommended Plugins =
 
 The author of the PromoBar also recommends the following plugins:
@@ -47,7 +49,7 @@ If you would like to create your own language pack or update the existing one, y
 
 = Technical support =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in another languages won't be accepted.
+Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
 
 If you notice any bugs in the plugin's work, you can notify us about them and we'll investigate and fix the issue then. Your request should contain website URL, issues description and WordPress admin panel credentials.
 Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
@@ -85,10 +87,14 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 
 == Screenshots ==
 
-1. PromoBar Settings page.
-2. PromoBar on the homepage in top position.
+1. PromoBar on the homepage in top position.
+2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.0.8 - 04.05.2016 =
+* Bugfix : The bug with displaying PromoBar on mobile was fixed.
+* Bugfix : The display of unnecessary elements in PromoBar has been removed.
 
 = V1.0.7 - 04.12.2015 =
 * Bugfix : The bug with plugin menu duplicating was fixed.
@@ -117,6 +123,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.0.8 =
+The bug with displaying PromoBar on mobile was fixed. The display of unnecessary elements in PromoBar has been removed.
 
 = V1.0.7 =
 The bug with plugin menu duplicating was fixed.
