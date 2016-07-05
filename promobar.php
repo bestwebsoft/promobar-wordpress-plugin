@@ -6,7 +6,7 @@ Description: This plugin allows you to display an alert to warn its users about 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.0.8
+Version: 1.0.9
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -27,13 +27,13 @@ License: GPLv3 or later
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 /**
-* Add Wordpress page 'bws_plugins' and sub-page of this plugin to admin-panel.
+* Add Wordpress page 'bws_panel' and sub-page of this plugin to admin-panel.
 * @return void
 */
 if ( ! function_exists( 'add_prmbr_admin_menu' ) ) {
 	function add_prmbr_admin_menu() {		
 		bws_general_menu();
-		$settings = add_submenu_page( 'bws_plugins', __( 'PromoBar Settings', 'promobar' ), 'PromoBar', 'manage_options', 'promobar.php', 'prmbr_settings_page' );
+		$settings = add_submenu_page( 'bws_panel', __( 'PromoBar Settings', 'promobar' ), 'PromoBar', 'manage_options', 'promobar.php', 'prmbr_settings_page' );
 
 		add_action( 'load-' . $settings, 'prmbr_add_tabs' );
 	}
@@ -67,7 +67,7 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.8', '3.5' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.8' );
 
 		/* Get/Register and check settings for plugin */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) )
@@ -98,7 +98,7 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 		/* default values */
 		$prmbr_default_options = array(
 			'view'						=> 'all_pages',
-			'position'					=> 'prmbr_top',
+			'position'					=> 'top',
 			'width_left'				=> '10',
 			'width_right'				=> '10',
 			'background_color_field'	=> '#c4e9ff',
@@ -117,7 +117,14 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 
 		/* Array merge incase this version has added new options */
 		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {
+			/**
+			* @since 1.0.9
+			* @todo remove after 01.02.2017
+			*/
 			$prmbr_default_options['display_settings_notice'] = 0;
+			$prmbr_options['position'] = str_replace( 'prmbr_', '', $prmbr_options['position'] );
+			/* end @todo */			
+			
 			$prmbr_options = array_merge( $prmbr_default_options, $prmbr_options );
 			$prmbr_options['plugin_option_version'] = $prmbr_plugin_info["Version"];
 			update_option( 'prmbr_options', $prmbr_options );
@@ -126,9 +133,9 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 		/* Get options from the database */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) ) {
 			/* Get/Register and check settings for plugin */
-			if ( $prmbr_options['position'] == 'prmbr_left' ) {
+			if ( $prmbr_options['position'] == 'left' ) {
 				$prmbr_width = 'width:' . $prmbr_options['width_left'] . '%;';
-			} elseif ( $prmbr_options['position'] == 'prmbr_right' ) {
+			} elseif ( $prmbr_options['position'] == 'right' ) {
 				$prmbr_width = 'width:' . $prmbr_options['width_right'] . '%;';
 			}
 		}
@@ -273,31 +280,31 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 								<td>
 									<fieldset>
 										<label for="prmbr_position1">
-											<input type="radio" id="prmbr_position1" name="prmbr_position" value="prmbr_top" <?php if ( $prmbr_options['position'] == 'prmbr_top' ) echo 'checked' ?> /> <?php _e( 'Top', 'promobar' ); ?>
+											<input type="radio" id="prmbr_position1" name="prmbr_position" value="top" <?php if ( $prmbr_options['position'] == 'top' ) echo 'checked' ?> /> <?php _e( 'Top', 'promobar' ); ?>
 										</label>
 										<br />
 										<label for="prmbr_position2">
-											<input type="radio" id="prmbr_position2" name="prmbr_position" value="prmbr_bottom" <?php if ( $prmbr_options['position'] == 'prmbr_bottom' ) echo 'checked' ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
+											<input type="radio" id="prmbr_position2" name="prmbr_position" value="bottom" <?php if ( $prmbr_options['position'] == 'bottom' ) echo 'checked' ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
 										</label>
 										<br />
 										<label for="prmbr_position3">
-											<input type="radio" id="prmbr_position3" name="prmbr_position" value="prmbr_left" <?php if ( $prmbr_options['position'] == 'prmbr_left' ) echo 'checked' ?> /> <?php _e( 'Left', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;
+											<input type="radio" id="prmbr_position3" name="prmbr_position" value="left" <?php if ( $prmbr_options['position'] == 'left' ) echo 'checked' ?> /> <?php _e( 'Left', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;
 										</label>
 										<span class="bws_info">
 											&nbsp;&nbsp;&nbsp;<?php _e( 'width', 'promobar' ); ?>
 										</span>
 										<label for="prmbr_width_position3" >
-											<input type="text" id="prmbr_width_position3" class="small-text <?php if ( $prmbr_options['position'] != 'prmbr_left') echo 'prmbr_width_disabled';?>" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
+											<input type="text" id="prmbr_width_position3" class="small-text <?php if ( $prmbr_options['position'] != 'left') echo 'prmbr_width_disabled';?>" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
 										</label>
 										<br />
 										<label for="prmbr_position4">
-											<input type="radio" id="prmbr_position4" name="prmbr_position" value="prmbr_right" <?php if ( $prmbr_options['position'] == 'prmbr_right' ) echo 'checked' ?> /> <?php _e( 'Right', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;&nbsp;
+											<input type="radio" id="prmbr_position4" name="prmbr_position" value="right" <?php if ( $prmbr_options['position'] == 'right' ) echo 'checked' ?> /> <?php _e( 'Right', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;&nbsp;
 										</label>
 										<span class="bws_info">
 											<?php _e( 'width', 'promobar' ); ?>
 										</span>
 										<label for="prmbr_width_position4">
-											<input type="text" id="prmbr_width_position4" class="small-text <?php if ( $prmbr_options['position'] != 'prmbr_right') echo 'prmbr_width_disabled'; ?>" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
+											<input type="text" id="prmbr_width_position4" class="small-text <?php if ( $prmbr_options['position'] != 'right') echo 'prmbr_width_disabled'; ?>" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
 										</label>
 									</fieldset>
 								</td>
@@ -401,11 +408,11 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 		/* Check the appropriate conditions for the show PromoBar block */
 		if ( $prmbr_options['view'] == 'all_pages' || ( $prmbr_options['view'] == 'homepage' && ( is_home() || is_front_page() ) ) ) {	
 			/* Add styles in some settings where there is no JS */
-			if ( $prmbr_options['position'] == 'prmbr_left' || $prmbr_options['position'] == 'prmbr_right' ) {
+			if ( $prmbr_options['position'] == 'left' || $prmbr_options['position'] == 'right' ) {
 				$prmbr_options['position'] .= ' prmbr_no_js';
 			}
 			/* Define a variable in a block to display*/
-			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main ' . $prmbr_options['position'] . '">' . prmbr_content() . '</div>'; 		
+			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main prmbr_' . $prmbr_options['position'] . '">' . prmbr_content() . '</div>'; 		
 			echo $main_position;
 
 			prmbr_scripts();
@@ -584,17 +591,24 @@ if ( ! function_exists ( 'prmbr_plugin_banner' ) ) {
 if ( ! function_exists( 'prmbr_plugin_uninstall' ) ) {
 	function prmbr_plugin_uninstall() {
 		global $wpdb;
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-			$old_blog = $wpdb->blogid;
-			/* Get all blog ids */
-			$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
-			foreach ( $blogids as $blog_id ) {
-				switch_to_blog( $blog_id );
+
+		if ( ! function_exists( 'get_plugins' ) )
+			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		$all_plugins = get_plugins();
+
+		if ( ! array_key_exists( 'promobar-pro/promobar-pro.php', $all_plugins ) ) {
+			if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+				$old_blog = $wpdb->blogid;
+				/* Get all blog ids */
+				$blogids = $wpdb->get_col( "SELECT `blog_id` FROM $wpdb->blogs" );
+				foreach ( $blogids as $blog_id ) {
+					switch_to_blog( $blog_id );
+					delete_option( 'prmbr_options' );
+				}
+				switch_to_blog( $old_blog );
+			} else {
 				delete_option( 'prmbr_options' );
 			}
-			switch_to_blog( $old_blog );
-		} else {
-			delete_option( 'prmbr_options' );
 		}
 
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
