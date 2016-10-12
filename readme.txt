@@ -3,66 +3,86 @@ Contributors: bestwebsoft
 Donate link: http://bestwebsoft.com/donate/
 Tags: add banner, add custom banner, banner, custom banner, promobar, promobar plugin, demo header, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 3.8
-Tested up to: 4.5.3
-Stable tag: 1.0.9
+Tested up to: 4.6.1
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-This plugin allows placing banners with any data on your website. 
+Add and display HTML advertisement banner on WordPress website. Customize bar styles and appearance.
 
 == Description ==
 
-This plugin will come in handy if you want to display banners with any kind of data on your WordPress website. With PromoBar, the extent of data shown on the banner is rather wide, from messages about launching a new product and service announcements, to special offer ads, and any sort of information you want to share with your users in general. There is a number of customization options available, which allow selecting the position of the banner (on all pages, on homepage only, or in any post/page/template the function or shortcode was added to), along with the banner design. 
+PromoBar plugin helps you to display banners with any content on your WordPress website. Enable for certain pages and customize the appearance to create a unique design.
+
+Start making your own promotional banners today!
 
 http://www.youtube.com/watch?v=VUuXHQgPNm4
 
-<a href="https://www.youtube.com/watch?v=v8aAOGssPSY" target="_blank">PromoBar by BestWebSoft Video instruction on Installation</a>
+= Free Features =
 
-<a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">PromoBar by BestWebSoft FAQ</a>
+* Display on:
+	* All pages
+	* Home page
+	* Via shortcode
+* Choose position:
+	* Top
+	* Bottom
+	* Left
+	* Right
+* Select background and text color
+* Create your banner using TinyMCE editor 
+* Add custom code via plugin settings page
+* Compatible with latest WordPress version
+* Incredibly simple settings for fast setup without modifying code
+* Detailed step-by-step documentation and videos
 
-<a href="http://support.bestwebsoft.com" target="_blank">PromoBar by BestWebSoft Support</a>
+> **Pro Features**
+>
+> All features from Free version included plus:
+>
+> * Exclude certain pages or post types from PromoBar displaying
+> * Configure all subsites on the network
+> * Get answer to your support question within one business day ([Support Policy](http://bestwebsoft.com/support-policy/))
+>
+> [Upgrade to Pro Now](http://bestwebsoft.com/products/wordpress/plugins/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3)
 
-<a href="http://bestwebsoft.com/products/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3" target="_blank" title="PromoBar Pro">Upgrade to PromoBar Pro by BestWebSoft</a>
+If you have a feature suggestion or idea you'd like to see in the plugin, we'd love to hear about it! [Suggest a Feature](http://support.bestwebsoft.com/hc/en-us/requests/new)
 
-= Features =
+= Documentation & Videos =
 
-* Add PromoBar easily.
-* Select PromoBar Display: choose the pages, on which the banner will be displayed, or use a shortcode/function to display banners
-* Customize banner design
-* Select block position (at the top/bottom, to the right/left)
+* [[Doc] Installation](https://docs.google.com/document/d/1XlKW3pNeE7NXlwRe2BQaXweTiWlrsenGqNSkDXQ0JNI/)
+* [[Doc] Purchase, Installation & Configuration](https://docs.google.com/document/d/1J04q4ffgrmYxD5w_T7DvoGjzr8L7nlk88Ok7uePI0rY/)
+* [[Video] Installation Instruction](https://www.youtube.com/watch?v=v8aAOGssPSY)
 
-If you have a feature, suggestion or idea you'd like to see in the plugin, we'd love to hear about it! <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">Suggest a Feature</a>
+= Help & Support =
 
-= Recommended Plugins =
-
-The author of the PromoBar also recommends the following plugins:
-
-* <a href="http://wordpress.org/plugins/updater/">Updater</a> - This plugin updates WordPress core and the plugins to the recent versions. You can also use the auto mode or manual mode for updating and set email notifications.
-There is also a premium version of the plugin <a href="http://bestwebsoft.com/products/updater/?k=717d3e9fd8f2cf38cb9fdf5f22f1e894">Updater Pro</a> with more useful features available. It can make backup of all your files and database before updating. Also it can forbid some plugins or WordPress Core update.
+Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <http://support.bestwebsoft.com/>
 
 = Translation =
 
 * Russian (ru_RU)
 * Ukrainian (uk)
 
-If you would like to create your own language pack or update the existing one, you can send <a href="http://codex.wordpress.org/Translating_WordPress" target="_blank">the text of PO and MO files</a> to <a href="http://support.bestwebsoft.com/hc/en-us/requests/new" target="_blank">BestWebSoft</a>, and we'll add it to the plugin. You can download the latest version of the program for working with PO and MO files  <a href="http://www.poedit.net/download.php" target="_blank">Poedit</a>.
+Some of these translations are not complete. We are constantly adding new features which should be translated. If you would like to create your own language pack or update the existing one, you can send [the text of PO and MO files](http://codex.wordpress.org/Translating_WordPress) to [BestWebSoft](http://support.bestwebsoft.com/hc/en-us/requests/new) and we'll add it to the plugin. You can download the latest version of the program for work with PO and MO [files Poedit](http://www.poedit.net/download.php).
 
-= Technical support =
+= Recommended Plugins =
 
-Dear users, our plugins are available for free download. If you have any questions or recommendations regarding the functionality of our plugins (existing options, new options, current issues), please feel free to contact us. Please note that we accept requests in English only. All messages in other languages won't be accepted.
+* [Updater](http://bestwebsoft.com/products/wordpress/plugins/updater/?k=717d3e9fd8f2cf38cb9fdf5f22f1e894) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
 
-If you notice any bugs in the plugin's work, you can notify us about them and we'll investigate and fix the issue then. Your request should contain website URL, issues description and WordPress admin panel credentials.
-Moreover, we can customize the plugin according to your requirements. It's a paid service (as a rule it costs $40, but the price can vary depending on the amount of the necessary changes and their complexity). Please note that we could also include this or that feature (developed for you) in the next release and share with the other users then.
-We can fix some things for free for the users who provide a translation of our plugin into their native language (this should be a new translation of a certain plugin, you can check available translations on the official plugin page).
+= Donate =
+
+Donations play an important role in supporting open-source projects. We greatly appreciate any donation you can make to help us continue further development of free products.
+
+[Donate Now](http://bestwebsoft.com/donate/)
 
 == Installation == 
 
 1. Upload `promobar` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Plugins" > "PromoBar".
+3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "PromoBar".
 4. In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
 
-View a PDF version of <a href="https://docs.google.com/document/d/1XlKW3pNeE7NXlwRe2BQaXweTiWlrsenGqNSkDXQ0JNI/edit" target="_blank">Step-by-step Instruction on PromoBar Installation</a>
+[View a PDF version of Step-by-step Instruction on PromoBar Installation](https://docs.google.com/document/d/1XlKW3pNeE7NXlwRe2BQaXweTiWlrsenGqNSkDXQ0JNI/)
 
 http://www.youtube.com/watch?v=v8aAOGssPSY
 
@@ -74,16 +94,16 @@ In Display PromoBar field, please mark the appropriate block position. You can a
 
 = How to adjust PromoBar position on the website? =
 
-In WordPress admin panel, please go to "BWS Plugins", find the PromoBar settings page and choose one of the following positions: Top, Bottom, Left or Right. Then click "Save Changes".
+In WordPress admin panel, please go to "BWS Panel", find the PromoBar settings page and choose one of the following positions: Top, Bottom, Left or Right. Then click "Save Changes".
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
-Please make sure that the problem hasn't been discussed on our forum yet (<a href="http://support.bestwebsoft.com" target="_blank">http://support.bestwebsoft.com</a>). If not, please provide the following data along with the description of your problem:
+Please make sure that the problem hasn't been discussed yet on our forum (<http://support.bestwebsoft.com>). If no, please provide the following data along with your problem's description:
 
-1. the link to the page, on which the problem occurs
+1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. your system status report. Please read more here: <a href="https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit" target="_blank">Instruction on System Status</a> 
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
 
 == Screenshots ==
 
@@ -91,6 +111,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.1.0 - 10.08.2016 =
+* Update : All functionality for WordPress 4.6 was updated.
 
 = V1.0.9 - 04.07.2016 =
 * Update : We updated all functionality for wordpress 4.5.3.
@@ -126,6 +149,9 @@ Please make sure that the problem hasn't been discussed on our forum yet (<a hre
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.0 =
+* The compatibility with new WordPress version updated.
 
 = V1.0.9 =
 We updated all functionality for wordpress 4.5.3.

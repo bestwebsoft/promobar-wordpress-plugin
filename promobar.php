@@ -1,12 +1,12 @@
 <?php
 /*
 Plugin Name: PromoBar by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/
-Description: This plugin allows you to display an alert to warn its users about some changes on the site, place an advertisement or any other information.
+Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/promobar/
+Description: Add and display HTML advertisement on WordPress website. Customize bar styles and appearance.
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.0.9
+Version: 1.1.0
 Author URI: http://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -384,7 +384,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 						<div class="bws_info">
 							<?php _e( 'Unlock premium options by upgrading to Pro version', 'promobar' ); ?>
 						</div>
-						<a class="bws_button" href="http://bestwebsoft.com/products/promobar/?k=d765697418cb3510ea536e47c1e26396&amp;pn=196&amp;v=<?php echo $prmbr_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="PromoBar Pro"><?php _e( 'Learn More', 'promobar' ); ?></a>
+						<a class="bws_button" href="http://bestwebsoft.com/products/wordpress/plugins/promobar/?k=d765697418cb3510ea536e47c1e26396&amp;pn=196&amp;v=<?php echo $prmbr_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="PromoBar Pro"><?php _e( 'Learn More', 'promobar' ); ?></a>
 						<div class="clear"></div>
 					</div>
 				</div>
