@@ -1,17 +1,17 @@
 <?php
 /*
 Plugin Name: PromoBar by BestWebSoft
-Plugin URI: http://bestwebsoft.com/products/wordpress/plugins/promobar/
+Plugin URI: https://bestwebsoft.com/products/wordpress/plugins/promobar/
 Description: Add and display HTML advertisement on WordPress website. Customize bar styles and appearance.
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.0
-Author URI: http://bestwebsoft.com/
+Version: 1.1.1
+Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  @ Copyright 2016  BestWebSoft  ( http://support.bestwebsoft.com )
+/*  @ Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -243,13 +243,13 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 					<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="bws_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span></p>
 					<div>
 						<?php printf( __( "If you would like to add PromoBar to your page or post, please use %s button", 'promobar' ), 
-							'<code><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt=""/></code>'
+							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>'
 						); ?>
 						<div class="bws_help_box bws_help_box_right dashicons dashicons-editor-help">
 							<div class="bws_hidden_help_text" style="min-width: 260px;">
 								<?php printf( 
 									__( "You can add PromoBar to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s.", 'promobar' ),
-									'<code><img style="vertical-align: sub;" src="' . plugins_url( 'bws_menu/images/shortcode-icon.png', __FILE__ ) . '" alt="" /></code>',
+									'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
 									'<code>[prmbr_shortcode]</code>'
 								); ?>
 							</div>
@@ -381,10 +381,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 						</table>
 					</div>
 					<div class="bws_pro_version_tooltip">
-						<div class="bws_info">
-							<?php _e( 'Unlock premium options by upgrading to Pro version', 'promobar' ); ?>
-						</div>
-						<a class="bws_button" href="http://bestwebsoft.com/products/wordpress/plugins/promobar/?k=d765697418cb3510ea536e47c1e26396&amp;pn=196&amp;v=<?php echo $prmbr_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="PromoBar Pro"><?php _e( 'Learn More', 'promobar' ); ?></a>
+						<a class="bws_button" href="https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=d765697418cb3510ea536e47c1e26396&amp;pn=196&amp;v=<?php echo $prmbr_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="PromoBar Pro"><?php _e( 'Learn More', 'promobar' ); ?></a>
 						<div class="clear"></div>
 					</div>
 				</div>
@@ -526,8 +523,8 @@ if ( ! function_exists( 'prmbr_register_plugin_links' ) ) {
 		if ( $file == $base ) {
 			if ( ! is_network_admin() )
 				$links[]    =    '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
-			$links[]    =    '<a href="http://wordpress.org/plugins/promobar/faq/" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
-			$links[]    =    '<a href="http://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
+			$links[]    =    '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200935775" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
+			$links[]    =    '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
 		}
 		return $links;
 	}
