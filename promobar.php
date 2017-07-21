@@ -6,7 +6,7 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.1
+Version: 1.1.2
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -67,7 +67,7 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 		}
 
 		/* Function check if plugin is compatible with current WP version  */
-		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.8' );
+		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.9' );
 
 		/* Get/Register and check settings for plugin */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) )
@@ -83,7 +83,7 @@ if ( ! function_exists( 'prmbr_admin_init' ) ) {
 	function prmbr_admin_init() {
 		global $bws_plugin_info, $prmbr_plugin_info, $bws_shortcode_list;
 		/* Add variable for bws_menu */
-		if ( ! isset( $bws_plugin_info ) || empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) )
 			$bws_plugin_info = array( 'id' => '196', 'version' => $prmbr_plugin_info["Version"] );
 
 		/* add PromoBar to global $bws_shortcode_list  */
@@ -116,15 +116,10 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 		$prmbr_options = get_option( 'prmbr_options' );
 
 		/* Array merge incase this version has added new options */
-		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {
-			/**
-			* @since 1.0.9
-			* @todo remove after 01.02.2017
-			*/
-			$prmbr_default_options['display_settings_notice'] = 0;
-			$prmbr_options['position'] = str_replace( 'prmbr_', '', $prmbr_options['position'] );
-			/* end @todo */			
-			
+		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {	
+			/* show pro features */
+			$prmbr_options['hide_premium_options'] = array();
+
 			$prmbr_options = array_merge( $prmbr_default_options, $prmbr_options );
 			$prmbr_options['plugin_option_version'] = $prmbr_plugin_info["Version"];
 			update_option( 'prmbr_options', $prmbr_options );
@@ -244,16 +239,12 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 					<div>
 						<?php printf( __( "If you would like to add PromoBar to your page or post, please use %s button", 'promobar' ), 
 							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>'
-						); ?>
-						<div class="bws_help_box bws_help_box_right dashicons dashicons-editor-help">
-							<div class="bws_hidden_help_text" style="min-width: 260px;">
-								<?php printf( 
-									__( "You can add PromoBar to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s.", 'promobar' ),
-									'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
-									'<code>[prmbr_shortcode]</code>'
-								); ?>
-							</div>
-						</div>						
+						);
+						echo bws_add_help_box( sprintf( 
+							__( "You can add PromoBar to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s.", 'promobar' ),
+							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
+							'<code>[prmbr_shortcode]</code>'
+						) ); ?>					
 					</div>
 					<form method="post" action="admin.php?page=promobar.php" name="prmbr_exceptions" class="bws_form">
 						<table class="form-table">
@@ -493,6 +484,7 @@ if ( ! function_exists ( 'prmbr_enqueue_admin_part' ) ) {
 			wp_enqueue_script( 'prmbr_color_picker', plugins_url( 'js/admin_script.js', __FILE__ ), array( 'jquery', 'wp-color-picker' ) );
 			wp_enqueue_style( 'prmbr_style', plugins_url( 'css/style.css', __FILE__ ), array( 'wp-color-picker' ) );
 
+			bws_enqueue_settings_scripts();
 			if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] ) {
 				bws_plugins_include_codemirror();
 			}

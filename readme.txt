@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add custom banner, banner, custom banner, promobar, promobar plugin, demo header, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
-Requires at least: 3.8
-Tested up to: 4.7.3
-Stable tag: 1.1.1
+Requires at least: 3.9
+Tested up to: 4.8
+Stable tag: 1.1.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -67,7 +67,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 = Recommended Plugins =
 
-* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=717d3e9fd8f2cf38cb9fdf5f22f1e894) - Automatically check and update WordPress core with all installed plugins to the latest versions. Manual mode, email notifications and backups of all your files and database before updating.
+* [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=717d3e9fd8f2cf38cb9fdf5f22f1e894) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 
 == Installation == 
 
@@ -105,6 +105,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.1.2 - 21.07.2017 =
+* Update : All functionality for WordPress 4.8 was updated.
 
 = V1.1.1 - 17.04.2017 =
 * Bugfix : Multiple Cross-Site Scripting (XSS) vulnerability was fixed.
@@ -146,6 +149,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.2 =
+* The compatibility with new WordPress version updated.
 
 = V1.1.1 =
 * Bugs fixed.
