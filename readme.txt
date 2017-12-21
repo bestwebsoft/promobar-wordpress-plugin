@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add custom banner, banner, custom banner, promobar, promobar plugin, demo header, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 3.9
-Tested up to: 4.8
-Stable tag: 1.1.2
+Tested up to: 4.9.1
+Stable tag: 1.1.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -30,7 +30,7 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 	* Left
 	* Right
 * Select background and text color
-* Create your banner using TinyMCE editor 
+* Create your banner using TinyMCE editor
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
@@ -69,7 +69,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 * [Updater](https://bestwebsoft.com/products/wordpress/plugins/updater/?k=717d3e9fd8f2cf38cb9fdf5f22f1e894) - Automatically check and update WordPress website core with all installed plugins and themes to the latest versions.
 
-== Installation == 
+== Installation ==
 
 1. Upload `promobar` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
@@ -84,7 +84,7 @@ https://www.youtube.com/watch?v=v8aAOGssPSY
 
 = How can I add PromoBar to my website? =
 
-In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>. 
+In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
 
 = How to adjust PromoBar position on the website? =
 
@@ -105,6 +105,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.1.3 - 21.12.2017 =
+* Update : All functionality for WordPress 4.9.1 has been updated.
+* Bugfix : The bug with PromoBar's height on the left and right sides of the screen has been fixed.
+* Bugfix : Cross-browser compatibility has been improved.
+* Bugfix : Options removal from the database when working on a multisite network has been fixed.
 
 = V1.1.2 - 21.07.2017 =
 * Update : All functionality for WordPress 4.8 was updated.
@@ -149,6 +155,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.3 =
+* The compatibility with new WordPress version updated.
+* Bugs fixed.
 
 = V1.1.2 =
 * The compatibility with new WordPress version updated.

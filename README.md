@@ -22,7 +22,7 @@
 </ul>
 </li>
 <li>Select background and text color</li>
-<li>Create your banner using TinyMCE editor </li>
+<li>Create your banner using TinyMCE editor</li>
 <li>Add custom code via plugin settings page</li>
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>

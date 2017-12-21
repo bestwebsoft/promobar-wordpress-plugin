@@ -6,7 +6,7 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.2
+Version: 1.1.3
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -31,7 +31,7 @@ License: GPLv3 or later
 * @return void
 */
 if ( ! function_exists( 'add_prmbr_admin_menu' ) ) {
-	function add_prmbr_admin_menu() {		
+	function add_prmbr_admin_menu() {
 		bws_general_menu();
 		$settings = add_submenu_page( 'bws_panel', __( 'PromoBar Settings', 'promobar' ), 'PromoBar', 'manage_options', 'promobar.php', 'prmbr_settings_page' );
 
@@ -56,13 +56,14 @@ if ( ! function_exists( 'prmbr_plugins_loaded' ) ) {
 if ( ! function_exists( 'prmbr_init' ) ) {
 	function prmbr_init() {
 		global $prmbr_plugin_info;
-		
+
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
-		
+
 		if ( empty( $prmbr_plugin_info ) ) {
-			if ( ! function_exists( 'get_plugin_data' ) )
+			if ( ! function_exists( 'get_plugin_data' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$prmbr_plugin_info = get_plugin_data( __FILE__ );
 		}
 
@@ -70,8 +71,9 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.9' );
 
 		/* Get/Register and check settings for plugin */
-		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) )
-			prmbr_default_options();		
+		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) ) {
+			prmbr_default_options();
+		}
 	}
 }
 
@@ -83,8 +85,9 @@ if ( ! function_exists( 'prmbr_admin_init' ) ) {
 	function prmbr_admin_init() {
 		global $bws_plugin_info, $prmbr_plugin_info, $bws_shortcode_list;
 		/* Add variable for bws_menu */
-		if ( empty( $bws_plugin_info ) )
+		if ( empty( $bws_plugin_info ) ) {
 			$bws_plugin_info = array( 'id' => '196', 'version' => $prmbr_plugin_info["Version"] );
+		}
 
 		/* add PromoBar to global $bws_shortcode_list  */
 		$bws_shortcode_list['prmbr'] = array( 'name' => 'PromoBar' );
@@ -110,13 +113,16 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 			'suggest_feature_banner'	=> 1
 		);
 		/* install the option defaults */
-		if ( ! get_option( 'prmbr_options' ) )
+		if ( ! get_option( 'prmbr_options' ) ) {
 			add_option( 'prmbr_options', $prmbr_default_options );
+		}
 
 		$prmbr_options = get_option( 'prmbr_options' );
 
 		/* Array merge incase this version has added new options */
-		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {	
+		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {
+
+			prmbr_plugin_activate();
 			/* show pro features */
 			$prmbr_options['hide_premium_options'] = array();
 
@@ -128,11 +134,27 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 		/* Get options from the database */
 		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) ) {
 			/* Get/Register and check settings for plugin */
-			if ( $prmbr_options['position'] == 'left' ) {
+			if ( 'left' == $prmbr_options['position'] ) {
 				$prmbr_width = 'width:' . $prmbr_options['width_left'] . '%;';
-			} elseif ( $prmbr_options['position'] == 'right' ) {
+			} elseif ( 'right' == $prmbr_options['position'] ) {
 				$prmbr_width = 'width:' . $prmbr_options['width_right'] . '%;';
 			}
+		}
+	}
+}
+
+/**
+ * Activation plugin function
+ */
+if ( ! function_exists( 'prmbr_plugin_activate' ) ) {
+	function prmbr_plugin_activate() {
+		/* Activation function for network, check if it is a network activation - if so, run the activation function for each blog id */
+		if ( is_multisite() ) {
+			switch_to_blog( 1 );
+			register_uninstall_hook( __FILE__, 'prmbr_plugin_uninstall' );
+			restore_current_blog();
+		} else {
+			register_uninstall_hook( __FILE__, 'prmbr_plugin_uninstall' );
 		}
 	}
 }
@@ -144,19 +166,19 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 	function prmbr_settings_page() {
 		global $wpdb, $prmbr_options, $prmbr_default_options, $prmbr_plugin_info, $wp_version;
-		$message = $error = "";		
+		$message = $error = "";
 		$plugin_basename = plugin_basename( __FILE__ );
 
 		/* Checking data before writing to the database */
 		if ( isset( $_POST['prmbr_save'] ) && check_admin_referer( $plugin_basename, 'prmbr_nonce_name' ) ) {
 			if ( isset( $_POST['prmbr_view'] ) ) {
-				$prmbr_options['view'] = $_POST['prmbr_view']; 
+				$prmbr_options['view'] = $_POST['prmbr_view'];
 			}
 			if ( isset( $_POST['prmbr_position'] ) ) {
 				$prmbr_options['position'] = $_POST['prmbr_position'];
 			}
 			/* add width if position is left */
-			if ( isset( $_POST['prmbr_width_left'] ) ) { 
+			if ( isset( $_POST['prmbr_width_left'] ) ) {
 				$prmbr_check_width_left = htmlspecialchars( $_POST['prmbr_width_left'] );
 				if ( preg_match( '/^([0-9]{1,3})$/i', $prmbr_check_width_left ) ) {
 					$prmbr_options['width_left'] = $prmbr_check_width_left;
@@ -206,45 +228,46 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 			$prmbr_options = $prmbr_default_options;
 			update_option( 'prmbr_options', $prmbr_options );
 			$message = __( 'All plugin settings were restored.', 'promobar' );
-		}		
+		}
 
 		/* GO PRO */
-		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {			
+		if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) {
 			$go_pro_result = bws_go_pro_tab_check( $plugin_basename, 'prmbr_options' );
-			if ( ! empty( $go_pro_result['error'] ) )
+			if ( ! empty( $go_pro_result['error'] ) ) {
 				$error = $go_pro_result['error'];
-			elseif ( ! empty( $go_pro_result['message'] ) )
+			} elseif ( ! empty( $go_pro_result['message'] ) ) {
 				$message = $go_pro_result['message'];
+			}
 		} ?>
 		<div class="wrap">
 			<h1>PromoBar <?php _e( 'Settings', 'promobar' ); ?></h1>
 			<h2 class="nav-tab-wrapper">
-				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php"> <?php _e( 'Settings', 'promobar' ); ?></a>
-				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) echo 'nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=extra"><?php _e( 'Extra Settings', 'promobar' ); ?></a>
-				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=custom_code"><?php _e( 'Custom code', 'promobar' ); ?></a>
-				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) echo ' nav-tab-active'; ?>" href="admin.php?page=promobar.php&amp;action=go_pro"><?php _e( 'Go PRO', 'promobar' ); ?></a>
+				<a class="nav-tab <?php if ( ! isset( $_GET['action'] ) ) { echo ' nav-tab-active'; } ?>" href="admin.php?page=promobar.php"> <?php _e( 'Settings', 'promobar' ); ?></a>
+				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'extra' == $_GET['action'] ) { echo 'nav-tab-active'; } ?>" href="admin.php?page=promobar.php&amp;action=extra"><?php _e( 'Extra Settings', 'promobar' ); ?></a>
+				<a class="nav-tab <?php if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] ) { echo ' nav-tab-active'; } ?>" href="admin.php?page=promobar.php&amp;action=custom_code"><?php _e( 'Custom code', 'promobar' ); ?></a>
+				<a class="nav-tab bws_go_pro_tab<?php if ( isset( $_GET['action'] ) && 'go_pro' == $_GET['action'] ) { echo ' nav-tab-active'; } ?>" href="admin.php?page=promobar.php&amp;action=go_pro"><?php _e( 'Go PRO', 'promobar' ); ?></a>
 			</h2>
 			<?php bws_show_settings_notice(); ?>
-			<div class="updated fade below-h2" <?php if ( $message == "" || "" != $error ) echo "style=\"display:none\""; ?>>
+			<div class="updated fade below-h2" <?php if ( empty( $message ) || ! empty( $error ) ) { echo "style=\"display:none\""; } ?>>
 				<p><strong><?php echo $message; ?></strong></p>
 			</div>
-			<div class="error below-h2" <?php if ( "" == $error ) echo "style=\"display:none\""; ?>>
+			<div class="error below-h2" <?php if ( empty( $error ) ) { echo "style=\"display:none\""; } ?>>
 				<p><strong><?php echo $error; ?></strong></p>
 			</div>
-			<?php if ( ! isset( $_GET['action'] ) ) { 
+			<?php if ( ! isset( $_GET['action'] ) ) {
 				if ( isset( $_REQUEST['bws_restore_default'] ) && check_admin_referer( $plugin_basename, 'bws_settings_nonce_name' ) ) {
 					bws_form_restore_default_confirm( $plugin_basename );
 				} else { ?>
 					<p><?php _e( 'If you would like to use this plugin on certain pages, please paste the following strings into the template source code', 'promobar' ); ?>: <span class="bws_code">&nbsp;&#60;?php do_action( 'prmbr_box' ); ?&#62;&nbsp;</span></p>
 					<div>
-						<?php printf( __( "If you would like to add PromoBar to your page or post, please use %s button", 'promobar' ), 
+						<?php printf( __( "If you would like to add PromoBar to your page or post, please use %s button", 'promobar' ),
 							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>'
 						);
-						echo bws_add_help_box( sprintf( 
+						echo bws_add_help_box( sprintf(
 							__( "You can add PromoBar to your page or post by clicking on %s button in the content edit block using the Visual mode. If the button isn't displayed, please use the shortcode %s.", 'promobar' ),
 							'<span class="bws_code"><span class="bwsicons bwsicons-shortcode"></span></span>',
 							'<code>[prmbr_shortcode]</code>'
-						) ); ?>					
+						) ); ?>
 					</div>
 					<form method="post" action="admin.php?page=promobar.php" name="prmbr_exceptions" class="bws_form">
 						<table class="form-table">
@@ -253,15 +276,15 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 								<td>
 									<fieldset>
 										<label for="prmbr_all_pages">
-											<input type="radio" id="prmbr_all_pages" name="prmbr_view" value="all_pages" <?php if ( $prmbr_options['view'] == 'all_pages' ) echo 'checked' ?> /> <?php _e( 'on all pages', 'promobar' ); ?>
+											<input type="radio" id="prmbr_all_pages" name="prmbr_view" value="all_pages" <?php checked( 'all_pages' == $prmbr_options['view'] ); ?> /> <?php _e( 'on all pages', 'promobar' ) ?>
 										</label>
 										<br />
 										<label for="prmbr_homepage">
-											<input type="radio" id="prmbr_homepage" name="prmbr_view" value="homepage" <?php if ( $prmbr_options['view'] == 'homepage' ) echo 'checked' ?> /> <?php _e( 'on the homepage', 'promobar' ); ?>
+											<input type="radio" id="prmbr_homepage" name="prmbr_view" value="homepage" <?php checked( 'homepage' == $prmbr_options['view'] ); ?> /> <?php _e( 'on the homepage', 'promobar' ) ?>
 										</label>
 										<br />
 										<label for="shortcode_or_function_for_view">
-											<input type="radio" id="shortcode_or_function_for_view" name="prmbr_view" value="shortcode_or_function_for_view" <?php if ( $prmbr_options['view'] == 'shortcode_or_function_for_view' ) echo 'checked' ?> /> <?php _e( 'display via shortcode or function only', 'promobar' ); ?>
+											<input type="radio" id="shortcode_or_function_for_view" name="prmbr_view" value="shortcode_or_function_for_view" <?php checked( 'shortcode_or_function_for_view' == $prmbr_options['view'] ); ?> /> <?php _e( 'display via shortcode or function only', 'promobar' ); ?>
 										</label>
 									</fieldset>
 								</td>
@@ -270,32 +293,28 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 								<th scope="row"><?php _e( 'Position', 'promobar' ); ?></th>
 								<td>
 									<fieldset>
-										<label for="prmbr_position1">
-											<input type="radio" id="prmbr_position1" name="prmbr_position" value="top" <?php if ( $prmbr_options['position'] == 'top' ) echo 'checked' ?> /> <?php _e( 'Top', 'promobar' ); ?>
+										<label>
+											<input type="radio" name="prmbr_position" value="top" <?php checked( 'top' == $prmbr_options['position'] ); ?> /> <?php _e( 'Top', 'promobar' ); ?>
 										</label>
 										<br />
-										<label for="prmbr_position2">
-											<input type="radio" id="prmbr_position2" name="prmbr_position" value="bottom" <?php if ( $prmbr_options['position'] == 'bottom' ) echo 'checked' ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
+										<label>
+											<input type="radio" name="prmbr_position" value="bottom" <?php checked( 'bottom' == $prmbr_options['position'] ); ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
 										</label>
 										<br />
-										<label for="prmbr_position3">
-											<input type="radio" id="prmbr_position3" name="prmbr_position" value="left" <?php if ( $prmbr_options['position'] == 'left' ) echo 'checked' ?> /> <?php _e( 'Left', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;
-										</label>
-										<span class="bws_info">
-											&nbsp;&nbsp;&nbsp;<?php _e( 'width', 'promobar' ); ?>
-										</span>
-										<label for="prmbr_width_position3" >
-											<input type="text" id="prmbr_width_position3" class="small-text <?php if ( $prmbr_options['position'] != 'left') echo 'prmbr_width_disabled';?>" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
+										<label>
+											<input type="radio" name="prmbr_position" value="left" <?php checked( 'left' == $prmbr_options['position'] ); ?> /> <?php _e( 'Left', 'promobar' ); ?>
+											<span class="bws_info">
+												&emsp;<?php _e( 'width', 'promobar' ); ?>
+												<input type="text" class="small-text" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
+											</span>
 										</label>
 										<br />
-										<label for="prmbr_position4">
-											<input type="radio" id="prmbr_position4" name="prmbr_position" value="right" <?php if ( $prmbr_options['position'] == 'right' ) echo 'checked' ?> /> <?php _e( 'Right', 'promobar' ); ?>&nbsp;&nbsp;&nbsp;&nbsp;
-										</label>
-										<span class="bws_info">
-											<?php _e( 'width', 'promobar' ); ?>
-										</span>
-										<label for="prmbr_width_position4">
-											<input type="text" id="prmbr_width_position4" class="small-text <?php if ( $prmbr_options['position'] != 'right') echo 'prmbr_width_disabled'; ?>" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
+										<label>
+											<input type="radio" name="prmbr_position" value="right" <?php checked( 'right' == $prmbr_options['position'] ); ?> /> <?php _e( 'Right', 'promobar' ); ?>
+											<span class="bws_info">
+												&emsp;<?php _e( 'width', 'promobar' ); ?>
+												<input type="text" class="small-text" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
+											</span>
 										</label>
 									</fieldset>
 								</td>
@@ -318,7 +337,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 								</tr>
 								<tr>
 								<th scope="row"><?php _e( 'HTML', 'promobar' ); ?></th>
-								<td class="prmbr_give_notice"> 
+								<td class="prmbr_give_notice">
 									<?php wp_editor( $prmbr_options['html'], "prmbr_html", array(
 										'teeny'			=> true,
 										'media_buttons' => true,
@@ -332,18 +351,18 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 						<p class="submit">
 							<input id="bws-submit-button" type="submit" class="button-primary" name="prmbr_save" value="<?php _e( 'Save Changes', 'promobar' ); ?>" />
 							<?php wp_nonce_field( $plugin_basename, 'prmbr_nonce_name' ); ?>
-						</p>					
+						</p>
 					</form>
-					<?php bws_form_restore_default_settings( $plugin_basename );					
+					<?php bws_form_restore_default_settings( $plugin_basename );
 				}
-			} else if ( 'extra' == $_GET['action'] ) { ?>
+			} elseif ( 'extra' == $_GET['action'] ) { ?>
 				<div class="bws_pro_version_bloc">
 					<div class="bws_pro_version_table_bloc">
 						<div class="bws_table_bg"></div>
 						<table class="form-table bws_pro_version">
 							<tr valign="top">
 								<td colspan="2">
-									<p><?php _e( 'Please choose the necessary post types (or single pages) PromoBar will be displayed with', 'promobar' ); ?>: </p>
+									<p><?php _e( 'Please choose the necessary post types (or single pages) where you would like to display PromoBar', 'promobar' ); ?>: </p>
 								</td>
 							</tr>
 							<tr valign="top">
@@ -394,13 +413,13 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 	function add_prmbr_function() {
 		global $wpdb, $prmbr_options, $post, $prmbr_width;
 		/* Check the appropriate conditions for the show PromoBar block */
-		if ( $prmbr_options['view'] == 'all_pages' || ( $prmbr_options['view'] == 'homepage' && ( is_home() || is_front_page() ) ) ) {	
+		if ( 'all_pages' == $prmbr_options['view'] || ( 'homepage' == $prmbr_options['view'] && ( is_home() || is_front_page() ) ) ) {
 			/* Add styles in some settings where there is no JS */
-			if ( $prmbr_options['position'] == 'left' || $prmbr_options['position'] == 'right' ) {
+			if ( 'left' == $prmbr_options['position'] || 'right' == $prmbr_options['position'] ) {
 				$prmbr_options['position'] .= ' prmbr_no_js';
 			}
 			/* Define a variable in a block to display*/
-			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main prmbr_' . $prmbr_options['position'] . '">' . prmbr_content() . '</div>'; 		
+			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main prmbr_' . $prmbr_options['position'] . '">' . prmbr_content() . '</div>';
 			echo $main_position;
 
 			prmbr_scripts();
@@ -456,16 +475,17 @@ if ( ! function_exists ( 'prmbr_content' ) ) {
 		/* insteed 'the_content' filter we use its functions to compability with Multilanguage and social buttons */
 		/* Hack to get the [embed] shortcode to run before wpautop() */
 		require_once( ABSPATH . WPINC . '/class-wp-embed.php' );
-		$wp_embed = new WP_Embed();		
+		$wp_embed = new WP_Embed();
 		$html = $wp_embed->run_shortcode( $html );
 		$html = $wp_embed->autoembed( $html );
 
 		$html = wptexturize( $html );
-		$html = convert_smilies( $html );	
+		$html = convert_smilies( $html );
 		$html = wpautop( $html );
 		$html = shortcode_unautop( $html );
-		if ( function_exists( 'wp_make_content_images_responsive' ) )
-			$html = wp_make_content_images_responsive( $html );		
+		if ( function_exists( 'wp_make_content_images_responsive' ) ) {
+			$html = wp_make_content_images_responsive( $html );
+		}
 
 		$html = do_shortcode( $html ); /* AFTER wpautop() */
 
@@ -488,7 +508,7 @@ if ( ! function_exists ( 'prmbr_enqueue_admin_part' ) ) {
 			if ( isset( $_GET['action'] ) && 'custom_code' == $_GET['action'] ) {
 				bws_plugins_include_codemirror();
 			}
-		}	
+		}
 	}
 }
 
@@ -497,7 +517,7 @@ if ( ! function_exists ( 'prmbr_enqueue_admin_part' ) ) {
 * @return void
 */
 if ( ! function_exists ( 'prmbr_scripts' ) ) {
-	function prmbr_scripts() {		
+	function prmbr_scripts() {
 		/* Add style */
 		wp_enqueue_style( 'prmbr_styles', plugins_url( 'css/frontend_style.css', __FILE__ ) );
 		/* Add scripts */
@@ -513,8 +533,9 @@ if ( ! function_exists( 'prmbr_register_plugin_links' ) ) {
 	function prmbr_register_plugin_links( $links, $file ) {
 		$base = plugin_basename( __FILE__ );
 		if ( $file == $base ) {
-			if ( ! is_network_admin() )
-				$links[]    =    '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
+			if ( ! is_network_admin() ) {
+				$links[] = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
+			}
 			$links[]    =    '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200935775" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
 			$links[]    =    '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
 		}
@@ -545,7 +566,9 @@ if ( ! function_exists( 'prmbr_plugin_action_links' ) ) {
 		if ( ! is_network_admin() ) {
 			/* Static so we don't call plugin_basename on every plugin row. */
 			static $this_plugin;
-			if ( ! $this_plugin ) $this_plugin = plugin_basename( __FILE__ );
+			if ( ! $this_plugin ) {
+				$this_plugin = plugin_basename( __FILE__ );
+			}
 			if ( $file == $this_plugin ) {
 				$settings_link = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
 				array_unshift( $links, $settings_link );
@@ -559,11 +582,13 @@ if ( ! function_exists ( 'prmbr_plugin_banner' ) ) {
 	function prmbr_plugin_banner() {
 		global $hook_suffix, $prmbr_plugin_info, $prmbr_options;
 		if ( 'plugins.php' == $hook_suffix ) {
-			if ( empty( $prmbr_options ) )
+			if ( empty( $prmbr_options ) ) {
 				$prmbr_options = get_option( 'prmbr_options' );
-			if ( isset( $prmbr_options['first_install'] ) && strtotime( '-1 week' ) > $prmbr_options['first_install'] )
+			}
+			if ( isset( $prmbr_options['first_install'] ) && strtotime( '-1 week' ) > $prmbr_options['first_install'] ) {
 				bws_plugin_banner( $prmbr_plugin_info, 'prmbr', 'promobar', 'e5cf3af473cbbd5e21b53f512bac8570', '196', '//ps.w.org/promobar/assets/icon-128x128.png' );
-			
+			}
+
 			bws_plugin_banner_to_settings( $prmbr_plugin_info, 'prmbr_options', 'promobar', 'admin.php?page=promobar.php' );
 		}
 		if ( isset( $_GET['page'] ) && 'promobar.php' == $_GET['page'] ) {
@@ -581,8 +606,9 @@ if ( ! function_exists( 'prmbr_plugin_uninstall' ) ) {
 	function prmbr_plugin_uninstall() {
 		global $wpdb;
 
-		if ( ! function_exists( 'get_plugins' ) )
+		if ( ! function_exists( 'get_plugins' ) ) {
 			require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
 		$all_plugins = get_plugins();
 
 		if ( ! array_key_exists( 'promobar-pro/promobar-pro.php', $all_plugins ) ) {
@@ -606,6 +632,7 @@ if ( ! function_exists( 'prmbr_plugin_uninstall' ) ) {
 	}
 }
 
+register_activation_hook( __FILE__, 'prmbr_plugin_activate' );
 /* Activate PromoBar settings page in admin menu. */
 add_action( 'admin_menu', 'add_prmbr_admin_menu' );
 /* Initialize plugin. */
@@ -620,14 +647,9 @@ add_filter( 'widget_text', 'do_shortcode' );
 /* custom filter for bws button in tinyMCE */
 add_filter( 'bws_shortcode_button_content', 'prmbr_shortcode_button_content' );
 /* Add PromoBar by using spesial function do_action('prmbr_box'); */
-add_action( 'prmbr_box', 'prmbr_by_using_function' ); 
-
+add_action( 'prmbr_box', 'prmbr_by_using_function' );
 add_action( 'admin_enqueue_scripts', 'prmbr_enqueue_admin_part' );
-
 /* Additional links on the plugin page */
 add_filter( 'plugin_action_links', 'prmbr_plugin_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'prmbr_register_plugin_links', 10, 2 );
-
 add_action( 'admin_notices', 'prmbr_plugin_banner' );
-/* Uninstall plugin. Drop tables, delete options. */
-register_uninstall_hook( __FILE__, 'prmbr_plugin_uninstall' );

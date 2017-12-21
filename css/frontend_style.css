@@ -1,4 +1,7 @@
 /* styles for settings page */
+.prmbr_block {
+	padding: 10px;
+}
 .prmbr_main {
 	position: absolute;
 	z-index: 9999;
@@ -7,9 +10,9 @@
 	word-wrap: break-word;
 }
 /* add when position top */
-.prmbr_top {	
+.prmbr_top {
 	top: 0;
-	left: 0;		
+	left: 0;
 	width: 100%;
 	height: auto;
 }
@@ -52,7 +55,7 @@ body.logged-in .prmbr_top {
 }
 .prmbr_for_sidebar_background {
 	position: relative!important;
-	top: 0!important;	
+	top: 0!important;
 }
 .prmbr_add_background {
 	position: absolute;
@@ -62,15 +65,5 @@ body.logged-in .prmbr_top {
 @media screen and (min-width: 59.6875em) {
 	.prmbr_add_background {
 		background-color: #fff;
-	}
-}
-/*for correct work Theme 2014 */
-@media screen and (min-width: 783px) {
-	body.twentyfourteen_fix_head.masthead-fixed .prmbr_main {
-		z-index: 3;
-		top: 80px !important;
-	}
-	body.twentyfourteen_fix_head.masthead-fixed .site {
-   		top: 48px;
 	}
 }
