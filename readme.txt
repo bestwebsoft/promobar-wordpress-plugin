@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add custom banner, banner, custom banner, promobar, promobar plugin, demo header, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 3.9
-Tested up to: 4.9.1
-Stable tag: 1.1.3
+Tested up to: 4.9.2
+Stable tag: 1.1.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,11 +24,14 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 	* All pages
 	* Home page
 	* Via shortcode
-* Choose position:
-	* Top
-	* Bottom
-	* Left
-	* Right
+* Choose banner position for different resolutions:
+	* Desktop 
+	* Tablet [NEW]
+	* Mobile [NEW]
+		* Top [NEW]
+		* Bottom [NEW]
+		* Left [NEW]
+		* Right [NEW]
 * Select background and text color
 * Create your banner using TinyMCE editor
 * Add custom code via plugin settings page
@@ -106,6 +109,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.1.4 - 01.02.2018 =
+* NEW : Ability to choose promobar position for different screen resolutions has been added.
+* Update : All functionality for WordPress 4.9.2 has been updated.
+
 = V1.1.3 - 21.12.2017 =
 * Update : All functionality for WordPress 4.9.1 has been updated.
 * Bugfix : The bug with PromoBar's height on the left and right sides of the screen has been fixed.
@@ -155,6 +162,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.4 =
+* Ability to choose promobar position for different screen resolutions has been added.
 
 = V1.1.3 =
 * The compatibility with new WordPress version updated.

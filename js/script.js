@@ -1,81 +1,65 @@
 ( function( $ ) {
 	$( window ).load( function() {
+		var promo_block = $( '.prmbr_main' );
+
 		$( window ).resize( function() {
-			if ( $( '.prmbr_main' ).length > 0 ) {
-				/* remove the class for case of lack of js */
-				$( '.prmbr_main' ).removeClass( 'prmbr_no_js' );
+			/* remove the class for case of lack of js */
+			promo_block.removeClass( 'prmbr_no_js' );
 
-				var is_twentyfourteen = $( '#twentyfourteen-style-css' ).length;
-				var is_twentyfifteen = $( '#twentyfifteen-style-css' ).length;
+			var window_width = window.innerWidth;
+			if ( promo_block.length ) {
+				promo_block.each( function() {
+				/* check using the date attributes of the location of the promobar. */
+					/* if the prombar is located at the top, then add margin-top for <body> */
+					var height_margin_top;
+					var desktop = promo_block.data( 'prmbr-position_desktop' );
+					var tablet = promo_block.data( 'prmbr-position_tablet' );
+					var mobile = promo_block.data( 'prmbr-position_mobile' );
+					var all_resolutions = [ desktop, tablet, mobile ];
 
-				/* for theme 2014 */
-				if ( 0 != is_twentyfourteen ) {
-					/* when promobar is located in the top or bottom of the page it can fall out of the page. fixed in this way */
-					if ( $( '.prmbr_block' ).hasClass( 'prmbr_top' ) || $( '.prmbr_block' ).hasClass( 'prmbr_bottom' ) ) {
-						$( '.prmbr_top' ).width( $( '#main' ).width() );
-						$( '.prmbr_bottom' ).width( $( '#main' ).width() );
-					}
-
-					/* adding correct margins to avoid overlapping of the menu, promobar and main content */
-					if ( $( '.prmbr_block' ).hasClass( 'prmbr_top' ) ) {
-						$( '.prmbr_top' ).offset( { top: $( '#wpadminbar' ).outerHeight( true ) + $( '.header-main' ).outerHeight( true ) } );
-						$( '.prmbr_top' ).css( 'z-index', '3' );
-						$( '#secondary' ).offset( { top: $( '#wpadminbar' ).outerHeight( true ) + $( '.header-main' ).outerHeight( true ) + $( '#search-container' ).outerHeight( true ) } );
-					}
-				}
-
-				if ( $( '.prmbr_main' ).hasClass( 'prmbr_top' ) ) {
-					var height_prmbr_main = $( '.prmbr_main' ).css( 'height' );
-
-					/* shift the main content of a site if its location is top of the site and add padding if there adminpanel */
-					$( 'body' ).css( { 'margin-top': height_prmbr_main } );
-
-					/*for theme 2015 */
-					if ( 0 != is_twentyfifteen ) {
-						$( '#sidebar' ).addClass( 'prmbr_for_sidebar_background' );
-					}
-				} else if ( $( '.prmbr_main' ).hasClass( 'prmbr_left' ) || $( '.prmbr_main' ).hasClass( 'prmbr_right' ) ) {
-					/* checks whether there is an adminpanel */
-					var admin_element = $( '#wpadminbar' ).outerHeight( true );
-
-					var width_prmbr_main = parseInt( $( '.prmbr_main' ).css( 'width' ) );
-
-					if ( $( '.prmbr_main' ).hasClass( 'prmbr_left' ) ) {
-						$( 'body' ).css( { 'margin-left': width_prmbr_main } );
-					} else {
-						$( 'body' ).css( { 'margin-right': width_prmbr_main } );
-					}
-
-					if ( 0 != is_twentyfourteen ) {
-						var height_prmbr_main = $( document ).outerHeight( true ) - admin_element;
-					} else {
-						var height_prmbr_main = $( document ).outerHeight( true );
-					}
-
-					$( '.prmbr_main' ).css( { 'height': height_prmbr_main } );
-
-					/* add padding if there adminpanel */
-					if ( admin_element > 0 ) {
-						$( '.prmbr_main' ).css( { 'padding-top': ( admin_element + 10 ) + 'px' } );
-					}
-
-					/*for theme 2015 */
-					if ( 0 != is_twentyfifteen ) {
-						var height_prmbr_main = $( 'html' ).outerHeight( true );
-						var width_body = parseInt( $( 'body' ).css( 'width' ) );
-						var width_page = parseInt( $( '.site' ).css( 'width' ) );
-						var add_to_width_sidebar = ( width_body - width_page ) / 2;
-						var width_sidebar = parseInt( $( '#sidebar' ).css( 'width' ) );
-						var resalt_sidebar = width_sidebar + add_to_width_sidebar;
-						$( '#sidebar' ).addClass( 'prmbr_for_sidebar_background' );
-						$( 'body' ).addClass( 'prmbr_for_sidebar' );
-						if ( $( '.prmbr_add_background' ).length < 1 ) {
-							$( '<div class="prmbr_add_background"></div>' ).prependTo( $( 'body' ) );
+					if ( $.inArray( 'top', all_resolutions ) != -1 ) {
+						if ( 
+							( 'top' == desktop && window_width > 768 ) ||
+							( 'top' == tablet && window_width < 769 && window_width > 425 ) ||
+							( 'top' == mobile && window_width < 426 )
+						) {
+							height_margin_top = promo_block.css( 'height' );
+						} else {
+							height_margin_top = '';
 						}
-						$( '.prmbr_add_background' ).css( { 'width': resalt_sidebar, 'height': height_prmbr_main } );
+						$( 'body' ).css( { 'margin-top': height_margin_top } );
 					}
-				}
+
+					/* if the prombar is located on the left or on the right, then add height for the promobar */
+					if ( $.inArray( 'side', all_resolutions ) != -1 ) {
+
+						var height_prmbr_main;
+						var page_height = $( 'body' ).css( 'height' );
+						if (
+							( 'side' == desktop && window_width > 768) ||
+							( 'side' == tablet && window_width < 769 && window_width > 425)	||
+							( 'side' == mobile && window_width < 426)
+						) {
+							height_prmbr_main = page_height;
+						} else {
+							height_prmbr_main = '';
+						}
+						promo_block.css( { 'height': height_prmbr_main } );
+					}
+
+					/*for theme 2015 */
+					var is_twentyfifteen = $( '#twentyfifteen-style-css' ).length;
+					if ( is_twentyfifteen && 'side' == desktop && window_width > 768 ) {
+						var width_before = $( '.site-content' ).css( 'margin-left' );
+						$( '<style>@media screen and (min-width: 59.6875em) { body:before { width:' + width_before + '; left: auto; } }</style>' ).appendTo( 'head' );
+					}
+				} );
 			}
 		} ).trigger( 'resize' );
 	} );
 })( jQuery );
+
+
+
+
+

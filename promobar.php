@@ -6,26 +6,28 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.3
+Version: 1.1.4
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
 /*  @ Copyright 2017  BestWebSoft  ( https://support.bestwebsoft.com )
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as
-    published by the Free Software Foundation.
+	This program is free software; you can redistribute it and/or modify
+	it under the terms of the GNU General Public License, version 2, as
+	published by the Free Software Foundation.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+	GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+	You should have received a copy of the GNU General Public License
+	along with this program; if not, write to the Free Software
+	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
+
+require_once( dirname( __FILE__ ) . '/includes/deprecated.php' );
 /**
 * Add Wordpress page 'bws_panel' and sub-page of this plugin to admin-panel.
 * @return void
@@ -67,7 +69,7 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 			$prmbr_plugin_info = get_plugin_data( __FILE__ );
 		}
 
-		/* Function check if plugin is compatible with current WP version  */
+		/* Function check if plugin is compatible with current WP version */
 		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '3.9' );
 
 		/* Get/Register and check settings for plugin */
@@ -89,21 +91,38 @@ if ( ! function_exists( 'prmbr_admin_init' ) ) {
 			$bws_plugin_info = array( 'id' => '196', 'version' => $prmbr_plugin_info["Version"] );
 		}
 
-		/* add PromoBar to global $bws_shortcode_list  */
+		/* add PromoBar to global $bws_shortcode_list */
 		$bws_shortcode_list['prmbr'] = array( 'name' => 'PromoBar' );
 	}
 }
 
 if ( ! function_exists ( 'prmbr_default_options' ) ) {
 	function prmbr_default_options() {
-		global $prmbr_options, $prmbr_plugin_info, $prmbr_default_options, $prmbr_width;
+		global $prmbr_options, $prmbr_plugin_info, $prmbr_default_options;
 
 		/* default values */
 		$prmbr_default_options = array(
 			'view'						=> 'all_pages',
-			'position'					=> 'top',
-			'width_left'				=> '10',
-			'width_right'				=> '10',
+			'position_desktop'			=> 'top',
+			'position_tablet'			=> 'top',
+			'position_mobile'			=> 'top',
+			/* settings positions */
+			/* desktop */
+			'width_left_desktop'		=> '10',
+			'unit_left_desktop'			=> '%',
+			'width_right_desktop'		=> '10',
+			'unit_right_desktop'		=> '%',
+			/* tablet */
+			'width_left_tablet'			=> '10',
+			'unit_left_tablet'			=> '%',
+			'width_right_tablet'		=> '10',
+			'unit_right_tablet'			=> '%',
+			/* mobile */
+			'width_left_mobile'			=> '10',
+			'unit_left_mobile'			=> '%',
+			'width_right_mobile'		=> '10',
+			'unit_right_mobile'			=> '%',
+
 			'background_color_field'	=> '#c4e9ff',
 			'text_color_field'			=> '#4c4c4c',
 			'html'						=> '',
@@ -123,22 +142,20 @@ if ( ! function_exists ( 'prmbr_default_options' ) ) {
 		if ( ! isset( $prmbr_options['plugin_option_version'] ) || $prmbr_options['plugin_option_version'] != $prmbr_plugin_info["Version"] ) {
 
 			prmbr_plugin_activate();
+
+			/**
+			 * @deprecated since 1.1.4
+			 * @todo remove after 01.07.2018
+			 */
+			prmbr_old_options();
+			/* end deprecated */
+
 			/* show pro features */
 			$prmbr_options['hide_premium_options'] = array();
 
 			$prmbr_options = array_merge( $prmbr_default_options, $prmbr_options );
 			$prmbr_options['plugin_option_version'] = $prmbr_plugin_info["Version"];
 			update_option( 'prmbr_options', $prmbr_options );
-		}
-
-		/* Get options from the database */
-		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) ) {
-			/* Get/Register and check settings for plugin */
-			if ( 'left' == $prmbr_options['position'] ) {
-				$prmbr_width = 'width:' . $prmbr_options['width_left'] . '%;';
-			} elseif ( 'right' == $prmbr_options['position'] ) {
-				$prmbr_width = 'width:' . $prmbr_options['width_right'] . '%;';
-			}
 		}
 	}
 }
@@ -165,35 +182,41 @@ if ( ! function_exists( 'prmbr_plugin_activate' ) ) {
  */
 if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 	function prmbr_settings_page() {
-		global $wpdb, $prmbr_options, $prmbr_default_options, $prmbr_plugin_info, $wp_version;
+		global $prmbr_options, $prmbr_default_options, $prmbr_plugin_info, $wp_version;
 		$message = $error = "";
 		$plugin_basename = plugin_basename( __FILE__ );
 
 		/* Checking data before writing to the database */
 		if ( isset( $_POST['prmbr_save'] ) && check_admin_referer( $plugin_basename, 'prmbr_nonce_name' ) ) {
-			if ( isset( $_POST['prmbr_view'] ) ) {
-				$prmbr_options['view'] = $_POST['prmbr_view'];
-			}
-			if ( isset( $_POST['prmbr_position'] ) ) {
-				$prmbr_options['position'] = $_POST['prmbr_position'];
-			}
-			/* add width if position is left */
-			if ( isset( $_POST['prmbr_width_left'] ) ) {
-				$prmbr_check_width_left = htmlspecialchars( $_POST['prmbr_width_left'] );
-				if ( preg_match( '/^([0-9]{1,3})$/i', $prmbr_check_width_left ) ) {
-					$prmbr_options['width_left'] = $prmbr_check_width_left;
-				} else {
-					$error .= '&nbsp;' . __( 'Please enter the correct value in the Width field.', 'promobar' );
-				}
-			}
 
-			/* add width if position is right */
-			if ( isset( $_POST['prmbr_width_right'] ) ) {
-				$prmbr_check_width_right = htmlspecialchars( $_POST['prmbr_width_right'] );
-				if ( preg_match( '/^([0-9]{1,3})$/i', $prmbr_check_width_right ) ) {
-					$prmbr_options['width_right'] = $prmbr_check_width_right;
-				} else {
-					$error .= '&nbsp;' . __( 'Please enter the correct value in the Width field.', 'promobar' );
+			$prmbr_options['view'] = (
+				isset( $_POST['prmbr_view'] ) &&
+				in_array( $_POST['prmbr_view'], array( 'all_pages', 'homepage', 'shortcode_or_function_for_view' ) )
+			) ? $_POST['prmbr_view'] : 'all_pages';
+
+			foreach ( array( 'desktop', 'tablet', 'mobile' ) as $position ) {
+				$prmbr_options['position_' . $position] = (
+					isset( $_POST['prmbr_position_' . $position] ) &&
+					in_array( $_POST['prmbr_position_' . $position], array( 'top', 'bottom', 'right', 'left', 'none' ) )
+				) ? $_POST['prmbr_position_' . $position] : 'top';
+
+				/* Check the filling of the width units field. Add width fields */
+				$prmbr_options['unit_left_' . $position] = ( 'px' == $_POST['prmbr_unit_left_' . $position] ) ? 'px' : '%';
+				if ( isset( $_POST['prmbr_width_left_' . $position] ) ) {
+					if ( 'px' == $prmbr_options['unit_left_' . $position] ) {
+						$prmbr_options['width_left_' . $position] = absint( $_POST['prmbr_width_left_' . $position] );
+					} else {
+						$prmbr_options['width_left_' . $position] = absint ( $_POST['prmbr_width_left_' . $position] ) < 100 ? absint( $_POST['prmbr_width_left_' . $position] ) : 100;
+					}
+				}
+
+				$prmbr_options['unit_right_' . $position] = ( 'px' == $_POST['prmbr_unit_right_' . $position] ) ? 'px' : '%';
+				if ( isset( $_POST['prmbr_width_right_' . $position] ) ) {
+					if ( 'px' == $prmbr_options['unit_right_' . $position] ) {
+						$prmbr_options['width_right_' . $position] = absint( $_POST['prmbr_width_right_' . $position] );
+					} else {
+						$prmbr_options['width_right_' . $position] = absint( $_POST['prmbr_width_right_' . $position] ) < 100 ? absint( $_POST['prmbr_width_right_' . $position] ) : 100;
+					}
 				}
 			}
 
@@ -238,7 +261,8 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 			} elseif ( ! empty( $go_pro_result['message'] ) ) {
 				$message = $go_pro_result['message'];
 			}
-		} ?>
+		}
+		?>
 		<div class="wrap">
 			<h1>PromoBar <?php _e( 'Settings', 'promobar' ); ?></h1>
 			<h2 class="nav-tab-wrapper">
@@ -292,31 +316,49 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 							<tr>
 								<th scope="row"><?php _e( 'Position', 'promobar' ); ?></th>
 								<td>
-									<fieldset>
-										<label>
-											<input type="radio" name="prmbr_position" value="top" <?php checked( 'top' == $prmbr_options['position'] ); ?> /> <?php _e( 'Top', 'promobar' ); ?>
-										</label>
-										<br />
-										<label>
-											<input type="radio" name="prmbr_position" value="bottom" <?php checked( 'bottom' == $prmbr_options['position'] ); ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
-										</label>
-										<br />
-										<label>
-											<input type="radio" name="prmbr_position" value="left" <?php checked( 'left' == $prmbr_options['position'] ); ?> /> <?php _e( 'Left', 'promobar' ); ?>
-											<span class="bws_info">
-												&emsp;<?php _e( 'width', 'promobar' ); ?>
-												<input type="text" class="small-text" name="prmbr_width_left" value="<?php echo $prmbr_options['width_left'];?>" />%
-											</span>
-										</label>
-										<br />
-										<label>
-											<input type="radio" name="prmbr_position" value="right" <?php checked( 'right' == $prmbr_options['position'] ); ?> /> <?php _e( 'Right', 'promobar' ); ?>
-											<span class="bws_info">
-												&emsp;<?php _e( 'width', 'promobar' ); ?>
-												<input type="text" class="small-text" name="prmbr_width_right" value="<?php echo $prmbr_options['width_right']; ?>" />%
-											</span>
-										</label>
-									</fieldset>
+									<?php foreach ( array( 'desktop' => __( 'Desktop', 'promobar' ), 'tablet' => __( 'Tablet', 'promobar' ), 'mobile' => __( 'Mobile', 'promobar' ) ) as $position => $position_name ) { ?>
+										<div class="prmbr_position_column">
+											<p><strong><?php echo $position_name; ?></strong></p>
+											<br>
+											<fieldset class="prmbr_position_cell">
+												<label>
+													<input type="radio" class="prmbr_option_affect" name="prmbr_position_<?php echo $position; ?>" value="top" <?php checked( 'top' == $prmbr_options['position_' . $position] ); ?> /> <?php _e( 'Top', 'promobar' ); ?>
+												</label>
+												<label>
+													<input type="radio" class="prmbr_option_affect" name="prmbr_position_<?php echo $position; ?>" value="bottom" <?php checked( 'bottom' == $prmbr_options['position_' . $position] ); ?> /> <?php _e( 'Bottom', 'promobar' ); ?>
+												</label>
+												<label>
+													<input type="radio" class="prmbr_option_affect" data-affect-show=".prmbr_left_options_<?php echo $position; ?>" name="prmbr_position_<?php echo $position; ?>" value="left" <?php checked( 'left' == $prmbr_options['position_' . $position] ); ?> /> <?php _e( 'Left', 'promobar' ); ?>
+													<div class="prmbr_left_options_<?php echo $position; ?> prmbr_emerging_options">
+														<span class="bws_info">
+															<?php _e( 'width', 'promobar' ); ?>
+														</span>
+														<input id="width_left_<?php echo $position; ?>" type="number" min="1" class="small-text" name="prmbr_width_left_<?php echo $position; ?>" value="<?php echo $prmbr_options['width_left_' . $position]; ?>" />
+														<select name="prmbr_unit_left_<?php echo $position; ?>">
+															<option value="px" <?php if ( 'px' == $prmbr_options['unit_left_' . $position] ) echo 'selected'; ?>><?php _e( 'px', 'promobar' ); ?></option>
+															<option value="%" <?php if ( '%' == $prmbr_options['unit_left_' . $position] ) echo 'selected'; ?>>%</option>
+														</select>
+													</div>
+												</label>
+												<label>
+													<input type="radio" class="prmbr_option_affect" data-affect-show=".prmbr_right_options_<?php echo $position; ?>" name="prmbr_position_<?php echo $position; ?>" value="right" <?php checked( 'right' == $prmbr_options['position_' . $position] ); ?> /> <?php _e( 'Right', 'promobar' ); ?>
+													<div class="prmbr_right_options_<?php echo $position; ?> prmbr_emerging_options">
+														<span class="bws_info">
+															<?php _e( 'width', 'promobar' ); ?>
+														</span>
+														<input id="width_right_<?php echo $position; ?>" type="number" min="1" class="small-text" name="prmbr_width_right_<?php echo $position; ?>" value="<?php echo $prmbr_options['width_right_' . $position]; ?>" />
+														<select name="prmbr_unit_right_<?php echo $position; ?>">
+															<option value="px" <?php if ( 'px' == $prmbr_options['unit_right_' . $position] ) echo 'selected'; ?>><?php _e( 'px', 'promobar' ); ?></option>
+															<option value="%" <?php if ( '%' == $prmbr_options['unit_right_' . $position] ) echo 'selected'; ?>>%</option>
+														</select>
+													</div>
+												</label>
+												<label>
+													<input type="radio" class="prmbr_option_affect" name="prmbr_position_<?php echo $position; ?>" value="none" <?php checked( 'none' == $prmbr_options['position_' . $position] ); ?> /> <?php _e( 'None', 'promobar' ); ?>
+												</label>
+											</fieldset>
+										</div>
+									<?php } ?>
 								</td>
 							</tr>
 							<tr>
@@ -407,39 +449,168 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 
 /**
 * Show PromoBar block when "Display PromoBar" in settings is "on all pages", "on the homepage"
-* @return $main_position
 */
 if ( ! function_exists ( 'add_prmbr_function' ) ) {
 	function add_prmbr_function() {
-		global $wpdb, $prmbr_options, $post, $prmbr_width;
+		global $prmbr_options;
+
 		/* Check the appropriate conditions for the show PromoBar block */
 		if ( 'all_pages' == $prmbr_options['view'] || ( 'homepage' == $prmbr_options['view'] && ( is_home() || is_front_page() ) ) ) {
-			/* Add styles in some settings where there is no JS */
-			if ( 'left' == $prmbr_options['position'] || 'right' == $prmbr_options['position'] ) {
-				$prmbr_options['position'] .= ' prmbr_no_js';
-			}
-			/* Define a variable in a block to display*/
-			$main_position = '<div style="' . $prmbr_width . 'color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block prmbr_main prmbr_' . $prmbr_options['position'] . '">' . prmbr_content() . '</div>';
-			echo $main_position;
 
-			prmbr_scripts();
+			if ( ! empty( $prmbr_options['html'] ) ) {
+				/**
+				 * Check which positions are set for resolutions. If positions are 'top', 'left' or 'right', then recording in the data-attributes.
+				 * Positions left and right are saved as 'side'.
+				 */
+				$data_attr = '';
+				$positions = array( 'desktop', 'tablet', 'mobile' );
+				foreach ( $positions as $position ) {
+					if ( 'left' == $prmbr_options['position_' . $position] || 'right' == $prmbr_options['position_' . $position] ) {
+						$data_attr .= ' data-prmbr-position_' . $position . '="side"';
+					} elseif ( 'top' == $prmbr_options['position_' . $position] ) {
+						$data_attr .= ' data-prmbr-position_' . $position . '="' . $prmbr_options['position_' . $position] . '"';
+					}
+				}
+
+				/* Getting a theme name for adding styles to a specific theme */
+				$name_theme = get_stylesheet(); ?>
+
+				<!-- Create the stylesheet and promobar-block to display in the frontend -->
+				<style type="text/css">
+					.prmbr_main {
+						color: <?php echo $prmbr_options['text_color_field']; ?>;
+						background: <?php echo $prmbr_options['background_color_field']; ?>;
+						<?php if ( 'twentytwelve' == $name_theme || 'twentyfourteen' == $name_theme ) {
+							echo 'box-sizing: border-box;';
+						} ?>
+					}
+					@media screen and (min-width: 769px) {
+						<?php if( 'left' == $prmbr_options['position_desktop'] ) {
+							echo 'body { margin-left: ' . prmbr_checking_indentation( 'desktop' ) . ' }';
+						} elseif ( 'right' == $prmbr_options['position_desktop'] ) {
+							echo 'body { margin-right: ' . prmbr_checking_indentation( 'desktop' ) . ' }';
+						} ?>
+						.prmbr_main {
+							<?php echo prmbr_definition_position( $prmbr_options['position_desktop'] );
+							if ( 'left' == $prmbr_options['position_desktop'] || 'right' == $prmbr_options['position_desktop'] ) {
+								echo ' width: ' . prmbr_checking_indentation( 'desktop' );
+							} ?>
+						}
+					}
+					@media screen and (max-width: 768px) and (min-width: 426px) {
+						<?php if( 'left' == $prmbr_options['position_tablet'] ) {
+							echo 'body { margin-left: ' . prmbr_checking_indentation( 'tablet' ) . ' }';
+						} elseif ( 'right' == $prmbr_options['position_tablet'] ) {
+							echo 'body { margin-right: ' . prmbr_checking_indentation( 'tablet' ) . ' }';
+						} ?>
+						.prmbr_main {
+							<?php echo prmbr_definition_position( $prmbr_options['position_tablet'] );
+							if ( 'left' == $prmbr_options['position_tablet'] || 'right' == $prmbr_options['position_tablet'] ) {
+								echo ' width: ' . prmbr_checking_indentation( 'tablet' );
+							} ?>
+						}
+					}
+					@media screen and (max-width: 425px) {
+						<?php if( 'left' == $prmbr_options['position_mobile'] ) {
+							echo 'body { margin-left: ' . prmbr_checking_indentation( 'mobile' ) . ' }';
+						} elseif ( 'right' == $prmbr_options['position_mobile'] ) {
+							echo 'body { margin-right: ' . prmbr_checking_indentation( 'mobile' ) . ' }';
+						} ?>
+						.prmbr_main {
+							<?php echo prmbr_definition_position( $prmbr_options['position_mobile'] );
+							if ( 'left' == $prmbr_options['position_mobile'] || 'right' == $prmbr_options['position_mobile'] ) {
+								echo ' width: ' . prmbr_checking_indentation( 'mobile' );
+							} ?>
+						}
+					}
+					<?php /* Adding styles for the sidebar for correct work Theme 2015 */
+					if ( 'twentyfifteen' == $name_theme ) {
+						echo '.sidebar { position: relative !important; top: 0 !important; } 
+						@media screen and (min-width: 59.6875em) { .site { max-width: none; } }';
+					}
+					if ( 'twentyfourteen' == $name_theme ) {
+						echo '@media screen and (min-width: 783px) { .admin-bar.masthead-fixed .site-header { top: 0; position: relative; } 
+						.masthead-fixed .site-main { margin-top: 0; } }';
+					} ?>
+				</style>
+				<div class="prmbr_main prmbr_no_js" <?php echo $data_attr; ?>>
+					<?php echo prmbr_content(); ?>
+				</div>
+				<?php prmbr_scripts();
+			}
 		}
 	}
 }
 
-/**
-* Function allows you to set block when you insert shortcode.
-* @return $main_position
-*/
-if ( ! function_exists ( 'add_prmbr_shortcode' ) ) {
-	function add_prmbr_shortcode() {
+/* The function checking whether the position is selected on the left or on the right. Adds the selected size if necessary. */
+if ( ! function_exists ( 'prmbr_checking_indentation' ) ) {
+	function prmbr_checking_indentation( $position ) {
 		global $prmbr_options;
-		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . prmbr_content() . '<div class="clear"></div></div>';
-		return $main_position;
+		$width = '';
+		if ( 'left' == $prmbr_options['position_' . $position] ) {
+			$width = $prmbr_options['width_left_' . $position] . $prmbr_options['unit_left_' . $position];
+		} elseif ( 'right' == $prmbr_options['position_' . $position] ) {
+			$width = $prmbr_options['width_right_' . $position] . $prmbr_options['unit_right_' . $position];
+		}
+		return $width;
 	}
 }
 
-/* add shortcode content  */
+/**
+ * The function allows you to determine the position selected by the user at a specific screen resolution.
+ */
+if ( ! function_exists ( 'prmbr_definition_position' ) ) {
+	function prmbr_definition_position( $position ) {
+
+		$bar_location = '';
+		switch ( $position ) {
+			case 'left':
+				/* add when position left*/
+				$bar_location = "top: 0; left: 0; float: left; min-height: 100%; overflow: auto;";
+				break;
+			case 'right':
+				/* add when position right */
+				$bar_location = "top: 0; min-height: 100%; overflow: auto; right: 0;";
+				break;
+			case 'top':
+				/* add when position top */
+				$bar_location = "top: 0; left: 0; width: 100%; height: auto;";
+				break;
+			case 'bottom':
+				/* add when position bottom */
+				$bar_location = "width: 100%; left: 0; margin-top: 0 !important";
+				break;
+			case 'none':
+				/* add when position is none */
+				$bar_location = 'display: none;';
+				break;
+		}
+		return $bar_location;
+	}
+}
+
+/**
+* Function for creating a block that can be inserted using a shortcode or into the template code.
+*/
+if ( ! function_exists ( 'prmbr_block' ) ) {
+	function prmbr_block() {
+		global $prmbr_options; ?>
+		<style type="text/css">
+			.prmbr_block_shortcode {
+				position: relative;
+				padding: 10px;
+				color: <?php echo $prmbr_options['text_color_field']; ?>;
+				background: <?php echo $prmbr_options['background_color_field']; ?>;
+			}
+		</style>
+		<div class="prmbr_block_shortcode">
+			<?php echo prmbr_content() ?>
+			<div class="clear"></div>
+		</div>
+	<?php }
+}
+
+/* Function allows you add shortcode content */
 if ( ! function_exists( 'prmbr_shortcode_button_content' ) ) {
 	function prmbr_shortcode_button_content( $content ) { ?>
 		<div id="prmbr" style="display:none;">
@@ -453,20 +624,8 @@ if ( ! function_exists( 'prmbr_shortcode_button_content' ) ) {
 }
 
 /**
-* Function allows you to set block when you insert function in you code.
-* @return $main_position
-*/
-if ( ! function_exists ( 'prmbr_by_using_function' ) ) {
-	function prmbr_by_using_function() {
-		global $prmbr_options;
-		$main_position = '<div style="position: relative; color:' . $prmbr_options['text_color_field'] . '; background:' . $prmbr_options['background_color_field'] . '" class="prmbr_block">' . prmbr_content() . '<div class="clear"></div></div>';
-		echo $main_position;
-	}
-}
-
-/**
 * Function allows you to set block when you insert shortcode.
-* @return $main_position
+* @return $html
 */
 if ( ! function_exists ( 'prmbr_content' ) ) {
 	function prmbr_content() {
@@ -488,7 +647,6 @@ if ( ! function_exists ( 'prmbr_content' ) ) {
 		}
 
 		$html = do_shortcode( $html ); /* AFTER wpautop() */
-
 		$html = str_replace( ']]>', ']]&gt;', $html );
 		return $html;
 	}
@@ -513,7 +671,7 @@ if ( ! function_exists ( 'prmbr_enqueue_admin_part' ) ) {
 }
 
 /**
-* Style and script for frontend .
+* Style and script for frontend.
 * @return void
 */
 if ( ! function_exists ( 'prmbr_scripts' ) ) {
@@ -536,20 +694,20 @@ if ( ! function_exists( 'prmbr_register_plugin_links' ) ) {
 			if ( ! is_network_admin() ) {
 				$links[] = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
 			}
-			$links[]    =    '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200935775" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
-			$links[]    =    '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com/hc/en-us/sections/200935775" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
+			$links[]	=	'<a href="https://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
 		}
 		return $links;
 	}
 }
 
-/* add help tab  */
+/* add help tab */
 if ( ! function_exists( 'prmbr_add_tabs' ) ) {
 	function prmbr_add_tabs() {
 		$screen = get_current_screen();
 		$args = array(
 			'id' 			=> 'prmbr',
-			'section' 		=> '200935775'
+			'section' 		=> '200935775',
 		);
 		bws_help_tab( $screen, $args );
 	}
@@ -625,7 +783,6 @@ if ( ! function_exists( 'prmbr_plugin_uninstall' ) ) {
 				delete_option( 'prmbr_options' );
 			}
 		}
-
 		require_once( dirname( __FILE__ ) . '/bws_menu/bws_include.php' );
 		bws_include_init( plugin_basename( __FILE__ ) );
 		bws_delete_plugin( plugin_basename( __FILE__ ) );
@@ -642,12 +799,12 @@ add_action( 'admin_init', 'prmbr_admin_init' );
 /* Add PromoBar on site */
 add_action( 'wp_footer', 'add_prmbr_function' );
 /* Add PromoBar by using shortcode */
-add_shortcode( 'prmbr_shortcode', 'add_prmbr_shortcode' );
+add_shortcode( 'prmbr_shortcode', 'prmbr_block' );
 add_filter( 'widget_text', 'do_shortcode' );
 /* custom filter for bws button in tinyMCE */
 add_filter( 'bws_shortcode_button_content', 'prmbr_shortcode_button_content' );
 /* Add PromoBar by using spesial function do_action('prmbr_box'); */
-add_action( 'prmbr_box', 'prmbr_by_using_function' );
+add_action( 'prmbr_box', 'prmbr_block' );
 add_action( 'admin_enqueue_scripts', 'prmbr_enqueue_admin_part' );
 /* Additional links on the plugin page */
 add_filter( 'plugin_action_links', 'prmbr_plugin_action_links', 10, 2 );

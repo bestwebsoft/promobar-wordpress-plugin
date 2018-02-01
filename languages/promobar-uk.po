@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: promobar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-26 11:48+0300\n"
-"PO-Revision-Date: 2017-10-26 11:48+0300\n"
+"POT-Creation-Date: 2018-01-25 16:10+0200\n"
+"PO-Revision-Date: 2018-01-25 16:11+0200\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
@@ -16,47 +16,43 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: promobar.php:36
+#: promobar.php:38
 msgid "PromoBar Settings"
 msgstr "Налаштування PromoBar"
 
-#: promobar.php:182 promobar.php:192
-msgid "Please enter the correct value in the Width field."
-msgstr "Будь ласка, введіть правильне значення в полі Ширина."
-
-#: promobar.php:202
+#: promobar.php:229
 msgid "Please select the correct value in the Background field."
 msgstr "Будь ласка, введіть правильне значення в полі Фон."
 
-#: promobar.php:211
+#: promobar.php:238
 msgid "Please select the correct value in the Text Color field."
 msgstr "Будь ласка, введіть правильне значення в полі Колір Тексту."
 
-#: promobar.php:219
+#: promobar.php:246
 msgid "Settings saved."
 msgstr "Налаштування збережено."
 
-#: promobar.php:226
+#: promobar.php:253
 msgid "All plugin settings were restored."
 msgstr "Всі налаштування плагіну було скинуто до стандартних."
 
-#: promobar.php:238 promobar.php:240 promobar.php:535 promobar.php:568
+#: promobar.php:267 promobar.php:269 promobar.php:694 promobar.php:730
 msgid "Settings"
 msgstr "Налаштування"
 
-#: promobar.php:241
+#: promobar.php:270
 msgid "Extra Settings"
 msgstr "Додаткові налаштування"
 
-#: promobar.php:242
+#: promobar.php:271
 msgid "Custom code"
 msgstr "Користувацький код"
 
-#: promobar.php:243
+#: promobar.php:272
 msgid "Go PRO"
 msgstr "Оновити до Pro-версії"
 
-#: promobar.php:256
+#: promobar.php:285
 msgid ""
 "If you would like to use this plugin on certain pages, please paste the "
 "following strings into the template source code"
@@ -64,7 +60,7 @@ msgstr ""
 "Якщо ви хочете використовувати цей плагін на окремих сторінках, будь ласка, "
 "вставте наступні строки у вихідний код шаблону"
 
-#: promobar.php:258
+#: promobar.php:287
 #, php-format
 msgid ""
 "If you would like to add PromoBar to your page or post, please use %s button"
@@ -72,7 +68,7 @@ msgstr ""
 "Якщо ви хочете додати PromoBar на вашу сторінку або запис, то використовуйте "
 "кнопку %s"
 
-#: promobar.php:262
+#: promobar.php:291
 #, php-format
 msgid ""
 "You can add PromoBar to your page or post by clicking on %s button in the "
@@ -83,63 +79,83 @@ msgstr ""
 "%s в блоці редагування контенту в режимі Visual. Якщо кнопка не "
 "відображається, будь ласка, використовуйте шорткод %s."
 
-#: promobar.php:270
+#: promobar.php:299
 msgid "Display PromoBar"
 msgstr "Відображати PromoBar"
 
-#: promobar.php:274
+#: promobar.php:303
 msgid "on all pages"
 msgstr "на всіх сторінках"
 
-#: promobar.php:278
+#: promobar.php:307
 msgid "on the homepage"
 msgstr "на головній сторінці"
 
-#: promobar.php:282
+#: promobar.php:311
 msgid "display via shortcode or function only"
 msgstr "відображати тільки за допомогою шорткоду чи функції"
 
-#: promobar.php:288
+#: promobar.php:317
 msgid "Position"
 msgstr "Позиція"
 
-#: promobar.php:292
+#: promobar.php:319
+msgid "Desktop"
+msgstr "Комп'ютер"
+
+#: promobar.php:319
+msgid "Tablet"
+msgstr "Планшет"
+
+#: promobar.php:319
+msgid "Mobile"
+msgstr "Телефон"
+
+#: promobar.php:325
 msgid "Top"
 msgstr "Зверху"
 
-#: promobar.php:296
+#: promobar.php:328
 msgid "Bottom"
 msgstr "Внизу"
 
-#: promobar.php:300
+#: promobar.php:331
 msgid "Left"
 msgstr "Зліва"
 
-#: promobar.php:303 promobar.php:313
+#: promobar.php:334 promobar.php:347
 msgid "width"
 msgstr "Ширина"
 
-#: promobar.php:310
+#: promobar.php:338 promobar.php:351
+msgid "px"
+msgstr "px"
+
+#: promobar.php:344
 msgid "Right"
 msgstr "Справа"
 
-#: promobar.php:322
+#: promobar.php:357
+msgid "None"
+msgstr "Не вiдображати"
+
+#: promobar.php:365
 msgid "Background"
 msgstr "Фон"
 
-#: promobar.php:330
+#: promobar.php:373
 msgid "Text Color"
 msgstr "Колір Тексту"
 
-#: promobar.php:338
+#: promobar.php:381
 msgid "HTML"
 msgstr "HTML"
 
-#: promobar.php:351 promobar.php:382
+#: promobar.php:394 promobar.php:425
 msgid "Save Changes"
 msgstr "Зберегти зміни"
 
-#: promobar.php:364
+#: promobar.php:407
 msgid ""
 "Please choose the necessary post types (or single pages) where you would "
 "like to display PromoBar"
@@ -147,34 +163,37 @@ msgstr ""
 "Будь ласка, оберіть типи записів (чи окремі сторінки), на яких буде "
 "відображатись блок PromoBar"
 
-#: promobar.php:371
+#: promobar.php:414
 msgid "Show URL for pages"
 msgstr "Показати URL для сторінок"
 
-#: promobar.php:377
+#: promobar.php:420
 msgid "Example of the site's pages tree"
 msgstr "Приклад дерева сторінок сайту"
 
-#: promobar.php:387
+#: promobar.php:430
 msgid "If you upgrade to Pro version all your settings will be saved."
 msgstr ""
 "При переході на Pro-версію плагіну всі поточні налаштування буде збережено."
 
-#: promobar.php:393
+#: promobar.php:436
 msgid "Learn More"
 msgstr "Дізнатись більше"
 
-#: promobar.php:446
+#: promobar.php:617
 msgid "Insert the shortcode to add PromoBar block."
 msgstr "Вставте шорткод, щоб додати блок PromoBar."
 
-#: promobar.php:536
+#: promobar.php:696
 msgid "FAQ"
 msgstr "FAQ"
 
-#: promobar.php:537
+#: promobar.php:697
 msgid "Support"
 msgstr "Техпідтримка"
+
+#~ msgid "Please enter the correct value in the Width field."
+#~ msgstr "Будь ласка, введіть правильне значення в полі Ширина."
 
 #~ msgid ""
 #~ "Please choose the necessary post types (or single pages) PromoBar will be "

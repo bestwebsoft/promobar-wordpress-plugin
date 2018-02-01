@@ -13,12 +13,18 @@
 <li>Via shortcode</li>
 </ul>
 </li>
-<li>Choose position:
+<li>Choose banner position for different resolutions:
 <ul>
-<li>Top</li>
-<li>Bottom</li>
-<li>Left</li>
-<li>Right</li>
+<li>Desktop </li>
+<li>Tablet [NEW]</li>
+<li>Mobile [NEW]
+<ul>
+<li>Top [NEW]</li>
+<li>Bottom [NEW]</li>
+<li>Left [NEW]</li>
+<li>Right [NEW]</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Select background and text color</li>
