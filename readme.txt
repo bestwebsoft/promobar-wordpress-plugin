@@ -1,20 +1,19 @@
 === PromoBar by BestWebSoft ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
-Tags: add banner, add custom banner, banner, custom banner, promobar, promobar plugin, demo header, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
+Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 3.9
-Tested up to: 4.9.2
-Stable tag: 1.1.4
+Tested up to: 4.9.8
+Stable tag: 1.1.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-Add and display HTML advertisement banner on WordPress website. Customize bar styles and appearance.
+Add and display HTML advertisement banner on WordPress website. Customize bar styles and appearance. Add custom CSS and JavaScript files and countdown timer to your WordPress website.
 
 == Description ==
 
-PromoBar plugin helps you to display banners with any content on your WordPress website. Enable for certain pages and customize the appearance to create a unique design.
-
-Start making your own promotional banners today!
+PromoBar plugin helps you to display banners with any content on your WordPress website. Enable for certain pages and customize the appearance to create a unique design. Custom CSS/JS And Countdown plugin section adds your custom CSS and JS files, to customize your site. And adds countdown timer with two periods (preliminary and discount ), which gives an opportunity to inform the client about future discounts.
+Start making your own promotion today!
 
 https://www.youtube.com/watch?v=VUuXHQgPNm4
 
@@ -24,15 +23,21 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 	* All pages
 	* Home page
 	* Via shortcode
-* Choose banner position for different resolutions:
+* Choose banner position: [NEW]
+    * Absolute [NEW]
+    * Fixed [NEW]
+* Choose banner alignment for different resolutions:
 	* Desktop 
-	* Tablet [NEW]
-	* Mobile [NEW]
-		* Top [NEW]
-		* Bottom [NEW]
-		* Left [NEW]
-		* Right [NEW]
+	* Tablet
+	* Mobile
+		* Top
+		* Bottom
+		* Left
+		* Right
 * Select background and text color
+* Choose banner background color type: [NEW]
+    * Transparent [NEW]
+    * Color [NEW]
 * Create your banner using TinyMCE editor
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
@@ -43,8 +48,34 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 >
 > All features from Free version included plus:
 >
-> * Exclude certain pages or post types from PromoBar displaying
-> * Configure all subsites on the network
+> * Add custom JS files to your site [NEW]
+> * Add custom CSS files to your site [NEW]
+> * Custom CSS Settings [NEW]
+>     * Add New Styles File [NEW]
+>         * CSS File Path [NEW]
+>         * Dates [NEW]
+>         * Repeat Every Year [NEW]
+> * PromoBar Features
+>     * Exclude certain pages or post types from PromoBar displaying
+>     * Background
+>         * Transparent
+>         * Color with opacity [NEW]
+>         * Image [NEW]
+>     * Add PromoBar to your page or post using the shortcode [NEW]
+> * Countdown Features [NEW]
+>     * Add countdown timer to your site [NEW]
+>     * Opportunity to warn the client about future discounts in a 3 months [NEW]
+>     * Discount Starts on [NEW]
+>     * Discount Ends on [NEW]
+>     * Background [NEW]
+>         * Transparent [NEW]
+>         * Color with opacity [NEW]
+>         * Image [NEW]
+>         * Text color [NEW]
+>     * Block Class/ID attribute to Paste Big Banner [NEW]
+>     * Opportunity to repeat discount countdown every year [NEW]
+>     * Add countdown to your page or post using the shortcode [NEW]
+>     * Configure all subsites on the network
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3)
@@ -105,9 +136,22 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 == Screenshots ==
 
 1. PromoBar on the homepage in top position.
-2. PromoBar Settings page.
+2. PromoBar page Settings.
+3. Custom page CSS Settings.
 
 == Changelog ==
+
+= V1.1.5 - 28.11.2018 =
+* Update : The plugin settings page has been changed.
+* NEW : The ability to change Promobar banner position has been added.
+* NEW : Countdown functionality has been added.
+* NEW : The ability to create Countdown banner for preliminary/discount period.
+* NEW : The ability to dismiss Promobar/Countdown banner has been added.
+* NEW : The ability to change the background of Promobar/Countdown banner with image has been added.
+* NEW : The ability to change the background and text opacity of the Promobar/Countdown banner has been added.
+* NEW : The ability to paste parent selector for homepage Countdown banner has been added.
+* NEW : The ability to enable the repeating of the discount Countdown every year has been added.
+* Update : All functionality for WordPress 4.9.8 was updated.
 
 = V1.1.4 - 01.02.2018 =
 * NEW : Ability to choose promobar position for different screen resolutions has been added.
@@ -162,6 +206,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.5 =
+* Appearance improved.
+* New features added.
+* Functionality expanded.
+* Bugs Fixed.
+* The compatibility with new WordPress version updated.
 
 = V1.1.4 =
 * Ability to choose promobar position for different screen resolutions has been added.

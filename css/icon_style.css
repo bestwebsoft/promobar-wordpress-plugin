@@ -1,0 +1,8 @@
+/* PromoBar icon */
+.menu-top.toplevel_page_promobar .wp-menu-image {
+	font-family: 'bwsicons' !important;
+}
+.menu-top.toplevel_page_promobar .wp-menu-image:before {
+	content: "\e924";
+	font-family: 'bwsicons' !important;
+}
