@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 3.9
-Tested up to: 4.9.8
-Stable tag: 1.1.5
+Tested up to: 5.2.2
+Stable tag: 1.1.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -141,6 +141,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.1.6 - 4.09.2019 =
+* Update: The deactivation feedback has been changed. Misleading buttons have been removed.
+
 = V1.1.5 - 28.11.2018 =
 * Update : The plugin settings page has been changed.
 * NEW : The ability to change Promobar banner position has been added.
@@ -206,6 +209,9 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.6 =
+* Usability improved.
 
 = V1.1.5 =
 * Appearance improved.

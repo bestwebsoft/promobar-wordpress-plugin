@@ -6,7 +6,7 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.5
+Version: 1.1.6
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
