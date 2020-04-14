@@ -2,236 +2,197 @@ msgid ""
 msgstr ""
 "Project-Id-Version: promobar\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-28 13:21+0200\n"
-"PO-Revision-Date: 2018-11-28 13:37+0200\n"
+"POT-Creation-Date: 2020-04-14 15:11+0300\n"
+"PO-Revision-Date: 2020-04-14 15:12+0300\n"
 "Last-Translator: bestwebsoft.com <plugins@bestwebsoft.com>\n"
 "Language-Team: BestWebSoft <plugin@bestwebsoft.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
 
-#: includes/class-prmbr-settings.php:24 promobar.php:48 promobar.php:258
-#: promobar.php:805 promobar.php:841
+#: includes/class-prmbr-settings.php:23 promobar.php:48 promobar.php:241
+#: promobar.php:667 promobar.php:703
 msgid "Settings"
 msgstr "Настройки"
 
-#: includes/class-prmbr-settings.php:25
-msgid "Custom CSS Settings"
-msgstr "Пользовательский CSS код"
-
-#: includes/class-prmbr-settings.php:26
+#: includes/class-prmbr-settings.php:24
 msgid "Display"
 msgstr "Отображение"
 
-#: includes/class-prmbr-settings.php:27
+#: includes/class-prmbr-settings.php:25
 msgid "Misc"
 msgstr "Разное"
 
-#: includes/class-prmbr-settings.php:28
+#: includes/class-prmbr-settings.php:26
 msgid "Custom Code"
 msgstr "Пользовательский код"
 
-#: includes/class-prmbr-settings.php:29
+#: includes/class-prmbr-settings.php:27
 msgid "License key"
 msgstr "Лицензионный ключ"
 
-#: includes/class-prmbr-settings.php:49 includes/class-prmbr-settings.php:281
+#: includes/class-prmbr-settings.php:47 includes/class-prmbr-settings.php:274
 msgid "Transparent"
 msgstr "Прозрачный"
 
-#: includes/class-prmbr-settings.php:50 includes/class-prmbr-settings.php:286
-#: includes/pro_banners.php:80
+#: includes/class-prmbr-settings.php:48 includes/class-prmbr-settings.php:279
+#: includes/pro_banners.php:58
 msgid "Color"
 msgstr "Цвет"
 
-#: includes/class-prmbr-settings.php:51 includes/pro_banners.php:85
-#: includes/pro_banners.php:154
+#: includes/class-prmbr-settings.php:49 includes/pro_banners.php:63
+#: includes/pro_banners.php:123
 msgid "Image"
 msgstr "Изображение"
 
-#: includes/class-prmbr-settings.php:116
-msgid "Please select the correct value in the Background field."
-msgstr "Пожалуйста, введите правильное значение в поле Фон."
-
-#: includes/class-prmbr-settings.php:135
-msgid "Please select the correct value in the Text Color field."
-msgstr "Пожалуйста, выберите правильное значение в поле Цвет Текста."
-
-#: includes/class-prmbr-settings.php:167
+#: includes/class-prmbr-settings.php:139
 msgid "Settings saved."
 msgstr "Настройки сохранены."
 
-#: includes/class-prmbr-settings.php:176 includes/class-prmbr-settings.php:516
+#: includes/class-prmbr-settings.php:148 includes/class-prmbr-settings.php:328
 msgid "Promobar Settings"
 msgstr "Promobar Настройки"
 
-#: includes/class-prmbr-settings.php:180 promobar.php:47
+#: includes/class-prmbr-settings.php:151 includes/class-prmbr-settings.php:154
+#: promobar.php:47
 msgid "Promobar"
 msgstr "Promobar"
 
-#: includes/class-prmbr-settings.php:183
+#: includes/class-prmbr-settings.php:158
+msgid "Enable to display a promo bar."
+msgstr "Возможность отображать Promobar."
+
+#: includes/class-prmbr-settings.php:163
 msgid "Display Promobar"
 msgstr "Показать PromoBar"
 
-#: includes/class-prmbr-settings.php:187
+#: includes/class-prmbr-settings.php:167
 msgid "on all pages"
 msgstr "на всех страницах"
 
-#: includes/class-prmbr-settings.php:191
+#: includes/class-prmbr-settings.php:171
 msgid "on the homepage"
 msgstr "на главной странице"
 
-#: includes/class-prmbr-settings.php:195
+#: includes/class-prmbr-settings.php:175
 msgid "display via shortcode or function only"
 msgstr "отображать только с помощью шорткода или функции"
 
-#: includes/class-prmbr-settings.php:203 includes/pro_banners.php:53
-msgid "Show Dismiss Button"
-msgstr "Показать кнопку закрытия"
+#: includes/class-prmbr-settings.php:181
+msgid "Display on"
+msgstr "Отображение на"
 
-#: includes/class-prmbr-settings.php:209
-msgid "When users close Promobar it is written to the cookies."
-msgstr "Когда юзеры закрывают Promobar - это записывается в куки."
-
-#: includes/class-prmbr-settings.php:214
-msgid "Position"
-msgstr "Позиция"
-
-#: includes/class-prmbr-settings.php:218
-msgid "absolute"
-msgstr "абсолютная"
-
-#: includes/class-prmbr-settings.php:222
-msgid "fixed"
-msgstr "фиксированная"
-
-#: includes/class-prmbr-settings.php:228
-msgid "Alignment"
-msgstr "Выравнивание"
-
-#: includes/class-prmbr-settings.php:230
+#: includes/class-prmbr-settings.php:185 includes/class-prmbr-settings.php:226
 msgid "Desktop"
 msgstr "Компьютер"
 
-#: includes/class-prmbr-settings.php:230
+#: includes/class-prmbr-settings.php:189 includes/class-prmbr-settings.php:226
 msgid "Tablet"
 msgstr "Планшет"
 
-#: includes/class-prmbr-settings.php:230
+#: includes/class-prmbr-settings.php:193 includes/class-prmbr-settings.php:226
 msgid "Mobile"
 msgstr "Телефон"
 
-#: includes/class-prmbr-settings.php:236
+#: includes/class-prmbr-settings.php:200 includes/pro_banners.php:31
+msgid "Close Icon"
+msgstr "Иконка закрытия"
+
+#: includes/class-prmbr-settings.php:205 includes/pro_banners.php:36
+msgid "Enable to display a close/dismiss icon on the promo bar."
+msgstr "Возможность отображать иконку закрытия на Promobar."
+
+#: includes/class-prmbr-settings.php:210
+msgid "Position"
+msgstr "Позиция"
+
+#: includes/class-prmbr-settings.php:214
+msgid "absolute"
+msgstr "абсолютная"
+
+#: includes/class-prmbr-settings.php:218
+msgid "fixed"
+msgstr "фиксированная"
+
+#: includes/class-prmbr-settings.php:224
+msgid "Alignment"
+msgstr "Выравнивание"
+
+#: includes/class-prmbr-settings.php:232
 msgid "Top"
 msgstr "Вверху"
 
-#: includes/class-prmbr-settings.php:239
+#: includes/class-prmbr-settings.php:235
 msgid "Bottom"
 msgstr "Внизу"
 
-#: includes/class-prmbr-settings.php:242
+#: includes/class-prmbr-settings.php:238
 msgid "Left"
 msgstr "Слева"
 
-#: includes/class-prmbr-settings.php:245 includes/class-prmbr-settings.php:258
+#: includes/class-prmbr-settings.php:241 includes/class-prmbr-settings.php:254
 msgid "width"
 msgstr "ширина"
 
-#: includes/class-prmbr-settings.php:249 includes/class-prmbr-settings.php:262
+#: includes/class-prmbr-settings.php:245 includes/class-prmbr-settings.php:258
 msgid "px"
 msgstr "рх"
 
-#: includes/class-prmbr-settings.php:255
+#: includes/class-prmbr-settings.php:251
 msgid "Right"
 msgstr "Справа"
 
-#: includes/class-prmbr-settings.php:268
-msgid "None"
-msgstr "Не отображать"
-
-#: includes/class-prmbr-settings.php:276 includes/pro_banners.php:70
+#: includes/class-prmbr-settings.php:269 includes/pro_banners.php:48
 msgid "Background"
 msgstr "Фон"
 
-#: includes/class-prmbr-settings.php:296 includes/pro_banners.php:92
+#: includes/class-prmbr-settings.php:288 includes/pro_banners.php:70
 msgid "Text Color"
 msgstr "Цвет Текста"
 
-#: includes/class-prmbr-settings.php:304
+#: includes/class-prmbr-settings.php:296
 msgid "HTML"
 msgstr "HTML"
 
-#: includes/class-prmbr-settings.php:322 includes/class-prmbr-settings.php:336
-#: includes/class-prmbr-settings.php:351 includes/pro_banners.php:14
+#: includes/class-prmbr-settings.php:316
 msgid "Close"
 msgstr "Закрыть"
 
-#: includes/class-prmbr-settings.php:366
-msgid "Custom CSS"
-msgstr "Пользовательский CSS код"
-
-#: includes/class-prmbr-settings.php:375 includes/class-prmbr-settings.php:423
-#: includes/class-prmbr-settings.php:470 promobar.php:157 promobar.php:217
-msgid "CSS File Path"
-msgstr "Путь к файлу стилей"
-
-#: includes/class-prmbr-settings.php:383 includes/class-prmbr-settings.php:431
-#: includes/class-prmbr-settings.php:478
-msgid "Date From"
-msgstr "Дата начала"
-
-#: includes/class-prmbr-settings.php:391 includes/class-prmbr-settings.php:439
-#: includes/class-prmbr-settings.php:486
-msgid "Date To"
-msgstr "Дата окончания"
-
-#: includes/class-prmbr-settings.php:399 includes/class-prmbr-settings.php:447
-#: includes/class-prmbr-settings.php:494 includes/pro_banners.php:111
-msgid "Repeat Every Year"
-msgstr "Повторять каждый год"
-
-#: includes/class-prmbr-settings.php:407 includes/class-prmbr-settings.php:410
-#: includes/class-prmbr-settings.php:455 includes/class-prmbr-settings.php:458
-#: includes/class-prmbr-settings.php:502 includes/class-prmbr-settings.php:505
-msgid "Delete"
-msgstr "Удалить"
-
-#: includes/class-prmbr-settings.php:512
-msgid "Add New Styles File"
-msgstr "Добавить новый файл стилей"
-
-#: includes/class-prmbr-settings.php:525
+#: includes/class-prmbr-settings.php:337
 msgid ""
-"Please choose the necessary post types (or single pages) where you would "
-"like to display PromoBar"
+"Choose the necessary post types (or single pages) where you would like to "
+"display PromoBar"
 msgstr ""
-"Пожалуйста, выберите те типы записей (или отдельные страницы), на которых "
-"будет отображаться блок PromoBar"
+"Выберите те типы записей (или отдельные страницы), на которых будет "
+"отображаться блок PromoBar"
 
-#: includes/class-prmbr-settings.php:532
+#: includes/class-prmbr-settings.php:344
 msgid "Show URL for pages"
 msgstr "Показать URL для страниц"
 
-#: includes/class-prmbr-settings.php:538
+#: includes/class-prmbr-settings.php:350
 msgid "Example of the site's pages tree"
 msgstr "Пример дерева страниц сайта"
 
-#: includes/class-prmbr-settings.php:556
+#: includes/class-prmbr-settings.php:368
 msgid "Promobar Shortcode"
 msgstr "Promobar шорткод"
 
-#: includes/class-prmbr-settings.php:559
+#: includes/class-prmbr-settings.php:371
 msgid "Add PromoBar to your page or post </br> using the following shortcode:"
 msgstr ""
 "Добавить PromoBar на вашу страницу или пост используя следующий шорткод:"
 
-#: includes/class-prmbr-settings.php:566
+#: includes/class-prmbr-settings.php:378
 msgid ""
 "If you would like to use this plugin on certain pages, please paste the "
 "following strings into the template source code:"
@@ -240,73 +201,76 @@ msgstr ""
 "следующие строки в исходный код шаблона:"
 
 #: includes/pro_banners.php:11
-msgid "This options is available in Pro version of the plugin"
-msgstr "Эта опция доступна в Pro версии плагина"
+msgid "Preliminary Period Starts on"
+msgstr "Начало предварительного периода"
 
-#: includes/pro_banners.php:20 promobar.php:63
-msgid "Upgrade to Pro"
-msgstr "Обновить до Pro"
+#: includes/pro_banners.php:12
+msgid "Discount Starts on"
+msgstr "Начало периода скидок"
 
-#: includes/pro_banners.php:31
+#: includes/pro_banners.php:13
+msgid "Discount Ends on"
+msgstr "Конец периода скидок"
+
+#: includes/pro_banners.php:15
 msgid "Countdown"
 msgstr "Countdown"
 
-#: includes/pro_banners.php:45
-msgid "Countdown Timer displays only at minimal display width 450px."
+#: includes/pro_banners.php:20
+msgid "Show Countdown Timer"
+msgstr "Отображать таймер"
+
+#: includes/pro_banners.php:24
+msgid "Enable to display a countdown timer (min display width is 450px)."
 msgstr ""
-"Таймер обратного отсчета отображается только при минимальной ширине дисплея "
-"450 пикселей."
+"Возможность отображать таймер обратного отсчета (при минимальной ширине "
+"дисплея 450 пикселей)."
 
-#: includes/pro_banners.php:58
-msgid "When users close Countdown it is written to the cookies."
-msgstr "Когда юзеры закрывают Countdown - это записывается в куки."
-
-#: includes/pro_banners.php:75
+#: includes/pro_banners.php:53
 msgid "Transparant"
 msgstr "Прозрачный"
 
-#: includes/pro_banners.php:102
-msgid "Block Class/ID attribute to Paste Big Banner"
-msgstr "Блок Class/ID атрибут для вставки  большого баннера"
+#: includes/pro_banners.php:80
+msgid "Parent Selector Class/ID"
+msgstr "Родительский класс/идентификатор"
 
-#: includes/pro_banners.php:106
-msgid "Paste parent selector for big countdown banner."
-msgstr "Вставьте родительский селектор для большого баннера обратного отсчета."
+#: includes/pro_banners.php:84
+msgid ""
+"Enter the class/id of the parent selector where you want to insert the "
+"countdown."
+msgstr ""
+"Введите родительский класс/идентификатор там где вы хотите добавить таймер."
 
-#: includes/pro_banners.php:115
-msgid "Enable to repeat the discount countdown every year."
-msgstr "Включите, что бы повторять таймер каждый год."
-
-#: includes/pro_banners.php:123
+#: includes/pro_banners.php:92
 msgid "Preliminary Period"
 msgstr "Предварительный период"
 
-#: includes/pro_banners.php:124
+#: includes/pro_banners.php:93
 msgid "Discount Period"
 msgstr "Период скидок"
 
-#: includes/pro_banners.php:127
+#: includes/pro_banners.php:96
 msgid "Create your own homepage banner for preliminary period."
 msgstr ""
 "Создайте собственный баннер на главную страницу для предварительного периода."
 
-#: includes/pro_banners.php:130
+#: includes/pro_banners.php:99
 msgid "Create your own banner for preliminary period."
 msgstr "Создайте собственный баннер для предварительного периода."
 
-#: includes/pro_banners.php:135
+#: includes/pro_banners.php:104
 msgid "Create your own homepage banner for discount period."
 msgstr "Создайте собственный баннер на главную страницу для периода скидок."
 
-#: includes/pro_banners.php:138
+#: includes/pro_banners.php:107
 msgid "Create your own banner for discount period."
 msgstr "Создайте собственный баннер страницу для периода скидок."
 
-#: includes/pro_banners.php:159
+#: includes/pro_banners.php:128
 msgid "Add Image"
 msgstr "Загрузить изображение"
 
-#: includes/pro_banners.php:168
+#: includes/pro_banners.php:137
 msgid "Add Countdown to your page or post </br> using the following shortcode:"
 msgstr ""
 "Добавить Countdown на вашу страницу или пост </br> используя следующий "
@@ -316,53 +280,98 @@ msgstr ""
 msgid "PromoBar Settings"
 msgstr "Настройки PromoBar"
 
-#: promobar.php:154 promobar.php:216
-msgid "Show Countdown Timer"
-msgstr "Отображать таймер"
+#: promobar.php:63
+msgid "Upgrade to Pro"
+msgstr "Обновить до Pro"
 
-#: promobar.php:158 promobar.php:218
-msgid "Start Date"
-msgstr "Дата начала"
-
-#: promobar.php:159 promobar.php:219
-msgid "End Date"
-msgstr "Дата конца"
-
-#: promobar.php:160 promobar.php:220
-msgid "Enable to repeat the stylesheets every year."
-msgstr "Включите для подключения файла стилей ежегодно."
-
-#: promobar.php:163 promobar.php:221
-msgid "Preliminary Period Starts on"
-msgstr "Начало предварительного периода"
-
-#: promobar.php:164 promobar.php:222
-msgid "Discount Starts on"
-msgstr "Начало периода скидок"
-
-#: promobar.php:165 promobar.php:223
-msgid "Discount Ends on"
-msgstr "Конец периода скидок"
-
-#: promobar.php:261
+#: promobar.php:244
 msgid "Please, enable JavaScript in your browser."
 msgstr "Включите JavaScript в вашем браузере."
 
-#: promobar.php:689
+#: promobar.php:561
 msgid "Add promobar to your page or post"
 msgstr "Добавить promobar на вашу страницу или пост"
 
-#: promobar.php:740
+#: promobar.php:604
 msgid "Insert the shortcode to add PromoBar block."
 msgstr "Вставьте шорткод, чтобы добавить блок PromoBar."
 
-#: promobar.php:807
+#: promobar.php:669
 msgid "FAQ"
 msgstr "FAQ"
 
-#: promobar.php:808
+#: promobar.php:670
 msgid "Support"
 msgstr "Тех. поддержка"
+
+#~ msgid "Please select the correct value in the Background field."
+#~ msgstr "Пожалуйста, введите правильное значение в поле Фон."
+
+#~ msgid "Please select the correct value in the Text Color field."
+#~ msgstr "Пожалуйста, выберите правильное значение в поле Цвет Текста."
+
+#~ msgid "This options is available in Pro version of the plugin"
+#~ msgstr "Эта опция доступна в Pro версии плагина"
+
+#, fuzzy
+#~| msgid "Show Countdown Timer"
+#~ msgid "Countdown Timer"
+#~ msgstr "Отображать таймер"
+
+#~ msgid "Custom CSS Settings"
+#~ msgstr "Пользовательский CSS код"
+
+#~ msgid "Show Dismiss Button"
+#~ msgstr "Показать кнопку закрытия"
+
+#~ msgid "When users close Promobar it is written to the cookies."
+#~ msgstr "Когда юзеры закрывают Promobar - это записывается в куки."
+
+#~ msgid "None"
+#~ msgstr "Не отображать"
+
+#~ msgid "Custom CSS"
+#~ msgstr "Пользовательский CSS код"
+
+#~ msgid "CSS File Path"
+#~ msgstr "Путь к файлу стилей"
+
+#~ msgid "Date From"
+#~ msgstr "Дата начала"
+
+#~ msgid "Date To"
+#~ msgstr "Дата окончания"
+
+#~ msgid "Repeat Every Year"
+#~ msgstr "Повторять каждый год"
+
+#~ msgid "Delete"
+#~ msgstr "Удалить"
+
+#~ msgid "Add New Styles File"
+#~ msgstr "Добавить новый файл стилей"
+
+#~ msgid "When users close Countdown it is written to the cookies."
+#~ msgstr "Когда юзеры закрывают Countdown - это записывается в куки."
+
+#~ msgid "Block Class/ID attribute to Paste Big Banner"
+#~ msgstr "Блок Class/ID атрибут для вставки  большого баннера"
+
+#~ msgid "Paste parent selector for big countdown banner."
+#~ msgstr ""
+#~ "Вставьте родительский селектор для большого баннера обратного отсчета."
+
+#~ msgid "Enable to repeat the discount countdown every year."
+#~ msgstr "Включите, что бы повторять таймер каждый год."
+
+#~ msgid "Start Date"
+#~ msgstr "Дата начала"
+
+#~ msgid "End Date"
+#~ msgstr "Дата конца"
+
+#~ msgid "Enable to repeat the stylesheets every year."
+#~ msgstr "Включите для подключения файла стилей ежегодно."
 
 # Отображать
 #~ msgid "Display PromoBar"

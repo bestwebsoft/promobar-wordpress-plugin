@@ -52,6 +52,7 @@
 			$( '#prmbr_settings_notice' ).css( 'display', 'block' );
 		} );
 
+		
 		/* Display input fields for left and right promobar */
 		var options = $( '.prmbr_option_affect' );
 		if ( options.length ) {
@@ -77,7 +78,38 @@
 				} );
 			} );
 		}
-
+		
+		$( '.prmbr_option_affect_columns' ).each( function() {
+			var element = $( this );
+			if ( element.is( ':checked' ) ) {
+				$( element.data( 'affect-show' ) ).show();
+				$( element.data( 'affect-hide' ) ).hide();
+			} else {
+				$( element.data( 'affect-show' ) ).hide();
+				$( element.data( 'affect-hide' ) ).show();
+			}
+			if ($( '.prmbr_position_column_desktop' ).is( ':hidden' ) && $( '.prmbr_position_column_tablet' ).is( ':hidden' ) && $( '.prmbr_position_column_mobile' ).is( ':hidden' ) )  {
+				$( '.prmbr_header_alignment' ).hide();
+			} else if ($( '.prmbr_position_column_desktop' ).is( ':visible' ) || $( '.prmbr_position_column_tablet' ).is( ':visible' ) || $( '.prmbr_position_column_mobile' ).is( ':visible' ) ) {
+				$( '.prmbr_header_alignment' ).show();
+			}
+			element.on( 'change', function() {
+					var affect_hide = element.data( 'affect-hide' ),
+						affect_show = element.data( 'affect-show' );
+					if ( element.is( ':checked' ) ) {
+						$( affect_show ).show();
+						$( affect_hide ).hide();
+					} else {
+						$( affect_show ).hide();
+						$( affect_hide ).show();
+					}
+					if ($( '.prmbr_position_column_desktop' ).is( ':hidden' ) && $( '.prmbr_position_column_tablet' ).is( ':hidden' ) && $( '.prmbr_position_column_mobile' ).is( ':hidden' ) )  {
+						$( '.prmbr_header_alignment' ).hide();
+					} else if ($( '.prmbr_position_column_desktop' ).is( ':visible' ) || $( '.prmbr_position_column_tablet' ).is( ':visible' ) || $( '.prmbr_position_column_mobile' ).is( ':visible' ) ) {
+						$( '.prmbr_header_alignment' ).show();
+					}
+				});
+			})
 		/* Checking width of the position */
 		$( '.prmbr_emerging_options select' ).on( 'change', function() {
 			var $input = $( this ).prev( 'input' );

@@ -17,26 +17,34 @@
 				promo_block.each( function() {
 				/* check using the date attributes of the location of the promobar. */
 					/* if the prombar is located at the top, then add margin-top for <body> */
-					var height_margin_top,
+					var height_margin,
 						desktop = promo_block.data( 'prmbr-position_desktop' ),
 						tablet = promo_block.data( 'prmbr-position_tablet' ),
 						mobile = promo_block.data( 'prmbr-position_mobile' ),
 						all_resolutions = [ desktop, tablet, mobile ];
+
 					if ( $.inArray( 'top', all_resolutions ) !== -1 ) {
 						if ( ( 'top' === desktop && window_width > 768 ) ||
 							( 'top' === tablet && window_width < 769 && window_width > 425 ) ||
 							( 'top' === mobile && window_width < 426 )
 						) {
-							height_margin_top = promo_block.css( 'height' );
-						} else {
-							height_margin_top = '';
-						}
-						$( 'body' ).css( { 'margin-top': height_margin_top } );
+							height_margin = promo_block.css( 'height' );
+							$( 'body' ).css( { 'padding-top': height_margin } );
+						}						
+					}
+
+					if ( $.inArray( 'bottom', all_resolutions ) !== -1 ) {
+						if ( ( 'bottom' === desktop && window_width > 768 ) ||
+							( 'bottom' === tablet && window_width < 769 && window_width > 425 ) ||
+							( 'bottom' === mobile && window_width < 426 )
+						) {
+							height_margin = promo_block.css( 'height' );
+							$( 'body' ).css( { 'padding-bottom': height_margin } );
+						}						
 					}
 
 					/* if the prombar is located on the left or on the right, then add height for the promobar */
 					if ( $.inArray( 'side', all_resolutions ) !== -1 ) {
-
 						var height_prmbr_main,
                             page_height = $( 'body' ).css( 'height' );
 						if ( ( 'side' === desktop && window_width > 768 ) ||

@@ -2,9 +2,9 @@
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
-Requires at least: 3.9
-Tested up to: 5.2.2
-Stable tag: 1.1.6
+Requires at least: 4.5
+Tested up to: 5.4
+Stable tag: 1.1.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -23,9 +23,9 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 	* All pages
 	* Home page
 	* Via shortcode
-* Choose banner position: [NEW]
-    * Absolute [NEW]
-    * Fixed [NEW]
+* Choose banner position: 
+    * Absolute 
+    * Fixed 
 * Choose banner alignment for different resolutions:
 	* Desktop 
 	* Tablet
@@ -35,9 +35,9 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 		* Left
 		* Right
 * Select background and text color
-* Choose banner background color type: [NEW]
-    * Transparent [NEW]
-    * Color [NEW]
+* Choose banner background color type: 
+    * Transparent 
+    * Color 
 * Create your banner using TinyMCE editor
 * Add custom code via plugin settings page
 * Compatible with latest WordPress version
@@ -48,34 +48,27 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 >
 > All features from Free version included plus:
 >
-> * Add custom JS files to your site [NEW]
-> * Add custom CSS files to your site [NEW]
-> * Custom CSS Settings [NEW]
->     * Add New Styles File [NEW]
->         * CSS File Path [NEW]
->         * Dates [NEW]
->         * Repeat Every Year [NEW]
 > * PromoBar Features
 >     * Exclude certain pages or post types from PromoBar displaying
 >     * Background
 >         * Transparent
->         * Color with opacity [NEW]
->         * Image [NEW]
->     * Add PromoBar to your page or post using the shortcode [NEW]
-> * Countdown Features [NEW]
->     * Add countdown timer to your site [NEW]
->     * Opportunity to warn the client about future discounts in a 3 months [NEW]
->     * Discount Starts on [NEW]
->     * Discount Ends on [NEW]
->     * Background [NEW]
->         * Transparent [NEW]
->         * Color with opacity [NEW]
->         * Image [NEW]
->         * Text color [NEW]
->     * Block Class/ID attribute to Paste Big Banner [NEW]
->     * Opportunity to repeat discount countdown every year [NEW]
->     * Add countdown to your page or post using the shortcode [NEW]
->     * Configure all subsites on the network
+>         * Color with opacity  
+>         * Image  
+>     * Add PromoBar to your page or post using the shortcode  
+> * Countdown Features  
+>     * Add countdown timer to your site  
+>     * Opportunity to warn the client about future discounts in a 3 months  
+>     * Discount Starts on  
+>     * Discount Ends on  
+>     * Background  
+>         * Transparent  
+>         * Color with opacity  
+>         * Image  
+>         * Text color  
+>     * Block Class/ID attribute to Paste Big Banner  
+>     * Opportunity to repeat discount countdown every year  
+>     * Add countdown to your page or post using the shortcode  
+> * Configure all subsites on the network
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3)
@@ -107,7 +100,7 @@ Some of these translations are not complete. We are constantly adding new featur
 
 1. Upload `promobar` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin using the 'Plugins' menu in your WordPress admin panel.
-3. You can adjust the necessary settings using your WordPress admin panel in "BWS Panel" > "PromoBar".
+3. You can adjust the necessary settings using your WordPress admin panel in "PromoBar".
 4. In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
 
 [View a PDF version of Step-by-step Instruction on PromoBar Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
@@ -115,14 +108,6 @@ Some of these translations are not complete. We are constantly adding new featur
 https://www.youtube.com/watch?v=v8aAOGssPSY
 
 == Frequently Asked Questions ==
-
-= How can I add PromoBar to my website? =
-
-In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
-
-= How to adjust PromoBar position on the website? =
-
-In WordPress admin panel, please go to "BWS Panel", find the PromoBar settings page and choose one of the following positions: Top, Bottom, Left or Right. Then click "Save Changes".
 
 = I have some problems with the plugin's work. What Information should I provide to receive proper support? =
 
@@ -136,10 +121,15 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 == Screenshots ==
 
 1. PromoBar on the homepage in top position.
-2. PromoBar page Settings.
-3. Custom page CSS Settings.
+2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.1.7 - 14.04.2020 =
+* NEW : The ability to enable Promobar.
+* Update : The plugin settings page has been updated.
+* Update : All functionality for WordPress 5.4 has been updated.
+* Bugfix : The bug with position absolute has been fixed.
 
 = V1.1.6 - 4.09.2019 =
 * Update: The deactivation feedback has been changed. Misleading buttons have been removed.
@@ -209,6 +199,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.7 =
+* Bugs Fixed.
+* The compatibility with new WordPress version updated.
 
 = V1.1.6 =
 * Usability improved.

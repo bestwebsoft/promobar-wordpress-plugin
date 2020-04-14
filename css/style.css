@@ -1,6 +1,3 @@
-body {
-	margin: 0 !important;
-}
 .prmbr_main {
 	z-index: 999999;
 	min-height: 0;
@@ -28,9 +25,6 @@ input.prmbr_css_file_path {
 }
 .prmbr_file_delete_button {
 	cursor: pointer;
-}
-#addItem {
-	margin-top: 10px;
 }
 #prmbr_close_button_main {
 	max-width: 10px;
