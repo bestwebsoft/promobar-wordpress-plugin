@@ -49,7 +49,7 @@ if ( ! function_exists( 'prmbr_countdown_block' ) ) {
                         <fieldset>
                             <div>
                                 <label for="prmbr_background_transparant_cntdwn">
-                                    <input disabled="disabled" type="radio" name="prmbr_background_cntdwn" id="prmbr_background_transparant_cntdwn" value="transparant" class="prmbr_background_transparant_cntdwn" checked /> <?php _e( 'Transparant', 'promobar' ); ?>
+                                    <input disabled="disabled" type="radio" name="prmbr_background_cntdwn" id="prmbr_background_transparant_cntdwn" value="transparant" class="prmbr_background_transparant_cntdwn" checked /> <?php _e( 'Transparent', 'promobar' ); ?>
                                 </label>
                             </div>
                             <div class="background_color_cntdwn wrapper">

@@ -35,10 +35,10 @@ if ( ! class_exists( 'Prmbr_Settings_Tabs' ) ) {
 				'options' 					=> $prmbr_options,
 				'tabs' 						=> $tabs,
 				'wp_slug'					=> 'promobar',
-				'pro_page'					=> 'admin.php?page=promobar-pro.php',
-				'bws_license_plugin'		=> 'promobar-pro/promobar-pro.php',
 				'link_key'					=> 'd765697418cb3510ea536e47c1e26396',
-				'link_pn'					=> '196'
+				'link_pn'					=> '196',
+				'doc_link'			        => 'https://bestwebsoft.com/documentation/promobar/promobar-user-guide/',
+
 			) );
 			
 			add_action( get_parent_class( $this ) . '_display_metabox', array( $this, 'display_metabox' ) );

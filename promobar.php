@@ -6,13 +6,14 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.7
+Version: 1.1.8
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
 
-/*  @ Copyright 2020  BestWebSoft  ( https://support.bestwebsoft.com )
+/*  @ Copyright 2021  BestWebSoft  ( https://support.bestwebsoft.com )
 
+	This program is free software; you can redistribute it and/or modify
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
 	published by the Free Software Foundation.
@@ -233,10 +234,16 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 		$message = $error = '';
 		$plugin_basename = plugin_basename( __FILE__ );
 		require_once( dirname( __FILE__ ) . '/includes/pro_banners.php' );
-		if ( ! class_exists( 'Bws_Settings_Tabs' ) )
-			require_once( dirname( __FILE__ )  . '/bws_menu/class-bws-settings.php' );
-		require_once( dirname( __FILE__ ) . '/includes/class-prmbr-settings.php' );
-		$page = new Prmbr_Settings_Tabs( plugin_basename( __FILE__ ) ); ?>
+		if ( 'promobar.php' == $_GET['page'] ) {
+			if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
+				require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
+			}
+			require_once( dirname( __FILE__ ) . '/includes/class-prmbr-settings.php' );
+			$page = new Prmbr_Settings_Tabs( plugin_basename( __FILE__ ) );
+			if ( method_exists( $page, 'add_request_feature' ) ) {
+				$page->add_request_feature();
+			}
+		} ?>
 		<div class="wrap">
 			<h1>Promobar <?php _e( 'Settings', 'promobar' ); ?></h1>
             <noscript>
@@ -752,6 +759,19 @@ if ( ! function_exists( 'prmbr_plugin_uninstall' ) ) {
 	}
 }
 
+/**
+ * Added plugin class to body.
+ */
+if ( ! function_exists( 'prmbr_class' ) ) {
+	function prmbr_class( $classes ) {
+		global $prmbr_options;
+		if ( 1 == $prmbr_options['enable'] ) {
+			$classes[] = 'prmbr_class';
+		}
+		return $classes;
+	}
+}
+
 register_activation_hook( __FILE__, 'prmbr_plugin_activate' );
 /* Activate PromoBar settings page in admin menu. */
 add_action( 'admin_menu', 'add_prmbr_admin_menu' );
@@ -774,3 +794,5 @@ add_action( 'admin_enqueue_scripts', 'prmbr_enqueue_admin_part' );
 add_filter( 'plugin_action_links', 'prmbr_plugin_action_links', 10, 2 );
 add_filter( 'plugin_row_meta', 'prmbr_register_plugin_links', 10, 2 );
 add_action( 'admin_notices', 'prmbr_plugin_banner' );
+/* Added plugin class to body */
+add_filter( 'body_class', 'prmbr_class' );

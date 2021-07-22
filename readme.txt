@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 4.5
-Tested up to: 5.4
-Stable tag: 1.1.7
+Tested up to: 5.8
+Stable tag: 1.1.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,6 +14,8 @@ Add and display HTML advertisement banner on WordPress website. Customize bar st
 
 PromoBar plugin helps you to display banners with any content on your WordPress website. Enable for certain pages and customize the appearance to create a unique design. Custom CSS/JS And Countdown plugin section adds your custom CSS and JS files, to customize your site. And adds countdown timer with two periods (preliminary and discount ), which gives an opportunity to inform the client about future discounts.
 Start making your own promotion today!
+
+[View Demo](https://bestwebsoft.com/demo-promobar/?ref=readme)
 
 https://www.youtube.com/watch?v=VUuXHQgPNm4
 
@@ -77,8 +79,9 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 = Documentation & Videos =
 
-* [[Doc] Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
-* [[Doc] Purchase](https://docs.google.com/document/d/1EUdBVvnm7IHZ6y0DNyldZypUQKpB8UVPToSc_LdOYQI/)
+* [[Doc] User Guide](https://bestwebsoft.com/documentation/promobar/promobar-user-guide/)
+* [[Doc] Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
+* [[Doc] Purchase](https://bestwebsoft.com/documentation/how-to-purchase-a-wordpress-plugin/how-to-purchase-wordpress-plugin-from-bestwebsoft/)
 * [[Video] Installation Instruction](https://www.youtube.com/watch?v=v8aAOGssPSY)
 
 = Help & Support =
@@ -103,7 +106,7 @@ Some of these translations are not complete. We are constantly adding new featur
 3. You can adjust the necessary settings using your WordPress admin panel in "PromoBar".
 4. In Display PromoBar field, please mark the appropriate block position. You can also create a page or a post and paste the shortcode [prmbr_shortcode] to the text, or add the source code to the template: <?php do_action( 'prmbr_box' ); ?>.
 
-[View a PDF version of Step-by-step Instruction on PromoBar Installation](https://docs.google.com/document/d/1-hvn6WRvWnOqj5v5pLUk7Awyu87lq5B_dO-Tv-MC9JQ/)
+[View a PDF version of Step-by-step Instruction on PromoBar Installation](https://bestwebsoft.com/documentation/how-to-install-a-wordpress-product/how-to-install-a-wordpress-plugin/)
 
 https://www.youtube.com/watch?v=v8aAOGssPSY
 
@@ -116,7 +119,7 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 1. the link to the page where the problem occurs
 2. the name of the plugin and its version. If you are using a pro version - your order number.
 3. the version of your WordPress installation
-4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://docs.google.com/document/d/1Wi2X8RdRGXk9kMszQy1xItJrpN0ncXgioH935MaBKtc/edit)
+4. copy and paste into the message your system status report. Please read more here: [Instruction on System Status](https://bestwebsoft.com/documentation/admin-panel-issues/system-status/)
 
 == Screenshots ==
 
@@ -124,6 +127,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 2. PromoBar Settings page.
 
 == Changelog ==
+
+= V1.1.8 - 22.07.2021 =
+* NEW : Add plugin class to body.
+* Bugfix : The bug with transparent has been fixed.
+* Update : BWS Panel section was updated.
+* Update : We updated all functionality for wordpress 5.8.
 
 = V1.1.7 - 14.04.2020 =
 * NEW : The ability to enable Promobar.
@@ -199,6 +208,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.8 =
+* Plugin optimization completed.
+* Bugs Fixed.
+* The compatibility with new WordPress version updated.
 
 = V1.1.7 =
 * Bugs Fixed.
