@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 4.5
-Tested up to: 5.8
-Stable tag: 1.1.8
+Tested up to: 5.8.1
+Stable tag: 1.1.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,10 @@ If you have a feature suggestion or idea you'd like to see in the plugin, we'd l
 
 Visit our Help Center if you have any questions, our friendly Support Team is happy to help — <https://support.bestwebsoft.com/>
 
+= Affiliate Program =
+
+Earn 20% commission by selling the premium WordPress plugins and themes by BestWebSoft — https://bestwebsoft.com/affiliate/
+
 = Translation =
 
 * Russian (ru_RU)
@@ -124,9 +128,18 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 == Screenshots ==
 
 1. PromoBar on the homepage in top position.
-2. PromoBar Settings page.
+2. PromoBar list page.
+3. PromoBar individual Settings.
 
 == Changelog ==
+
+= V1.1.9 - 17.09.2021 =
+* Pro : Popup promobar position has been added.
+* Pro : The ability to add several promobars has been added.
+* Pro : The ability to set promobar start and end dates has been added.
+* Update : The plugin settings page has been updated.
+* Update : We updated all functionality for wordpress 5.8.
+* Update : BWS Panel section was updated.
 
 = V1.1.8 - 22.07.2021 =
 * NEW : Add plugin class to body.
@@ -208,6 +221,11 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.1.9 =
+* Plugin optimization completed.
+* The compatibility with new WordPress version updated.
+* New features added.
 
 = V1.1.8 =
 * Plugin optimization completed.

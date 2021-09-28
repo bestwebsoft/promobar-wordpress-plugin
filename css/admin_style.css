@@ -16,6 +16,9 @@ a.prmbr_disabled {
 	left: 7px;
 	margin-top: 3.5px;
 }
+#prmbr_btn_add_new {
+	background-color: #dcd6b8;
+}
 .wp-color-result {
 	margin-bottom: 0 !important;
 }

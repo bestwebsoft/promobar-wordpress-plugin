@@ -6,7 +6,7 @@ Description: Add and display HTML advertisement on WordPress website. Customize 
 Author: BestWebSoft
 Text Domain: promobar
 Domain Path: /languages
-Version: 1.1.8
+Version: 1.1.9
 Author URI: https://bestwebsoft.com/
 License: GPLv3 or later
 */
@@ -36,19 +36,23 @@ if ( ! function_exists( 'add_prmbr_admin_menu' ) ) {
 	function add_prmbr_admin_menu() {
 		if( ! is_plugin_active( 'promobar-pro/promobar-pro.php' ) ) {
             global $submenu, $prmbr_plugin_info, $wp_version;
-            $settings = add_menu_page(
-                __( 'PromoBar Settings', 'promobar' ),
+            $general_page = add_menu_page(
+                'Promobar',
                 'PromoBar',
                 'manage_options',
                 'promobar.php',
-                'prmbr_settings_page'
+                'prmbr_table_page_render',
+                'none'
             );
-            add_submenu_page(
+
+            $page = add_submenu_page( 'promobar.php', __( 'Edit PromoBar', 'promobar' ), __( 'Add New', 'promobar' ), 'manage_options', 'promobar-new.php', 'prmbr_add_new_render' );
+
+            $settings = add_submenu_page(
                 'promobar.php',
-                __( 'Promobar', 'promobar' ),
+              	'Promobar',
                 __( 'Settings', 'promobar' ),
                 'manage_options',
-                'promobar.php',
+                'promobar-settings.php',
                 'prmbr_settings_page'
             );
             add_submenu_page(
@@ -65,6 +69,8 @@ if ( ! function_exists( 'add_prmbr_admin_menu' ) ) {
                     'manage_options',
                     'https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=0&pn=0&v=' . $prmbr_plugin_info["Version"] . '&wp_v=' . $wp_version );
             }
+            add_action( 'load-' . $general_page, 'prmbr_add_tabs' );
+            add_action( 'load-' . $page, 'prmbr_add_tabs' );
             add_action( 'load-' . $settings, 'prmbr_add_tabs' );
 		}
 	}
@@ -101,7 +107,7 @@ if ( ! function_exists( 'prmbr_init' ) ) {
 		/* Function check if plugin is compatible with current WP version */
 		bws_wp_min_version_check( plugin_basename( __FILE__ ), $prmbr_plugin_info, '4.5' );
 
-		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar.php" == $_GET['page'] ) ) {
+		if ( ! is_admin() || ( isset( $_GET['page'] ) && "promobar-settings.php" == $_GET['page'] ) ) {
 			prmbr_settings();
 		}
 	}
@@ -225,6 +231,233 @@ if ( ! function_exists( 'prmbr_plugin_activate' ) ) {
 }
 
 /**
+ * Function will render new slider page.
+ */
+if ( ! function_exists( 'prmbr_add_new_render' ) ) {
+	function prmbr_add_new_render() {
+		global $prmbr_options;
+		prmbr_settings();
+		require_once( dirname( __FILE__ ) . '/includes/pro_banners.php' );
+		$bws_hide_premium_options_check = bws_hide_premium_options_check( $prmbr_options );
+		
+		if ( ! isset( $_GET['prmbr_id'] ) && $bws_hide_premium_options_check ) { ?>
+			<div class="wrap">
+				<h1><?php _e( 'Add New Promobar', 'promobar' ); ?></h1>
+				<?php _e( 'This tab contains Pro options only.', 'promobar' );
+				echo ' ' . sprintf(
+					__( '%sChange the settings%s to view the Pro options.', 'promobar' ),
+					'<a href="admin.php?page=promobar-settings.php&bws_active_tab=misc">',
+					'</a>'
+					); ?>
+				</div>
+		<?php } else {
+
+		if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
+				require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
+			}
+			require_once( dirname( __FILE__ ) . '/includes/class-prmbr-add-new.php' );
+			$page = new prmbr_Single_Tabs( plugin_basename( __FILE__ ) ); ?>
+			<div class="wrap prmbr_wrap">
+				<?php $page->display_content(); ?>
+			</div>
+		<?php }
+	}
+}
+
+/**
+ * Function will render slider page.
+ */
+if ( ! function_exists( 'prmbr_table_page_render' ) ) {
+	function prmbr_table_page_render() {
+		global $prmbr_options;
+		prmbr_settings();
+		$promobar_table = new Prmbr_List_Table();
+		$promobar_table->prepare_items();
+
+		$message = ''; ?>
+		
+
+		<form class="bws_form prmbr_form" method="POST" action="admin.php?page=promobars.php">
+			<?php if ( 'delete' === $promobar_table->current_action() ) {
+				$message =  __( 'Promobar deleted.', 'promobar' );
+			} ?>
+			<div class="wrap">
+				<?php printf(
+					'<h1> %s <span id="prmbr_btn_add_new" class="add-new-h2">%s</span></h1>',
+					'Promobar',
+					esc_html__( 'Add New', 'promobar' )
+				); ?>
+				<div id="prmbr_settings_message" class="notice is-dismissible updated below-h2 fade" <?php if ( "" == $message ) echo 'style="display:none"'; ?>>
+					<p><strong><?php echo $message; ?></strong></p>
+				</div>
+				<?php if ( ! bws_hide_premium_options_check( $prmbr_options ) ) { ?>
+					<div class="bws_pro_version_bloc prmbr-pro-feature">
+	                	<div class="bws_pro_version_table_bloc"> 
+	                	 <button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'promobar' ); ?>"></button> 
+	                   		<div class="bws_table_bg"></div>
+	                    	<div class="bws_pro_version">
+								<?php $promobar_table->search_box( __( 'Search Promobar', 'promobar' ), 'prmbr_slider' ); ?>
+							
+	            	
+	       		<?php }
+	        $promobar_table->display(); ?>
+							
+			<input type="hidden" name="prmbr_form_submit" value="submit" />
+			<?php wp_nonce_field( plugin_basename( __FILE__ ), 'prmbr_nonce_form_name' ); ?>
+		</form>
+	<?php }
+}
+
+/**
+ * Extends WP_List_Table and WP_Media_List_Table classes.
+ */
+if ( ! class_exists( 'WP_List_Table' ) )
+	require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+
+if ( ! class_exists( 'Prmbr_List_Table' ) ) {
+	/* WP_List_Table extends for render of table */
+	class Prmbr_List_Table extends WP_List_Table {
+
+		/* Declare constructor */
+		function __construct() {
+			parent::__construct( array(
+				'singular'	=> 'promobar',
+				'plural'	=> 'promobars',
+				'ajax'      => true,
+			) );
+		}
+
+		/**
+		 * Declare column renderer
+		 *
+		 * @param $item - row (key, value array)
+		 * @param $promobar_name - string (key)
+		 * @return HTML
+		 */
+		function column_default( $item, $column_name ) {
+			switch ( $column_name ) {
+				case 'shortcode':
+					bws_shortcode_output( '[bws_promobar]' );
+					break;
+				case 'datetime':
+					return '';
+					break;
+				case 'title':
+					return $item[ $column_name ];
+					break;
+				default:
+					return print_r( $item, true ) ;
+			}
+		}
+
+		/**
+		 * Render column with actions
+		 *
+		 * @param $item - row (key, value array)
+		 * @return HTML
+		 */
+		function column_title( $item ) {
+			$actions = array(
+				'edit'		=> sprintf( '<a href="?page=promobar-new.php&prmbr_id=%d">%s</a>', $item['id'], __( 'Edit', 'promobar' ) )
+			);
+
+			$title = $item['title']; 
+
+			return sprintf(
+				'<strong><a href="?page=promobar-new.php&prmbr_id=%d">%s</strong></a>%s',
+				$item['id'], $title, $this->row_actions( $actions )
+			);
+		}
+
+		/**
+		 * Checkbox column renders
+		 *
+		 * @param $item - row (key, value array)
+		 * @return HTML
+		 */
+		function column_cb( $item ) {
+			return sprintf(
+				'<input type="checkbox" name="" value="" />'
+			);
+		}
+
+		/**
+		 * Return promobars to display in table
+		 *
+		 * @return array
+		 */
+		function get_columns() {
+			$columns = array(
+				'cb'			=> '<input type="checkbox" />',
+				'title'			=> __( 'Title', 'promobar' ),
+				'shortcode'		=> __( 'Shortcode', 'promobar' ),
+				'datetime'		=> __( 'Date', 'promobar' )	
+			);
+			return $columns;
+		}
+
+		/* Generate the table navigation above or below the table */
+		function display_tablenav( $which )  { 
+			global $prmbr_options, $prmbr_plugin_info, $wp_version;
+			if ( ! bws_hide_premium_options_check( $prmbr_options ) ) { 
+				if ( 'bottom' == $which ) { ?>
+				<div class="bws_pro_version_bloc prmbr-pro-feature">
+					<div class="bws_pro_version_table_bloc">
+	                    <button type="submit" name="bws_hide_premium_options" class="notice-dismiss bws_hide_premium_options" title="<?php _e( 'Close', 'promobar' ); ?>"></button>
+	                    <div class="bws_table_bg"></div>
+	                    <div class="bws_pro_version">
+					<?php } ?>
+	                        <div class="tablenav <?php echo esc_attr( $which ); ?>">
+								<div class="alignleft actions bulkactions">
+									<?php $this->bulk_actions( $which ); ?>
+								</div>
+								<?php $this->pagination( $which ); ?>
+								<br class="clear" />
+							</div>
+	                    </div>
+	                </div>
+	                <div class="bws_pro_version_tooltip">
+						<a class="bws_button" href="<?php echo $prmbr_plugin_info['PluginURI']; ?>?k=fa164f00821ed3a87e6f78cb3f5c277b&amp;pn=143&amp;v=<?php echo $prmbr_plugin_info["Version"]; ?>&amp;wp_v=<?php echo $wp_version; ?>" target="_blank" title="<?php echo $prmbr_plugin_info["Name"]; ?>"><?php esc_html_e( 'Upgrade to Pro', 'promobar' ); ?></a>
+						<div class="clear"></div>
+					</div>
+	            </div>
+        	<?php }
+		}
+
+
+		/**
+		 * Return array of bulk actions if has any
+		 *
+		 * @return array
+		 */
+		function get_bulk_actions() {
+			$actions = array(
+				'delete' => __( 'Delete', 'promobar' )
+			);
+			return $actions;
+		}
+
+		/**
+		 * Get rows from database and prepare them to be showed in table
+		 */
+		function prepare_items() {
+			$columns = $this->get_columns();
+			$hidden = array();
+			$sortable = array();
+			$this->_column_headers = array( $columns, $hidden, $sortable );
+
+
+			/* Show all slider categories */
+			$this->items[] = array(
+				'id' => 1,
+				'title' => 'Promobar',
+			);
+
+		}
+	}
+}
+
+/**
  * Settings page.
  * @return void
  */
@@ -234,7 +467,7 @@ if ( ! function_exists ( 'prmbr_settings_page' ) ) {
 		$message = $error = '';
 		$plugin_basename = plugin_basename( __FILE__ );
 		require_once( dirname( __FILE__ ) . '/includes/pro_banners.php' );
-		if ( 'promobar.php' == $_GET['page'] ) {
+		if ( 'promobar-settings.php' == $_GET['page'] ) {
 			if ( ! class_exists( 'Bws_Settings_Tabs' ) ) {
 				require_once( dirname( __FILE__ ) . '/bws_menu/class-bws-settings.php' );
 			}
@@ -313,7 +546,7 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 						}
 						if ( 'fixed' == $prmbr_options['position_all'] ) {
 							echo 'position: fixed;';
-							echo prmbr_definition_position( $prmbr_options['position_desktop'] );
+							
 						}
 						if ( 'absolute' == $prmbr_options['position_all'] ) {
 							if ( 'twentytwelve' == $name_theme || 'twentyfourteen' == $name_theme ) {
@@ -322,7 +555,7 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 							} else {
 								echo 'position: absolute;';
 							}
-							echo prmbr_definition_position( $prmbr_options['position_desktop'] );
+							
 							echo 'z-index: 99999 !important;';
 						}
 						if ( 'transparent' == $prmbr_options['background'] ) {
@@ -353,6 +586,11 @@ if ( ! function_exists ( 'add_prmbr_function' ) ) {
 							echo 'right 0px !important;';
 							echo 'position: relative;';
 						} ?>
+					}
+					@media screen and (min-width: 992px) {
+						.prmbr_main {
+						<?php echo prmbr_definition_position( $prmbr_options['position_desktop'] ); ?>
+						}
 					}
 					@media screen and (max-width: 960px) {
 						<?php if ( 'absolute' == $prmbr_options['position_all'] ) {
@@ -623,8 +861,7 @@ if ( ! function_exists( 'prmbr_shortcode_promobar_button_content' ) ) {
 if ( ! function_exists ( 'prmbr_enqueue_admin_part' ) ) {
 	function prmbr_enqueue_admin_part() {
 		wp_enqueue_style( 'prmbr_icon_style', plugins_url( 'css/icon_style.css', __FILE__ ) );
-		
-		if ( isset( $_GET['page'] ) && 'promobar.php' == $_GET['page'] ) {
+		if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'promobar-settings.php','promobar.php', 'promobar-new.php' ) ) ) {
 			wp_enqueue_script( 'prmbr_color_picker', plugins_url( 'js/admin_script.js', __FILE__ ), array( 'jquery', 'wp-color-picker' ) );
 			wp_enqueue_style( 'prmbr_style', plugins_url( 'css/admin_style.css', __FILE__ ), array( 'wp-color-picker' ) );
 			wp_enqueue_script( 'jquery-ui-datepicker' );
@@ -671,7 +908,7 @@ if ( ! function_exists( 'prmbr_register_plugin_links' ) ) {
 		$base = plugin_basename( __FILE__ );
 		if ( $file == $base ) {
 			if ( ! is_network_admin() ) {
-				$links[] = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
+				$links[] = '<a href="admin.php?page=promobar-settings.php">' . __( 'Settings', 'promobar' ) . '</a>';
 			}
 			$links[] = '<a href="https://support.bestwebsoft.com/hc/en-us/sections/200935775" target="_blank">' . __( 'FAQ', 'promobar' ) . '</a>';
 			$links[] = '<a href="https://support.bestwebsoft.com">' . __( 'Support', 'promobar' ) . '</a>';
@@ -707,7 +944,7 @@ if ( ! function_exists( 'prmbr_plugin_action_links' ) ) {
 				$this_plugin = plugin_basename( __FILE__ );
 			}
 			if ( $file == $this_plugin ) {
-				$settings_link = '<a href="admin.php?page=promobar.php">' . __( 'Settings', 'promobar' ) . '</a>';
+				$settings_link = '<a href="admin.php?page=promobar-settings.php">' . __( 'Settings', 'promobar' ) . '</a>';
 				array_unshift( $links, $settings_link );
 			}
 		}
@@ -721,7 +958,7 @@ if ( ! function_exists ( 'prmbr_plugin_banner' ) ) {
 		if ( 'plugins.php' == $hook_suffix ) {
 			bws_plugin_banner_to_settings( $prmbr_plugin_info, 'prmbr_options', 'promobar', 'admin.php?page=promobar.php' );
 		}
-		if ( isset( $_GET['page'] ) && 'promobar.php' == $_GET['page'] ) {
+		if ( isset( $_GET['page'] ) && 'promobar-settings.php' == $_GET['page'] ) {
 			bws_plugin_suggest_feature_banner( $prmbr_plugin_info, 'prmbr_options', 'promobar' );
 		}
 	}
