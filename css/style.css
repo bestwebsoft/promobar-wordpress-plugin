@@ -1,5 +1,4 @@
 .prmbr_main {
-	z-index: 999999;
 	min-height: 0;
 	padding: 15px;
 	word-wrap: break-word;
@@ -29,13 +28,15 @@ input.prmbr_css_file_path {
 #prmbr_close_button_main {
 	max-width: 10px;
 	color: #bbb;
+	font-size: 30px !important;
 	max-height: 10px;
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
 	float: right;
 	bottom: 61px;
-	right: 5px;
+	right: 45px!important;
+	top: 15px!important;
 }
 @media screen and (max-width: 782px) {
 	.prmbr_no_js_logged {

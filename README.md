@@ -42,7 +42,6 @@ Start making your own promotion today!</p>
 </ul>
 </li>
 <li>Create your banner using TinyMCE editor</li>
-<li>Add custom code via plugin settings page</li>
 <li>Compatible with latest WordPress version</li>
 <li>Incredibly simple settings for fast setup without modifying code</li>
 <li>Detailed step-by-step documentation and videos</li>
@@ -67,23 +66,21 @@ Start making your own promotion today!</p>
 <li>Countdown Features
 <ul>
 <li>Add countdown timer to your site  </li>
-<li>Opportunity to warn the client about future discounts in a 3 months  </li>
-<li>Discount Starts on  </li>
+<li>Discount Starts on </li>
+<li>Countdown Alignmen </li>
 <li>Discount Ends on  </li>
 <li>Background
 <ul>
 <li>Transparent  </li>
 <li>Color with opacity  </li>
 <li>Image  </li>
-<li>Text color  </li>
+<li>Text color</li>
 </ul>
 </li>
-<li>Block Class/ID attribute to Paste Big Banner  </li>
-<li>Opportunity to repeat discount countdown every year  </li>
-<li>Add countdown to your page or post using the shortcode  </li>
 </ul>
 </li>
-<li>Configure all subsites on the network</li>
+<li>The ability to choose(change) the background image position added</li>
+<li>Add custom code via plugin settings page</li>
 <li>Get answer to your support question within one business day (<a href="https://bestwebsoft.com/support-policy/" rel="nofollow ugc">Support Policy</a>)</li>
 </ul>
 <p><a href="https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3" rel="nofollow ugc">Upgrade to Pro Now</a></p>

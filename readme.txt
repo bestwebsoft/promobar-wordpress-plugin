@@ -1,10 +1,10 @@
-=== PromoBar by BestWebSoft ===
+=== PromoBar by BestWebSoft - Customizable Advertisement Banner for WordPress Website ===
 Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
-Requires at least: 4.5
-Tested up to: 5.8.1
-Stable tag: 1.1.9
+Requires at least: 5.6
+Tested up to: 6.3
+Stable tag: 1.2.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,7 +41,6 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
     * Transparent 
     * Color 
 * Create your banner using TinyMCE editor
-* Add custom code via plugin settings page
 * Compatible with latest WordPress version
 * Incredibly simple settings for fast setup without modifying code
 * Detailed step-by-step documentation and videos
@@ -59,18 +58,16 @@ https://www.youtube.com/watch?v=VUuXHQgPNm4
 >     * Add PromoBar to your page or post using the shortcode  
 > * Countdown Features  
 >     * Add countdown timer to your site  
->     * Opportunity to warn the client about future discounts in a 3 months  
->     * Discount Starts on  
+>     * Discount Starts on 
+>     * Countdown Alignmen 
 >     * Discount Ends on  
 >     * Background  
 >         * Transparent  
 >         * Color with opacity  
 >         * Image  
->         * Text color  
->     * Block Class/ID attribute to Paste Big Banner  
->     * Opportunity to repeat discount countdown every year  
->     * Add countdown to your page or post using the shortcode  
-> * Configure all subsites on the network
+>         * Text color
+> * The ability to choose(change) the background image position added
+> * Add custom code via plugin settings page
 > * Get answer to your support question within one business day ([Support Policy](https://bestwebsoft.com/support-policy/))
 >
 > [Upgrade to Pro Now](https://bestwebsoft.com/products/wordpress/plugins/promobar/?k=f740086aaebf70b0326ba86bef1ee5f3)
@@ -132,6 +129,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 3. PromoBar individual Settings.
 
 == Changelog ==
+
+= V1.2.0 - 31.10.2023 =
+* Pro : The ability to change the background image position added.
+* Pro : We updated the calendar for the start and end of the promo bar.
+* Pro : Fixed database error when switching from OLD PRO to NEW PRO.
+* Bugfix : The bug with the choosing of the place for displaying the promo bar has been fixed. 
+* Bugfix : The bug with closing icon has been fixed.
 
 = V1.1.9 - 17.09.2021 =
 * Pro : Popup promobar position has been added.
@@ -221,6 +225,10 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+= V1.2.0 =
+* New features added.
+* Bugs Fixed.
+* Functionality expanded.
 
 = V1.1.9 =
 * Plugin optimization completed.
