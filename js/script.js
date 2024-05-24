@@ -1,11 +1,11 @@
 ( function( $ ) {
 	$( window ).load( function() {
-        var promo_block = $( '.prmbr_main' ),
+		var promo_block = $( '.prmbr_main' ),
 			prmbr_close_button_main = $( '#prmbr_close_button_main' );
 
-        prmbr_close_button_main.click( function() {
-            promo_block.remove();
-            prmbr_close_button_main.remove();
+		prmbr_close_button_main.click( function() {
+			promo_block.remove();
+			prmbr_close_button_main.remove();
 			$( 'body' ).css( 'margin-left', '0' ).css( 'margin-right', '0' ).css( 'margin-top', '0' );
 		} );
 		$( window ).resize( function() {
@@ -30,7 +30,7 @@
 						) {
 							height_margin = promo_block.css( 'height' );
 							$( 'body' ).css( { 'padding-top': height_margin } );
-						}						
+						}
 					}
 
 					if ( $.inArray( 'bottom', all_resolutions ) !== -1 ) {
@@ -40,13 +40,13 @@
 						) {
 							height_margin = promo_block.css( 'height' );
 							$( 'body' ).css( { 'padding-bottom': height_margin } );
-						}						
+						}
 					}
 
 					/* if the prombar is located on the left or on the right, then add height for the promobar */
 					if ( $.inArray( 'side', all_resolutions ) !== -1 ) {
 						var height_prmbr_main,
-                            page_height = $( 'body' ).css( 'height' );
+							page_height = $( 'body' ).css( 'height' );
 						if ( ( 'side' === desktop && window_width > 768 ) ||
 							( 'side' === tablet && window_width < 769 && window_width > 425 ) ||
 							( 'side' === mobile && window_width < 426 )

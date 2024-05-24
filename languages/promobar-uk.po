@@ -120,6 +120,26 @@ msgstr "Телефон"
 msgid "Close Icon"
 msgstr "Значок закрити"
 
+#: includes/class-prmbr-add-new.php:319
+msgid "Close Icon Color"
+msgstr "Колір Значка закрити"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Close Icon Size"
+msgstr "Розмір Значка закрити"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Close Icon Position"
+msgstr "Розположення Значка закрити"
+
+#: includes/class-prmbr-add-new.php:339
+msgid "Left"
+msgstr "Зліва"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Right"
+msgstr "Зправа"
+
 #: includes/class-prmbr-add-new.php:273
 msgid "Enable to display a close/dismiss icon on the promo bar."
 msgstr "Можливість відображати значок закриття на Promobar."

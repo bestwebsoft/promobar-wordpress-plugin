@@ -3,7 +3,14 @@
  * Displays the content on the plugin settings page
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
+
 if ( ! class_exists( 'Prmbr_Single_Tabs' ) ) {
+	/**
+	 * Class Prmbr_Single_Tabs for disp[lay Settings Tabs
+	 */
 	class Prmbr_Single_Tabs extends Bws_Settings_Tabs {
 
 		/**
@@ -143,8 +150,19 @@ if ( ! class_exists( 'Prmbr_Single_Tabs' ) ) {
 					}
 				}
 
+				/* Close Icon Color */
+				$this->options['close_icon_color_field'] = isset( $_POST['prmbr_close_icon_color_field'] ) ? sanitize_hex_color( wp_unslash( $_POST['prmbr_close_icon_color_field'] ) ) : '';
+
 				/* Promobar Text Color */
 				$this->options['text_color_field'] = isset( $_POST['prmbr_text_color_field'] ) ? sanitize_hex_color( wp_unslash( $_POST['prmbr_text_color_field'] ) ) : '';
+
+				/* Close Icon Size */
+				$this->options['close_icon_size']              = isset( $_POST['prmbr_close_icon_size'] ) ? absint( $_POST['prmbr_close_icon_size'] ) : 30;
+
+				$this->options['position_close_icon'] = (
+					isset( $_POST['prmbr_position_close_icon'] ) &&
+					in_array( sanitize_text_field( wp_unslash( $_POST['prmbr_position_close_icon'] ) ), array( 'right', 'left' ), true )
+				) ? sanitize_text_field( wp_unslash( $_POST['prmbr_position_close_icon'] ) ) : 'right';
 
 				/* Html clean before the show */
 				$this->options['html'] = isset( $_POST['prmbr_html'] ) ? wp_kses_post( wp_unslash( $_POST['prmbr_html'] ) ) : '';
@@ -302,6 +320,42 @@ if ( ! class_exists( 'Prmbr_Single_Tabs' ) ) {
 							<input type="checkbox" value="1" name="prmbr_show_promobar_dismiss_button" id="prmbr_show_promobar_dismiss_button" <?php checked( $this->options['dismiss_promobar'] ); ?>/>
 							<span class="bws_info"><?php esc_html_e( 'Enable to display a close/dismiss icon on the promo bar.', 'promobar' ); ?></span>
 						</label>
+					</td>
+				</tr>
+				<?php
+				$close_icon_class = '';
+				if ( 1 === $this->options['dismiss_promobar'] ) {
+					$close_icon_status = ' display="none"';
+				}
+				?>
+				<tr class="prmbr_enable prmbr_enable_icon_color" <?php echo esc_html( $close_icon_status ); ?>>
+					<th scope="row"><?php esc_html_e( 'Close Icon Color', 'promobar' ); ?></th>
+					<td>
+						<label for="prmbr_close_icon_color_field <?php echo esc_html( $close_icon_class ); ?>">
+							<input  type="text" id="prmbr_close_icon_color_field" value="<?php echo esc_attr( $this->options['close_icon_color_field'] ); ?>" name="prmbr_close_icon_color_field" class="prmbr_color_field" data-default-color="#bbb" />
+						</label>
+					</td>
+				</tr>
+				<tr class="prmbr_enable prmbr_enable_icon_size" <?php echo esc_html( $close_icon_status ); ?>>
+					<th scope="row"><?php esc_html_e( 'Close Icon Size', 'promobar' ); ?></th>
+					<td>
+						<fieldset>
+							<label><input class="small-text" name="prmbr_close_icon_size" type="text" id="prmbr_close_icon_size" value="<?php echo esc_attr( $this->options['close_icon_size'] ); ?>" /> <?php esc_html_e( 'Font-Size', 'promobar' ); ?> (px)<br />
+						</fieldset>
+					</td>
+				</tr>
+				<tr class="prmbr_enable prmbr_enable_icon_position" <?php echo esc_attr( $close_icon_status ); ?>>
+					<th scope="row"><?php esc_html_e( 'Close Icon Position', 'promobar' ); ?></th>
+					<td>
+						<fieldset>
+							<label for="prmbr_icon_left">
+								<input type="radio" id="prmbr_left" name="prmbr_position_close_icon" value="left" <?php checked( 'left' === $this->options['position_close_icon'] ); ?> /> <?php esc_html_e( 'Left', 'promobar' ); ?>
+							</label>
+							<br />
+							<label for="prmbr_icon_right">
+								<input type="radio" id="prmbr_right" name="prmbr_position_close_icon" value="right" <?php checked( 'right' === $this->options['position_close_icon'] ); ?> /> <?php esc_html_e( 'Right', 'promobar' ); ?>
+							</label>
+						</fieldset>
 					</td>
 				</tr>
 				<tr class="prmbr_enable">

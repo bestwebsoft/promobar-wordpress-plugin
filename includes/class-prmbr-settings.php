@@ -3,7 +3,14 @@
  * Displays the content on the plugin settings page
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
+
 if ( ! class_exists( 'Prmbr_Settings_Tabs' ) ) {
+	/**
+	 * Class Prmbr_Settings_Tabs for display Settings Tabs
+	 */
 	class Prmbr_Settings_Tabs extends Bws_Settings_Tabs {
 		/**
 		 * Constructor.

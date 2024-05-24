@@ -1,11 +1,19 @@
 <?php
 /**
  * Banners on plugin settings page
+ *
  * @package Promobar by BestWebSoft
  * @since 0.1
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	die();
+}
+
 if ( ! function_exists( 'prmbr_countdown_block' ) ) {
+	/**
+	 * Countdown block
+	 */
 	function prmbr_countdown_block() { ?>
 		<table class="form-table prmbr-form-table">
 			<tbody>
@@ -18,11 +26,18 @@ if ( ! function_exists( 'prmbr_countdown_block' ) ) {
 				</tr>
 			</tbody>
 		</table>
-	<?php }
+		<?php
+	}
 }
 
 if ( ! function_exists( 'prmbr_image' ) ) {
-	function prmbr_image( $prmbr_options ) { ?>
+	/**
+	 * Image block
+	 *
+	 * @param array $prmbr_options Plugin options.
+	 */
+	function prmbr_image( $prmbr_options ) {
+		?>
 		<div class="wrapper topp">
 			<label for="prmbr_background_image">
 				<input disabled="disabled" type="radio" name="prmbr_background" id="prmbr_background_image" value="image" <?php checked( 'image' == $prmbr_options['background'] ); ?> /> <?php esc_html_e( 'Image', 'promobar' ); ?>
@@ -34,22 +49,36 @@ if ( ! function_exists( 'prmbr_image' ) ) {
 				</div>
 			</fieldset>
 		</div>
-	<?php }
+		<?php
+	}
 }
 
 if ( ! function_exists( 'prmbr_title' ) ) {
-	function prmbr_title( $prmbr_options ) { ?>
+	/**
+	 * Image block
+	 *
+	 * @param array $prmbr_options Plugin options.
+	 */
+	function prmbr_title( $prmbr_options ) {
+		?>
 		<div id="titlediv">
 			<div id="titlewrap">
 				<input disabled="disabled" name="prmbr_items_title" size="30" value="Promobar" id="title" spellcheck="true" autocomplete="off" type="text" placeholder="<?php esc_html_e( 'Enter title here', 'promobar' ); ?>" />
 			</div>
 			<div class="inside"></div>
 		</div>
-	<?php }
+		<?php
+	}
 }
 
 if ( ! function_exists( 'prmbr_date' ) ) {
-	function prmbr_date( $prmbr_options ) { ?>
+	/**
+	 * Dateblock
+	 *
+	 * @param array $prmbr_options Plugin options.
+	 */
+	function prmbr_date( $prmbr_options ) {
+		?>
 		<table class="form-table prmbr-form-table">
 			<tbody>
 				<tr>
@@ -68,18 +97,29 @@ if ( ! function_exists( 'prmbr_date' ) ) {
 				</tr> 
 			</tbody>
 		</table>
-	<?php }
+		<?php
+	}
 }
 
 if ( ! function_exists( 'prmbr_popup' ) ) {
-	function prmbr_popup( $prmbr_options ) { ?>
+	/**
+	 * Popup block
+	 *
+	 * @param array $prmbr_options Plugin options.
+	 */
+	function prmbr_popup( $prmbr_options ) {
+		?>
 		<label for="prmbr_popup">
 			<input disabled="disabled" type="radio" id="prmbr_popup" name="" value="popup" class="bws_option_affect" data-affect-show=".prmbr_time_delay" data-affect-hide=".prmbr_alignment"  /> <?php esc_html_e( 'popup', 'promobar' ); ?>
 		</label>
-	<?php }
+		<?php
+	}
 }
 
 if ( ! function_exists( 'prmbr_shortcode' ) ) {
+	/**
+	 * Countdown shortcode
+	 */
 	function prmbr_shortcode() {
 		echo wp_kses_post( __( 'Add Countdown to your page or post </br> using the following shortcode:', 'promobar' ) );
 		echo '</br></br>';

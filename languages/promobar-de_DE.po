@@ -1,0 +1,375 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-05-24 18:20+0300\n"
+"PO-Revision-Date: 2024-05-24 18:22+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: esc_html__;__;_e;esc_html_e;esc_attr_e;esc_attr__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
+
+#: includes/class-prmbr-list-table.php:60
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: includes/class-prmbr-list-table.php:93
+msgid "Title"
+msgstr "Titel"
+
+#: includes/class-prmbr-list-table.php:94
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/class-prmbr-list-table.php:95
+msgid "Date"
+msgstr "Datum"
+
+#: includes/class-prmbr-list-table.php:112
+#: includes/class-prmbr-settings.php:111
+#: includes/class-prmbr-single-tabs.php:530 promobar.php:330
+msgid "Close"
+msgstr "Schließen"
+
+#: includes/class-prmbr-list-table.php:126 promobar.php:68
+msgid "Upgrade to Pro"
+msgstr "Upgrade auf die Pro-Version"
+
+#: includes/class-prmbr-list-table.php:142
+msgid "Delete"
+msgstr "Löschen"
+
+#: includes/class-prmbr-settings.php:28 includes/class-prmbr-single-tabs.php:40
+#: includes/class-prmbr-single-tabs.php:44 promobar.php:53 promobar.php:370
+#: promobar.php:973 promobar.php:1012
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: includes/class-prmbr-settings.php:29
+msgid "Misc"
+msgstr "Verschiedenes"
+
+#: includes/class-prmbr-settings.php:30
+msgid "Custom Code"
+msgstr "Benutzerdefinierter Code"
+
+#: includes/class-prmbr-settings.php:31
+msgid "License key"
+msgstr "Lizenzschlüssel"
+
+#: includes/class-prmbr-settings.php:69
+#: includes/class-prmbr-single-tabs.php:172
+msgid "Settings saved."
+msgstr "Einstellungen gespeichert."
+
+#: includes/class-prmbr-settings.php:79
+#: includes/class-prmbr-single-tabs.php:253
+#: includes/class-prmbr-single-tabs.php:547
+msgid "Promobar Settings"
+msgstr "Promobar-Einstellungen"
+
+#: includes/class-prmbr-settings.php:82 includes/class-prmbr-settings.php:85
+msgid "Promobar"
+msgstr "Promobar"
+
+#: includes/class-prmbr-settings.php:89
+#: includes/class-prmbr-single-tabs.php:263
+msgid "Enable to display a promo bar."
+msgstr "Aktivieren Sie diese Option, um eine Promo-Leiste anzuzeigen."
+
+#: includes/class-prmbr-settings.php:132
+#: includes/class-prmbr-single-tabs.php:233
+msgid "Promobar Shortcode"
+msgstr "Promobar Shortcode"
+
+#: includes/class-prmbr-settings.php:135
+msgid "Add PromoBar to your page or post </br> using the following shortcode:"
+msgstr ""
+"Fügen Sie die PromoBar mit dem folgenden Shortcode zu Ihrer Seite oder Ihrem "
+"Beitrag </br> hinzu:"
+
+#: includes/class-prmbr-settings.php:142
+msgid ""
+"If you would like to use this plugin on certain pages, please paste the "
+"following strings into the template source code:"
+msgstr ""
+"Wenn Sie dieses Plugin auf bestimmten Seiten verwenden möchten, fügen Sie "
+"bitte die folgenden Strings in den Quellcode der Vorlage ein:"
+
+#: includes/class-prmbr-single-tabs.php:45
+msgid "Display"
+msgstr "Anzeige"
+
+#: includes/class-prmbr-single-tabs.php:66
+#: includes/class-prmbr-single-tabs.php:466
+msgid "Transparent"
+msgstr "Transparent"
+
+#: includes/class-prmbr-single-tabs.php:67
+#: includes/class-prmbr-single-tabs.php:471
+msgid "Color"
+msgstr "Farbe"
+
+#: includes/class-prmbr-single-tabs.php:68 includes/pro_banners.php:43
+msgid "Image"
+msgstr "Bild"
+
+#: includes/class-prmbr-single-tabs.php:192
+msgid "Edit Promobar"
+msgstr "Promobar bearbeiten"
+
+#: includes/class-prmbr-single-tabs.php:192 promobar.php:48 promobar.php:316
+msgid "Add New"
+msgstr "Neu hinzufügen"
+
+#: includes/class-prmbr-single-tabs.php:194 promobar.php:258
+msgid "Add New Promobar"
+msgstr "Neue Promobar hinzufügen"
+
+#: includes/class-prmbr-single-tabs.php:217
+msgid "Publish"
+msgstr "Veröffentlichen"
+
+#: includes/class-prmbr-single-tabs.php:223
+msgid "Update"
+msgstr "Aktualisieren"
+
+#: includes/class-prmbr-single-tabs.php:236
+msgid ""
+"Add PromoBar to your posts, pages, custom post types or widgets by using the "
+"following shortcode:"
+msgstr ""
+"Fügen Sie PromoBar zu Ihren Beiträgen, Seiten, benutzerdefinierten "
+"Beitragstypen oder Widgets hinzu, indem Sie den folgenden Shortcode "
+"verwenden:"
+
+#: includes/class-prmbr-single-tabs.php:259
+#: includes/class-prmbr-single-tabs.php:268
+msgid "Display Promobar"
+msgstr "Promobar anzeigen"
+
+#: includes/class-prmbr-single-tabs.php:272
+msgid "on all pages"
+msgstr "auf allen Seiten"
+
+#: includes/class-prmbr-single-tabs.php:276
+msgid "on the homepage"
+msgstr "auf der Homepage"
+
+#: includes/class-prmbr-single-tabs.php:280
+msgid "display via shortcode or function only"
+msgstr "nur über Shortcode oder Funktion anzeigen"
+
+#: includes/class-prmbr-single-tabs.php:297
+msgid "Display on"
+msgstr "Anzeigen auf"
+
+#: includes/class-prmbr-single-tabs.php:301
+#: includes/class-prmbr-single-tabs.php:390
+msgid "Desktop"
+msgstr "Desktop"
+
+#: includes/class-prmbr-single-tabs.php:305
+#: includes/class-prmbr-single-tabs.php:391
+msgid "Tablet"
+msgstr "Tablet"
+
+#: includes/class-prmbr-single-tabs.php:305
+msgid "From 728 to 426"
+msgstr "Von 728 bis 426"
+
+#: includes/class-prmbr-single-tabs.php:309
+#: includes/class-prmbr-single-tabs.php:392
+msgid "Mobile"
+msgstr "Mobil"
+
+#: includes/class-prmbr-single-tabs.php:309
+msgid "Less then 426"
+msgstr "Weniger als 426"
+
+#: includes/class-prmbr-single-tabs.php:316
+msgid "Close Icon"
+msgstr "Schließen-Icon"
+
+#: includes/class-prmbr-single-tabs.php:321
+msgid "Enable to display a close/dismiss icon on the promo bar."
+msgstr ""
+"Aktivieren Sie diese Option, um in der Promo-Leiste ein Symbol zum Schließen/"
+"Ablehnen anzuzeigen."
+
+#: includes/class-prmbr-single-tabs.php:332
+msgid "Close Icon Color"
+msgstr "Schließen Icon: Farbe"
+
+#: includes/class-prmbr-single-tabs.php:340
+msgid "Close Icon Size"
+msgstr "Schließen Icon Größe"
+
+#: includes/class-prmbr-single-tabs.php:343
+msgid "Font-Size"
+msgstr "Schriftgröße"
+
+#: includes/class-prmbr-single-tabs.php:348
+msgid "Close Icon Position"
+msgstr "Schließen Symbolposition"
+
+#: includes/class-prmbr-single-tabs.php:352
+#: includes/class-prmbr-single-tabs.php:406
+msgid "Left"
+msgstr "Links"
+
+#: includes/class-prmbr-single-tabs.php:356
+#: includes/class-prmbr-single-tabs.php:431
+msgid "Right"
+msgstr "Rechts"
+
+#: includes/class-prmbr-single-tabs.php:362
+msgid "Position"
+msgstr "Position"
+
+#: includes/class-prmbr-single-tabs.php:366
+msgid "absolute"
+msgstr "absolut"
+
+#: includes/class-prmbr-single-tabs.php:370
+msgid "fixed"
+msgstr "fixiert"
+
+#: includes/class-prmbr-single-tabs.php:386
+msgid "Alignment"
+msgstr "Ausrichtung"
+
+#: includes/class-prmbr-single-tabs.php:400
+msgid "Top"
+msgstr "Oben"
+
+#: includes/class-prmbr-single-tabs.php:403
+msgid "Bottom"
+msgstr "Unten"
+
+#: includes/class-prmbr-single-tabs.php:409
+#: includes/class-prmbr-single-tabs.php:434
+msgid "width"
+msgstr "Breite"
+
+#: includes/class-prmbr-single-tabs.php:419
+#: includes/class-prmbr-single-tabs.php:444
+msgid "px"
+msgstr "px"
+
+#: includes/class-prmbr-single-tabs.php:461
+msgid "Background"
+msgstr "Hintergrund"
+
+#: includes/class-prmbr-single-tabs.php:488
+msgid "Text Color"
+msgstr "Textfarbe"
+
+#: includes/class-prmbr-single-tabs.php:496
+msgid "HTML"
+msgstr "HTML"
+
+#: includes/class-prmbr-single-tabs.php:556
+msgid ""
+"Choose the necessary post types (or single pages) where you would like to "
+"display PromoBar"
+msgstr ""
+"Wählen Sie die erforderlichen Beitragstypen (oder einzelne Seiten), auf "
+"denen Sie die PromoBar anzeigen möchten"
+
+#: includes/class-prmbr-single-tabs.php:563
+msgid "Show URL for pages"
+msgstr "URL für Seiten anzeigen"
+
+#: includes/class-prmbr-single-tabs.php:569
+msgid "Example of the site's pages tree"
+msgstr "Beispiel für den Seitenbaum der Website"
+
+#: includes/pro_banners.php:21
+msgid "Countdown Ends on"
+msgstr "Der Countdown endet am"
+
+#: includes/pro_banners.php:24
+msgid "Enter end date for countdown shortcode."
+msgstr "Geben Sie das Enddatum für den Countdown-Shortcode ein."
+
+#: includes/pro_banners.php:48
+msgid "Add Image"
+msgstr "Bild hinzufügen"
+
+#: includes/pro_banners.php:66
+msgid "Enter title here"
+msgstr "Geben Sie den Titel ein"
+
+#: includes/pro_banners.php:85
+msgid "Promobar Starts on"
+msgstr "Promobar Startet am"
+
+#: includes/pro_banners.php:88
+msgid "Enter to display a promo bar after this date"
+msgstr "Geben Sie ein, um eine Promo-Leiste nach diesem Datum anzuzeigen"
+
+#: includes/pro_banners.php:92
+msgid "Promobar Ends on"
+msgstr "Promobar Endet am"
+
+#: includes/pro_banners.php:95
+msgid "Enter to hide a promo bar after this date"
+msgstr "Geben Sie ein, um eine Promo-Leiste nach diesem Datum auszublenden"
+
+#: includes/pro_banners.php:113
+msgid "popup"
+msgstr "PopUp"
+
+#: includes/pro_banners.php:124
+msgid "Add Countdown to your page or post </br> using the following shortcode:"
+msgstr ""
+"Fügen Sie Ihrer Seite oder Ihrem Beitrag </br> einen Countdown hinzu, indem "
+"Sie den folgenden Shortcode verwenden:"
+
+#: promobar.php:48
+msgid "Edit PromoBar"
+msgstr "PromoBar bearbeiten"
+
+#: promobar.php:260
+msgid "This tab contains Pro options only."
+msgstr "Diese Registerkarte enthält nur die Pro-Option."
+
+#: promobar.php:262
+#, php-format
+msgid "%1$sChange the settings%2$s to view the Pro options."
+msgstr "%1$sÄndern Sie die Einstellungen%2$s, um die Pro-Optionen anzuzeigen."
+
+#: promobar.php:308
+msgid "Promobar deleted."
+msgstr "Promobar gelöscht."
+
+#: promobar.php:333
+msgid "Search Promobar"
+msgstr "Promobar durchsuchen"
+
+#: promobar.php:373
+msgid "Please, enable JavaScript in your browser."
+msgstr "Bitte aktivieren Sie JavaScript in Ihrem Browser."
+
+#: promobar.php:815
+msgid "Add promobar to your page or post"
+msgstr "Promobar zu Ihrer Seite oder Ihrem Beitrag hinzufügen"
+
+#: promobar.php:866
+msgid "Insert the shortcode to add PromoBar block."
+msgstr "Fügen Sie den Shortcode ein, um den PromoBar-Block hinzuzufügen."
+
+#: promobar.php:975
+msgid "FAQ"
+msgstr "FAQ"
+
+#: promobar.php:976
+msgid "Support"
+msgstr "Support"

@@ -126,6 +126,26 @@ msgstr "Иконка закрытия"
 msgid "Enable to display a close/dismiss icon on the promo bar."
 msgstr "Возможность отображать иконку закрытия на Promobar."
 
+#: includes/class-prmbr-add-new.php:319
+msgid "Close Icon Color"
+msgstr "Колір Значка закрити"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Close Icon Size"
+msgstr "Размер Значка закрить"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Close Icon Position"
+msgstr "Расположение Значка закрить"
+
+#: includes/class-prmbr-add-new.php:339
+msgid "Left"
+msgstr "Слева"
+
+#: includes/class-prmbr-add-new.php:327
+msgid "Right"
+msgstr "Справа"
+
 #: includes/class-prmbr-add-new.php:278
 msgid "Position"
 msgstr "Позиция"

@@ -10,6 +10,14 @@
 				} );
 			}
 		}
+		$( '#prmbr_show_promobar_dismiss_button' ).change( function() {
+			if ( $( this ).is( ':checked' ) ) {
+				$( '.prmbr_enable_icon_color, .prmbr_enable_icon_size, .prmbr_enable_icon_position ' ).show();
+			} else {
+				$( '.prmbr_enable_icon_color, .prmbr_enable_icon_size, .prmbr_enable_icon_position ' ).hide();
+			}
+		});
+
 		$( '.prmbr_file_add_button' ).on( 'click', function( event ) {
 			event.preventDefault();
 			var prmbr_count_of_files = $( '.prmbr_file_fields_place .prmbr-form-table:not( .prmbr_file_fields_template )' ).length,
@@ -31,9 +39,9 @@
 
 		/*All about admin part*/
 		/* include color-picker */
-        var prmbr_color_field = $( '.prmbr_color_field' );
+		var prmbr_color_field = $( '.prmbr_color_field' );
 
-        prmbr_color_field.wpColorPicker();
+		prmbr_color_field.wpColorPicker();
 		var color_options = {
 			/* you can declare a default color here, or in the data-default-color attribute on the input*/
 			/* defaultColor: false,*/
@@ -46,7 +54,7 @@
 			/* show a group of common colors beneath the square or, supply an array of colors to customize further*/
 			palettes: true
 		};
-        prmbr_color_field.wpColorPicker( color_options );
+		prmbr_color_field.wpColorPicker( color_options );
 
 		$( '.wp-picker-container' ).bind( 'change click select', function() {
 			$( '#prmbr_settings_notice' ).css( 'display', 'block' );
@@ -133,76 +141,76 @@
 
 		$( 'input[name="prmbr_background"]' ).on( 'change', function() {
 			var background_color_div = $('.background_color > div'),
-                upload_image = $('.upload-image');
-            if ( $( this ).is( ':checked' ) ) {
-                switch( $( this ).val() ) {
-                    case 'transparent':
-                        background_color_div.hide();
-                        upload_image.hide();
-                        break;
-                    case 'color':
-                        background_color_div.show();
-                        upload_image.hide();
-                        break;
-                    case 'image':
-                        background_color_div.hide();
-                        upload_image.show();
-                        break;
-                }
-            }
-        } ).trigger( 'change' );
-        if ( $( '.prmbr-upload-image' ).length > 0 ) {
+				upload_image = $('.upload-image');
+			if ( $( this ).is( ':checked' ) ) {
+				switch( $( this ).val() ) {
+					case 'transparent':
+						background_color_div.hide();
+						upload_image.hide();
+						break;
+					case 'color':
+						background_color_div.show();
+						upload_image.hide();
+						break;
+					case 'image':
+						background_color_div.hide();
+						upload_image.show();
+						break;
+				}
+			}
+		} ).trigger( 'change' );
+		if ( $( '.prmbr-upload-image' ).length > 0 ) {
 
-            /**
-             * include WordPress media uploader for images
-             */
-            var file_frame,
-                wp_media_post_id = wp.media.model.settings.post.id, /* Store the old id */
-                set_to_post_id   = 0; /* Set this */
-            $( '.prmbr-upload-image' ).on( 'click', function( event ) {
-                var imageUrl = $( this ).parent().find( 'input.prmbr-image-url' );
+			/**
+			 * include WordPress media uploader for images
+			 */
+			var file_frame,
+				wp_media_post_id = wp.media.model.settings.post.id, /* Store the old id */
+				set_to_post_id   = 0; /* Set this */
+			$( '.prmbr-upload-image' ).on( 'click', function( event ) {
+				var imageUrl = $( this ).parent().find( 'input.prmbr-image-url' );
 
-                event.preventDefault();
+				event.preventDefault();
 
-                /* If the media frame already exists, reopen it. */
-                if ( file_frame ) {
-                    /* Set the post ID to what we want */
-                    file_frame.uploader.uploader.param( 'post_id', set_to_post_id );
-                    /* Open frame */
-                    file_frame.open();
-                    return;
-                } else {
-                    /* Set the wp.media post id so the uploader grabs the ID we want when initialised */
-                    wp.media.model.settings.post.id = set_to_post_id;
-                }
+				/* If the media frame already exists, reopen it. */
+				if ( file_frame ) {
+					/* Set the post ID to what we want */
+					file_frame.uploader.uploader.param( 'post_id', set_to_post_id );
+					/* Open frame */
+					file_frame.open();
+					return;
+				} else {
+					/* Set the wp.media post id so the uploader grabs the ID we want when initialised */
+					wp.media.model.settings.post.id = set_to_post_id;
+				}
 
-                /* Create the media frame. */
-                file_frame = wp.media.frames.file_frame = wp.media( {
-                    title:    $( this ).data( 'uploader_title' ),
-                    library:  {
-                        type: 'image'
-                    },
-                    button:   {
-                        text: $( this ).data( 'uploader_button_text' )
-                    },
-                    multiple: false /* Set to true to allow multiple files to be selected */
-                } );
+				/* Create the media frame. */
+				file_frame = wp.media.frames.file_frame = wp.media( {
+					title:    $( this ).data( 'uploader_title' ),
+					library:  {
+						type: 'image'
+					},
+					button:   {
+						text: $( this ).data( 'uploader_button_text' )
+					},
+					multiple: false /* Set to true to allow multiple files to be selected */
+				} );
 
-                /* When an image is selected, run a callback. */
-                file_frame.on( 'select', function() {
-                    /* We set multiple to false so only get one image from the uploader */
-                    var attachment = file_frame.state().get( 'selection' ).first().toJSON();
+				/* When an image is selected, run a callback. */
+				file_frame.on( 'select', function() {
+					/* We set multiple to false so only get one image from the uploader */
+					var attachment = file_frame.state().get( 'selection' ).first().toJSON();
 
-                    /* Do something with attachment.id and/or attachment.url here */
-                    imageUrl.val( attachment.url ).trigger( 'change' );
+					/* Do something with attachment.id and/or attachment.url here */
+					imageUrl.val( attachment.url ).trigger( 'change' );
 
-                    /* Restore the main post ID */
-                    wp.media.model.settings.post.id = wp_media_post_id;
-                } );
+					/* Restore the main post ID */
+					wp.media.model.settings.post.id = wp_media_post_id;
+				} );
 
-                /* Finally, open the modal */
-                file_frame.open();
-            } );
-        }
+				/* Finally, open the modal */
+				file_frame.open();
+			} );
+		}
 	} );
 } )( jQuery );

@@ -1,0 +1,370 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2024-05-24 18:20+0300\n"
+"PO-Revision-Date: 2024-05-24 18:24+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: esc_html__;__;_e;esc_html_e;esc_attr_e;esc_attr__\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: bws_menu\n"
+
+#: includes/class-prmbr-list-table.php:60
+msgid "Edit"
+msgstr "تعديل"
+
+#: includes/class-prmbr-list-table.php:93
+msgid "Title"
+msgstr "العنوان"
+
+#: includes/class-prmbr-list-table.php:94
+msgid "Shortcode"
+msgstr "اختصار"
+
+#: includes/class-prmbr-list-table.php:95
+msgid "Date"
+msgstr "التاريخ"
+
+#: includes/class-prmbr-list-table.php:112
+#: includes/class-prmbr-settings.php:111
+#: includes/class-prmbr-single-tabs.php:530 promobar.php:330
+msgid "Close"
+msgstr "إغلاق"
+
+#: includes/class-prmbr-list-table.php:126 promobar.php:68
+msgid "Upgrade to Pro"
+msgstr "الترقية إلى الاصدار المدفوع"
+
+#: includes/class-prmbr-list-table.php:142
+msgid "Delete"
+msgstr "حذف"
+
+#: includes/class-prmbr-settings.php:28 includes/class-prmbr-single-tabs.php:40
+#: includes/class-prmbr-single-tabs.php:44 promobar.php:53 promobar.php:370
+#: promobar.php:973 promobar.php:1012
+msgid "Settings"
+msgstr "الإعدادات"
+
+#: includes/class-prmbr-settings.php:29
+msgid "Misc"
+msgstr "متفرقات"
+
+#: includes/class-prmbr-settings.php:30
+msgid "Custom Code"
+msgstr "كود مخصص"
+
+#: includes/class-prmbr-settings.php:31
+msgid "License key"
+msgstr "مفتاح الترخيص"
+
+#: includes/class-prmbr-settings.php:69
+#: includes/class-prmbr-single-tabs.php:172
+msgid "Settings saved."
+msgstr "تم حفظ الإعدادات."
+
+#: includes/class-prmbr-settings.php:79
+#: includes/class-prmbr-single-tabs.php:253
+#: includes/class-prmbr-single-tabs.php:547
+msgid "Promobar Settings"
+msgstr "إعدادات البروموبار"
+
+#: includes/class-prmbr-settings.php:82 includes/class-prmbr-settings.php:85
+msgid "Promobar"
+msgstr "بروموبار"
+
+#: includes/class-prmbr-settings.php:89
+#: includes/class-prmbr-single-tabs.php:263
+msgid "Enable to display a promo bar."
+msgstr "تمكين عرض شريط العرض الترويجي."
+
+#: includes/class-prmbr-settings.php:132
+#: includes/class-prmbr-single-tabs.php:233
+msgid "Promobar Shortcode"
+msgstr "الرمز القصير لبروموبار"
+
+#: includes/class-prmbr-settings.php:135
+msgid "Add PromoBar to your page or post </br> using the following shortcode:"
+msgstr ""
+"أضف البرومو بار إلى صفحتك أو مقالتك </br> باستخدام الرمز القصير التالي:"
+
+#: includes/class-prmbr-settings.php:142
+msgid ""
+"If you would like to use this plugin on certain pages, please paste the "
+"following strings into the template source code:"
+msgstr ""
+"إذا كنت ترغب في استخدام هذه الإضافة على صفحات معينة، يُرجى لصق السلاسل "
+"التالية في الكود المصدري للقالب:"
+
+#: includes/class-prmbr-single-tabs.php:45
+msgid "Display"
+msgstr "عرض"
+
+#: includes/class-prmbr-single-tabs.php:66
+#: includes/class-prmbr-single-tabs.php:466
+msgid "Transparent"
+msgstr "شفاف"
+
+#: includes/class-prmbr-single-tabs.php:67
+#: includes/class-prmbr-single-tabs.php:471
+msgid "Color"
+msgstr "اللون"
+
+#: includes/class-prmbr-single-tabs.php:68 includes/pro_banners.php:43
+msgid "Image"
+msgstr "صورة"
+
+#: includes/class-prmbr-single-tabs.php:192
+msgid "Edit Promobar"
+msgstr "تحرير بروموبار التحرير"
+
+#: includes/class-prmbr-single-tabs.php:192 promobar.php:48 promobar.php:316
+msgid "Add New"
+msgstr "اضف جديد"
+
+#: includes/class-prmbr-single-tabs.php:194 promobar.php:258
+msgid "Add New Promobar"
+msgstr "إضافة بروموبار جديد"
+
+#: includes/class-prmbr-single-tabs.php:217
+msgid "Publish"
+msgstr "نشر"
+
+#: includes/class-prmbr-single-tabs.php:223
+msgid "Update"
+msgstr "تحديث"
+
+#: includes/class-prmbr-single-tabs.php:236
+msgid ""
+"Add PromoBar to your posts, pages, custom post types or widgets by using the "
+"following shortcode:"
+msgstr ""
+"أضف PromoBar إلى مقالاتك أو صفحاتك أو أنواع المقالات المخصصة أو الأدوات "
+"الذكية باستخدام الرمز القصير التالي:"
+
+#: includes/class-prmbr-single-tabs.php:259
+#: includes/class-prmbr-single-tabs.php:268
+msgid "Display Promobar"
+msgstr "عرض بروموبار العرض"
+
+#: includes/class-prmbr-single-tabs.php:272
+msgid "on all pages"
+msgstr "على جميع الصفحات"
+
+#: includes/class-prmbr-single-tabs.php:276
+msgid "on the homepage"
+msgstr "على الصفحة الرئيسية"
+
+#: includes/class-prmbr-single-tabs.php:280
+msgid "display via shortcode or function only"
+msgstr "العرض عبر رمز قصير أو وظيفة فقط"
+
+#: includes/class-prmbr-single-tabs.php:297
+msgid "Display on"
+msgstr "العرض على"
+
+#: includes/class-prmbr-single-tabs.php:301
+#: includes/class-prmbr-single-tabs.php:390
+msgid "Desktop"
+msgstr "سطح المكتب"
+
+#: includes/class-prmbr-single-tabs.php:305
+#: includes/class-prmbr-single-tabs.php:391
+msgid "Tablet"
+msgstr "شعار الحد الأقصى للعرض على الكمبيوتر اللوحي"
+
+#: includes/class-prmbr-single-tabs.php:305
+msgid "From 728 to 426"
+msgstr "من 728 إلى 426"
+
+#: includes/class-prmbr-single-tabs.php:309
+#: includes/class-prmbr-single-tabs.php:392
+msgid "Mobile"
+msgstr "الجوال"
+
+#: includes/class-prmbr-single-tabs.php:309
+msgid "Less then 426"
+msgstr "أقل من 426"
+
+#: includes/class-prmbr-single-tabs.php:316
+msgid "Close Icon"
+msgstr "أيقونة الإغلاق"
+
+#: includes/class-prmbr-single-tabs.php:321
+msgid "Enable to display a close/dismiss icon on the promo bar."
+msgstr "تمكين عرض رمز الإغلاق/الرفض على شريط العرض الترويجي."
+
+#: includes/class-prmbr-single-tabs.php:332
+msgid "Close Icon Color"
+msgstr "لون ايقونة الغلق"
+
+#: includes/class-prmbr-single-tabs.php:340
+msgid "Close Icon Size"
+msgstr "إغلاق حجم الأيقونة"
+
+#: includes/class-prmbr-single-tabs.php:343
+msgid "Font-Size"
+msgstr "حجم الخط"
+
+#: includes/class-prmbr-single-tabs.php:348
+msgid "Close Icon Position"
+msgstr "إغلاق موضع الأيقونة"
+
+#: includes/class-prmbr-single-tabs.php:352
+#: includes/class-prmbr-single-tabs.php:406
+msgid "Left"
+msgstr "يسار"
+
+#: includes/class-prmbr-single-tabs.php:356
+#: includes/class-prmbr-single-tabs.php:431
+msgid "Right"
+msgstr "يمين"
+
+#: includes/class-prmbr-single-tabs.php:362
+msgid "Position"
+msgstr "الموضع"
+
+#: includes/class-prmbr-single-tabs.php:366
+msgid "absolute"
+msgstr "مطلق"
+
+#: includes/class-prmbr-single-tabs.php:370
+msgid "fixed"
+msgstr "ثابت"
+
+#: includes/class-prmbr-single-tabs.php:386
+msgid "Alignment"
+msgstr "المحاذاة"
+
+#: includes/class-prmbr-single-tabs.php:400
+msgid "Top"
+msgstr "أعلى"
+
+#: includes/class-prmbr-single-tabs.php:403
+msgid "Bottom"
+msgstr "اسفل"
+
+#: includes/class-prmbr-single-tabs.php:409
+#: includes/class-prmbr-single-tabs.php:434
+msgid "width"
+msgstr "العرض"
+
+#: includes/class-prmbr-single-tabs.php:419
+#: includes/class-prmbr-single-tabs.php:444
+msgid "px"
+msgstr "بكسل"
+
+#: includes/class-prmbr-single-tabs.php:461
+msgid "Background"
+msgstr "الخلفية"
+
+#: includes/class-prmbr-single-tabs.php:488
+msgid "Text Color"
+msgstr "لون الخط"
+
+#: includes/class-prmbr-single-tabs.php:496
+msgid "HTML"
+msgstr "HTML"
+
+#: includes/class-prmbr-single-tabs.php:556
+msgid ""
+"Choose the necessary post types (or single pages) where you would like to "
+"display PromoBar"
+msgstr ""
+"اختر أنواع المنشورات الضرورية (أو الصفحات الفردية) التي ترغب في عرض شريط "
+"الترويجات فيها"
+
+#: includes/class-prmbr-single-tabs.php:563
+msgid "Show URL for pages"
+msgstr "إظهار عنوان URL للصفحات"
+
+#: includes/class-prmbr-single-tabs.php:569
+msgid "Example of the site's pages tree"
+msgstr "مثال على شجرة صفحات الموقع"
+
+#: includes/pro_banners.php:21
+msgid "Countdown Ends on"
+msgstr "ينتهي العد التنازلي على"
+
+#: includes/pro_banners.php:24
+msgid "Enter end date for countdown shortcode."
+msgstr "أدخل تاريخ الانتهاء للرمز القصير للعد التنازلي."
+
+#: includes/pro_banners.php:48
+msgid "Add Image"
+msgstr "إضافة صورة"
+
+#: includes/pro_banners.php:66
+msgid "Enter title here"
+msgstr "ادخل العنوان هنا"
+
+#: includes/pro_banners.php:85
+msgid "Promobar Starts on"
+msgstr "بروموبار يبدأ في"
+
+#: includes/pro_banners.php:88
+msgid "Enter to display a promo bar after this date"
+msgstr "أدخل لعرض شريط العرض الترويجي بعد هذا التاريخ"
+
+#: includes/pro_banners.php:92
+msgid "Promobar Ends on"
+msgstr "بروموبار ينتهي على"
+
+#: includes/pro_banners.php:95
+msgid "Enter to hide a promo bar after this date"
+msgstr "أدخل لإخفاء شريط ترويجي بعد هذا التاريخ"
+
+#: includes/pro_banners.php:113
+msgid "popup"
+msgstr "نافذة منبثقة"
+
+#: includes/pro_banners.php:124
+msgid "Add Countdown to your page or post </br> using the following shortcode:"
+msgstr ""
+"أضف العد التنازلي إلى صفحتك أو مقالك </br> باستخدام الرمز القصير التالي:"
+
+#: promobar.php:48
+msgid "Edit PromoBar"
+msgstr "تحرير شريط البرومو بار"
+
+#: promobar.php:260
+msgid "This tab contains Pro options only."
+msgstr "تحتوي علامة التبويب هذه على خيارات Pro فقط."
+
+#: promobar.php:262
+#, php-format
+msgid "%1$sChange the settings%2$s to view the Pro options."
+msgstr "%1$s تغيير الإعدادات%2$s لعرض خيارات Pro."
+
+#: promobar.php:308
+msgid "Promobar deleted."
+msgstr "تم حذف بروموبار."
+
+#: promobar.php:333
+msgid "Search Promobar"
+msgstr "بحث في بروموبار"
+
+#: promobar.php:373
+msgid "Please, enable JavaScript in your browser."
+msgstr "من فضلك، قم بتمكين JavaScript في متصفحك."
+
+#: promobar.php:815
+msgid "Add promobar to your page or post"
+msgstr "إضافة بروموبار إلى صفحتك أو منشورك"
+
+#: promobar.php:866
+msgid "Insert the shortcode to add PromoBar block."
+msgstr "أدخل الرمز القصير لإضافة مكوِّن الشريط الترويجي."
+
+#: promobar.php:975
+msgid "FAQ"
+msgstr "الأسئلة الشائعة"
+
+#: promobar.php:976
+msgid "Support"
+msgstr "الدعم"

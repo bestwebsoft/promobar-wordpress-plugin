@@ -26,17 +26,10 @@ input.prmbr_css_file_path {
 	cursor: pointer;
 }
 #prmbr_close_button_main {
-	max-width: 10px;
-	color: #bbb;
-	font-size: 30px !important;
 	max-height: 10px;
 	cursor: pointer;
 	display: inline-block;
 	position: relative;
-	float: right;
-	bottom: 61px;
-	right: 45px!important;
-	top: 15px!important;
 }
 @media screen and (max-width: 782px) {
 	.prmbr_no_js_logged {

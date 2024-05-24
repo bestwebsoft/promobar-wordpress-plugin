@@ -3,8 +3,8 @@ Contributors: bestwebsoft
 Donate link: https://bestwebsoft.com/donate/
 Tags: add banner, add countdown, banner, countdown plugin, custom banner, promobar, custom css plugin, timer plugin, maintenance banner, add promobar in pages, add promobar in posts, infobar, special offer banner
 Requires at least: 5.6
-Tested up to: 6.3
-Stable tag: 1.2.0
+Tested up to: 6.5
+Stable tag: 1.2.1
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -130,6 +130,13 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 
 == Changelog ==
 
+= V1.2.1 - 24.05.2024 =
+* NEW : Added the ability to select the color of the close icon.
+* NEW : Added the ability to select the size of the close icon.
+* NEW : Added the ability to select the position of the close icon.
+* Update : We updated all functionality for wordpress 6.5
+* Update : BWS Panel section was updated.
+
 = V1.2.0 - 31.10.2023 =
 * Pro : The ability to change the background image position added.
 * Pro : We updated the calendar for the start and end of the promo bar.
@@ -225,6 +232,12 @@ Please make sure that the problem hasn't been discussed yet on our forum (<https
 * NEW: Ability to placing banners with any data on your website.
 
 == Upgrade Notice ==
+
+= V1.2.1 =
+* New features added.
+* Bugs Fixed.
+* Functionality expanded.
+
 = V1.2.0 =
 * New features added.
 * Bugs Fixed.
